@@ -1,0 +1,2 @@
+# Ignore everything inside the build folder (output files).
+build/**

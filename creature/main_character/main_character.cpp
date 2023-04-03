@@ -1,3 +1,4 @@
+#include "../../utils.h"
 #include "main_character.h"
 #include <iostream>
 
@@ -6,7 +7,7 @@ MainCharacter::MainCharacter(std::string name)
     if (check_name(name))
     {
         m_name = name;
-        std::cout << "Welcome to the world, " << m_name << std::endl;
+        print({"Welcome to the world, ", m_name, "!"});
     }
 }
 
@@ -16,7 +17,7 @@ MainCharacter::MainCharacter(std::string name, int strength, int dexterity, int 
     if (check_name(name))
     {
         m_name = name;
-        std::cout << "Welcome to the world, " << m_name << std::endl;
+        print({"Welcome to the world, ", m_name, "!"});
     }
 }
 
@@ -30,7 +31,7 @@ void MainCharacter::set_name(std::string name)
     if (check_name(name))
     {
         m_name = name;
-        std::cout << "Your new name is: " << m_name << std::endl;
+        print({"Your new name is: ", m_name, "."});
     }
 }
 
@@ -48,7 +49,7 @@ bool MainCharacter::check_name(std::string name)
 
     if (has_digit)
     {
-        std::cout << "Sorry, your name can only contain letters..." << std::endl;
+        print({"Sorry, your name can only contain letters and spaces..."});
         return false;
     }
     else

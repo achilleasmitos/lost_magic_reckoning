@@ -33,6 +33,8 @@ int main()
 
     main_2.print_stats();
 
+    print({"This will ", "appear ", std::to_string(3), " times slower", "..."}, 300);
+
     system("pause");
     return 0;
 }
