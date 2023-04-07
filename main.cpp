@@ -30,6 +30,8 @@ int main()
     MainCharacter main_2(new_name, 15, 14, 7, 16, 13, 14);
     main_2.print_stats();
 
+    utils::customize_text(24);
+
     std::cout << "Give me the name for another character: ";
     utils::get_sanitized_string(new_name);
 
