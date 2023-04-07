@@ -1,5 +1,6 @@
 #include <iostream>
 #include "utils.h"
+#include "start_menu.h"
 #include "./creature/creature.cpp"
 #include "./creature/main_character/main_character.cpp"
 
@@ -15,10 +16,11 @@ int main()
     utils::handle_sound(utils::SoundOperations::Open, "..\\resources\\music\\boss_battle.mp3", "boss_battle");
     utils::handle_sound(utils::SoundOperations::Play, "boss_battle");
 
+    while (start_menu::start_menu() == 0){
     std::cout << "Give me the time you want between each rendered character (in ms): ";
     std::cin >> utils::sleep_for_ms;
 
-    MainCharacter main_character("Achilleas Mitos");
+    MainCharacter main_character("Traveler");
 
     std::string new_name;
     std::cout << "Give me a new name for your character: ";
@@ -35,8 +37,6 @@ int main()
     MainCharacter main_2(new_name, 15, 14, 7, 16, 13, 14);
     main_2.print_stats();
 
-    utils::customize_text(24);
-
     std::cout << "Give me the name for another character: ";
     utils::get_sanitized_string(new_name);
 
@@ -50,5 +50,6 @@ int main()
     utils::print({"This will ", "appear ", std::to_string(3), " times slower", "..."}, 3 * utils::sleep_for_ms);
 
     system("pause");
+    }
     return 0;
 }
