@@ -7,7 +7,7 @@ MainCharacter::MainCharacter(std::string name)
     if (check_for_alpha_or_whitespace(name))
     {
         m_name = name;
-        print({"Welcome to the world, ", m_name, "!"});
+        utils::print({"Welcome to the world, ", m_name, "!"});
     }
 }
 
@@ -17,7 +17,7 @@ MainCharacter::MainCharacter(std::string name, int strength, int dexterity, int 
     if (check_for_alpha_or_whitespace(name))
     {
         m_name = name;
-        print({"Welcome to the world, ", m_name, "!"});
+        utils::print({"Welcome to the world, ", m_name, "!"});
     }
 }
 
@@ -27,7 +27,7 @@ MainCharacter::MainCharacter(std::string name, int hp, int ac, int speed, int st
     if (check_for_alpha_or_whitespace(name))
     {
         m_name = name;
-        print({"Welcome to the world, ", m_name, "!"});
+        utils::print({"Welcome to the world, ", m_name, "!"});
     }
 }
 
@@ -41,7 +41,7 @@ void MainCharacter::set_name(std::string name)
     if (check_for_alpha_or_whitespace(name))
     {
         m_name = name;
-        print({"Your new name is: ", m_name, "."});
+        utils::print({"Your new name is: ", m_name, "."});
     }
 }
 
@@ -59,7 +59,7 @@ bool MainCharacter::check_for_alpha_or_whitespace(std::string string)
 
     if (has_digit)
     {
-        print({"Sorry, this string can only contain letters and spaces..."});
+        utils::print({"Sorry, your name can only contain letters and spaces..."});
         return false;
     }
     else
