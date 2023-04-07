@@ -16,7 +16,7 @@ int main()
     std::cout << "Give me the time you want between each rendered character (in ms): ";
     std::cin >> utils::sleep_for_ms;
 
-    MainCharacter main_character("Achilleas Mitos");
+    MainCharacter main_character("Traveler");
 
     std::string new_name;
     std::cout << "Give me a new name for your character: ";
