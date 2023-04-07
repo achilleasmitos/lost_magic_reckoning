@@ -33,7 +33,6 @@ int main()
     std::cout << "Give me the name for another character: ";
     utils::get_sanitized_string(new_name);
 
-
     MainCharacter main_3(new_name, 12, 14, 35, 16, 14, 10, 8, 7, 12, "humanoid");
     main_3.print_stats();
 
