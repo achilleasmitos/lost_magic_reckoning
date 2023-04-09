@@ -2,15 +2,18 @@
     "tasks": [
         {
             "type": "cppbuild",
-            "label": "C/C++: g++.exe build active file",
+            "label": "C/C++: g++.exe build project",
             "command": "C:\\msys64\\mingw64\\bin\\g++.exe",
             "args": [
                 "-fdiagnostics-color=always",
                 "-g",
-                "${file}",
+                "${workspaceFolder}\\*.cpp",
+                "${workspaceFolder}\\creature\\*.cpp",
+                "${workspaceFolder}\\creature\\main_character\\*.cpp",
+                "${workspaceFolder}\\start_menu\\*.cpp",
                 "-lWinmm",
                 "-o",
-                "${fileDirname}\\build\\${fileBasenameNoExtension}.exe"
+                "${workspaceFolder}\\build\\text-adventure.exe"
             ],
             "options": {
                 "cwd": "${fileDirname}"

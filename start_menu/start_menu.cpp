@@ -1,34 +1,33 @@
+#include "start_menu.h"
 #include <iostream>
-#include "utils.h"
 
-namespace start_menu
+int start_menu::start_menu()
 {
-    int go_back=0;
-    int start_menu()
+    int go_back = 0;
+    std::cout << "Welcome to the game!" << std::endl;
+    int choice = -1;
+
+    while (choice != 1)
     {
-        std::cout << "Welcome to the game!" << std::endl;
-        int choice = -1;
+        std::cout << "Please select an option:" << std::endl;
+        std::cout << "1. Start Game" << std::endl;
+        std::cout << "2. Settings" << std::endl;
+        std::cout << "3. Quit" << std::endl;
 
-        while (choice != 1)
+        std::cin >> choice;
+
+        switch (choice)
         {
-            std::cout << "Please select an option:" << std::endl;
-            std::cout << "1. Start Game" << std::endl;
-            std::cout << "2. Settings" << std::endl;
-            std::cout << "3. Quit" << std::endl;
-
-            std::cin >> choice;
-
-            switch (choice)
+        case 1:
+        {
+            // code for starting the game
+            std::cout << "Starting the game..." << std::endl;
+            return 0;
+        }
+        case 2:
+        {
+            do
             {
-            case 1:
-            {
-                // code for starting the game
-                std::cout << "Starting the game..." << std::endl;
-                return 0;
-            }
-            case 2:
-            {
-                do {
                 // code for settings
                 std::cout << "Opening settings..." << std::endl;
                 std::cout << "chouse a setting you want to change" << std::endl;
@@ -45,7 +44,7 @@ namespace start_menu
                     std::cout << "Pick Number" << std::endl;
                     std::cin >> utils::text_size;
                     utils::customize_text(utils::text_size);
-                    go_back=1;
+                    go_back = 1;
                     break;
                 }
                 case 2:
@@ -92,43 +91,39 @@ namespace start_menu
                         }
 
                     } while (true);
-                    go_back=1;
+                    go_back = 1;
                     break;
                 }
                 case 3:
                 {
                     std::cout << "no idea what to do..." << std::endl;
-                   go_back=1;
+                    go_back = 1;
                     break;
                 }
                 default:
                 {
                     std::cout << "Invalid choice! Please choose again." << std::endl;
-                    go_back=0;
+                    go_back = 0;
                     continue;
-                    
                 }
-                 
                 }
-                } while (go_back==0);
-                break;
-                
-            }
-            case 3:
-            {
-                // code for quitting
-                std::cout << "Quitting the game..." << std::endl;
-                return 1;
-                break;
-            }
-            default:
-            {
-                std::cout << "Invalid choice! Please choose again." << std::endl;
-
-                break;
-            }
-            }
+            } while (go_back == 0);
+            break;
         }
-        return -1;
+        case 3:
+        {
+            // code for quitting
+            std::cout << "Quitting the game..." << std::endl;
+            return 1;
+            break;
+        }
+        default:
+        {
+            std::cout << "Invalid choice! Please choose again." << std::endl;
+
+            break;
+        }
+        }
     }
+    return -1;
 }

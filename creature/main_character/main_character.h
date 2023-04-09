@@ -1,5 +1,4 @@
 #pragma once
-
 #include "../creature.h"
 #include <string>
 
