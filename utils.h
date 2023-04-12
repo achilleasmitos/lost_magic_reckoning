@@ -10,7 +10,8 @@ namespace utils
 {
     // Number of milliseconds that the 'print' function waits for in-between character prints.
     int sleep_for_ms = 100;
-
+    int text_size=16;
+    
     /**
      * @brief Receives a string to modify with std::getline after any remaining new line characters have ben dropped out.
      *
@@ -53,7 +54,7 @@ namespace utils
         SemiBold = 600,
         Bold = 800
     };
-
+    enum FontWeightValues Font_value=Normal;
     /**
      * @brief A function that changes the basic aesthetics of the text. This is only in a real cmd,
      * and should probably be changed when an (inevitable) switch to virtual terminal happens.
@@ -64,7 +65,7 @@ namespace utils
      * @param font_weight The weight of the font, one of: Light, SemiLight, Normal, SemiBold, Bold.
      * @param face_name A wchar_t string for the font typeface used.
      */
-    void customize_text(int font_size = 16, FontWeightValues font_weight = Normal, const wchar_t *face_name = L"Courier")
+    void customize_text(int font_size = text_size, FontWeightValues font_weight = Font_value, const wchar_t *face_name = L"Courier")
     {
         CONSOLE_FONT_INFOEX cfi;
         cfi.cbSize = sizeof(cfi);
