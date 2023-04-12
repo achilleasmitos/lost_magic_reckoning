@@ -1,8 +1,8 @@
 #include <iostream>
 #include "utils.h"
-#include "start_menu.h"
-#include "./creature/creature.cpp"
-#include "./creature/main_character/main_character.cpp"
+#include "start_menu/start_menu.h"
+#include "./creature/creature.h"
+#include "./creature/main_character/main_character.h"
 
 int main()
 {
@@ -16,40 +16,41 @@ int main()
     utils::handle_sound(utils::SoundOperations::Open, "..\\resources\\music\\boss_battle.mp3", "boss_battle");
     utils::handle_sound(utils::SoundOperations::Play, "boss_battle");
 
-    while (start_menu::start_menu() == 0){
-    std::cout << "Give me the time you want between each rendered character (in ms): ";
-    std::cin >> utils::sleep_for_ms;
+    while (start_menu::start_menu() == 0)
+    {
+        std::cout << "Give me the time you want between each rendered character (in ms): ";
+        std::cin >> utils::sleep_for_ms;
 
-    MainCharacter main_character("Traveler");
+        MainCharacter main_character("Traveler");
 
-    std::string new_name;
-    std::cout << "Give me a new name for your character: ";
-    utils::get_sanitized_string(new_name);
-    main_character.set_name(new_name);
-    main_character.print_stats();
+        std::string new_name;
+        std::cout << "Give me a new name for your character: ";
+        utils::get_sanitized_string(new_name);
+        main_character.set_name(new_name);
+        main_character.print_stats();
 
-    utils::handle_sound(utils::SoundOperations::Open, "..\\resources\\music\\exploration.mp3", "exploration");
-    utils::handle_sound(utils::SoundOperations::Play, "exploration repeat");
+        utils::handle_sound(utils::SoundOperations::Open, "..\\resources\\music\\exploration.mp3", "exploration");
+        utils::handle_sound(utils::SoundOperations::Play, "exploration repeat");
 
-    std::cout << "Give me the name for another character: ";
-    utils::get_sanitized_string(new_name);
+        std::cout << "Give me the name for another character: ";
+        utils::get_sanitized_string(new_name);
 
-    MainCharacter main_2(new_name, 15, 14, 7, 16, 13, 14);
-    main_2.print_stats();
+        MainCharacter main_2(new_name, 15, 14, 7, 16, 13, 14);
+        main_2.print_stats();
 
-    std::cout << "Give me the name for another character: ";
-    utils::get_sanitized_string(new_name);
+        std::cout << "Give me the name for another character: ";
+        utils::get_sanitized_string(new_name);
 
-    utils::handle_sound(utils::SoundOperations::Close, "boss_battle");
+        utils::handle_sound(utils::SoundOperations::Close, "boss_battle");
 
-    MainCharacter main_3(new_name, 12, 14, 35, 16, 14, 10, 8, 7, 12, "humanoid");
-    main_3.print_stats();
+        MainCharacter main_3(new_name, 12, 14, 35, 16, 14, 10, 8, 7, 12, "humanoid");
+        main_3.print_stats();
 
-    utils::handle_sound(utils::SoundOperations::Close, "exploration");
+        utils::handle_sound(utils::SoundOperations::Close, "exploration");
 
-    utils::print({"This will ", "appear ", std::to_string(3), " times slower", "..."}, 3 * utils::sleep_for_ms);
+        utils::print({"This will ", "appear ", std::to_string(3), " times slower", "..."}, 3 * utils::sleep_for_ms);
 
-    system("pause");
+        system("pause");
     }
     return 0;
 }
