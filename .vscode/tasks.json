@@ -7,10 +7,11 @@
             "args": [
                 "-fdiagnostics-color=always",
                 "-g",
-                "${workspaceFolder}\\*.cpp",
-                "${workspaceFolder}\\creature\\*.cpp",
-                "${workspaceFolder}\\creature\\main_character\\*.cpp",
-                "${workspaceFolder}\\start_menu\\*.cpp",
+                "${workspaceFolder}\\src\\*.cpp",
+                "${workspaceFolder}\\src\\creature\\*.cpp",
+                "${workspaceFolder}\\src\\creature\\main_character\\*.cpp",
+                "${workspaceFolder}\\src\\start_menu\\*.cpp",
+                "${workspaceFolder}\\src\\utils\\*.cpp",
                 "-lWinmm",
                 "-o",
                 "${workspaceFolder}\\build\\text-adventure.exe"

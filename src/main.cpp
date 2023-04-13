@@ -1,6 +1,6 @@
 #include <iostream>
-#include "utils.h"
-#include "start_menu/start_menu.h"
+#include "./utils/utils.h"
+#include "./start_menu/start_menu.h"
 #include "./creature/creature.h"
 #include "./creature/main_character/main_character.h"
 
@@ -14,7 +14,7 @@ int main()
 
 	// std::cout << "=======================" << std::endl;
 	utils::handle_sound(utils::SoundOperations::Open,
-		"..\\resources\\music\\boss_battle.mp3",
+		"..\\src\\resources\\music\\boss_battle.mp3",
 		"boss_battle");
 	utils::handle_sound(utils::SoundOperations::Play, "boss_battle");
 
@@ -33,7 +33,7 @@ int main()
 		main_character.print_stats();
 
 		utils::handle_sound(utils::SoundOperations::Open,
-			"..\\resources\\music\\exploration.mp3",
+			"..\\src\\resources\\music\\exploration.mp3",
 			"exploration");
 		utils::handle_sound(utils::SoundOperations::Play, "exploration repeat");
 
