@@ -30,7 +30,7 @@ Examples:
 - `int m_my_class_member_variable_name = 2;`
 - `bool m_this_is_snake_case = true;`
 
-### Type names
+## Type names
 Type names follow the [UpperCamelCase / PascalCase](https://en.wikipedia.org/wiki/Camel_case) scheme, where every name is one word that starts with a capital letter, and every sub-word inside it starts with a capital letter as well. Entities that belong to this category are: _enum types, enum values, type aliases, type template parameters, structs and classes_.
 
 ## Namespaces

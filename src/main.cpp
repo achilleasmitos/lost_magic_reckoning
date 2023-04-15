@@ -1,11 +1,14 @@
 #include <iostream>
+#include <time.h>
 #include "./utils/utils.h"
+#include "./utils/roll_dice/roll_dice.h"
 #include "./start_menu/start_menu.h"
 #include "./creature/creature.h"
 #include "./creature/main_character/main_character.h"
 
 int main()
 {
+	srand(time(NULL));
 	utils::HandleSound(utils::SoundOperations::Open,
 		"..\\src\\resources\\music\\boss_battle.mp3",
 		"boss_battle");
@@ -48,6 +51,13 @@ int main()
 
 		utils::Print({"This will ", "appear ", std::to_string(3), " times slower", "..."},
 			3 * utils::g_sleep_for_ms);
+
+		std::cout << "Rolling 3d6: " << utils::RollDice(3, 6) << std::endl;
+		std::cout << "Rolling 3d6 + 2d10: " << utils::RollDice({"3d6", "2d10"})
+				  << std::endl;
+		std::cout << "Rolling with advantage: " << utils::RollWithAdvantage() << std::endl;
+		std::cout << "Rolling with disadvantage: " << utils::RollWithDisadvantage()
+				  << std::endl;
 
 		system("pause");
 	}
