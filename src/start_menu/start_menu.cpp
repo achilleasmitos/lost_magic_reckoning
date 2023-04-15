@@ -1,7 +1,7 @@
 #include "start_menu.h"
 #include <iostream>
 
-int start_menu::start_menu()
+int start_menu::StartMenu()
 {
 	int go_back = 0;
 	std::cout << "Welcome to the game!" << std::endl;
@@ -35,15 +35,15 @@ int start_menu::start_menu()
 						std::cout << "1. Text Size" << std::endl;
 						std::cout << "2. Font Weight" << std::endl;
 						std::cout << "3. Face Name" << std::endl;
-						int Setting_shoice;
-						std::cin >> Setting_shoice;
-						switch (Setting_shoice)
+						int setting_shoice;
+						std::cin >> setting_shoice;
+						switch (setting_shoice)
 						{
 							case 1:
 								{
 									std::cout << "Pick Number" << std::endl;
-									std::cin >> utils::text_size;
-									utils::customize_text(utils::text_size);
+									std::cin >> utils::g_text_size;
+									utils::CustomizeText(utils::g_text_size);
 									go_back = 1;
 									break;
 								}
@@ -61,31 +61,31 @@ int start_menu::start_menu()
 										std::cin >> weight_shoice;
 										if (weight_shoice == 1)
 										{
-											utils::customize_text(utils::text_size,
+											utils::CustomizeText(utils::g_text_size,
 												utils::Light);
 											break;
 										}
 										else if (weight_shoice == 2)
 										{
-											utils::customize_text(utils::text_size,
+											utils::CustomizeText(utils::g_text_size,
 												utils::SemiLight);
 											break;
 										}
 										else if (weight_shoice == 3)
 										{
-											utils::customize_text(utils::text_size,
+											utils::CustomizeText(utils::g_text_size,
 												utils::Normal);
 											break;
 										}
 										else if (weight_shoice == 4)
 										{
-											utils::customize_text(utils::text_size,
+											utils::CustomizeText(utils::g_text_size,
 												utils::SemiBold);
 											break;
 										}
 										else if (weight_shoice == 5)
 										{
-											utils::customize_text(utils::text_size,
+											utils::CustomizeText(utils::g_text_size,
 												utils::Bold);
 											break;
 										}

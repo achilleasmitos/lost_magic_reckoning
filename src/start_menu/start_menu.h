@@ -12,5 +12,5 @@ namespace start_menu
  * @return An integer to check for when to exit this function.
  * TODO: This function should be refactored to return void.
  */
-int start_menu();
+int StartMenu();
 } // namespace start_menu

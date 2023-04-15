@@ -3,9 +3,9 @@
 
 namespace utils
 {
-// Number of milliseconds that the 'print' function waits for in-between character prints.
-extern int sleep_for_ms;
-extern int text_size;
+// Number of milliseconds that the 'Print' function waits for in-between character Prints.
+extern int g_sleep_for_ms;
+extern int g_text_size;
 
 /**
  * @brief Receives a string to modify with std::getline after any remaining new line characters have ben dropped out.
@@ -15,12 +15,12 @@ extern int text_size;
 void get_sanitized_string(std::string& string);
 
 /**
- * @brief Function to print a list of strings to the console, pausing in-between characters.
+ * @brief Function to Print a list of strings to the console, pausing in-between characters.
  *
  * @param list A list of std::strings to std::cout
- * @param sleep_for (optional) The amount of milliseconds to sleep between characters.
+ * @param sleep_for_ms (optional) The amount of milliseconds to sleep between characters.
  */
-void print(std::initializer_list<std::string> list, int sleep_for_ms = sleep_for_ms);
+void Print(std::initializer_list<std::string> list, int sleep_for_ms = g_sleep_for_ms);
 
 enum FontWeightValues
 {
@@ -31,7 +31,7 @@ enum FontWeightValues
 	Bold = 800
 };
 
-extern FontWeightValues Font_value;
+extern FontWeightValues g_text_weight;
 
 /**
  * @brief A function that changes the basic aesthetics of the text. This is only in a real cmd,
@@ -43,8 +43,8 @@ extern FontWeightValues Font_value;
  * @param font_weight The weight of the font, one of: Light, SemiLight, Normal, SemiBold, Bold.
  * @param face_name A wchar_t string for the font typeface used.
  */
-void customize_text(int font_size = text_size,
-	FontWeightValues font_weight = Font_value,
+void CustomizeText(int font_size = g_text_size,
+	FontWeightValues font_weight = g_text_weight,
 	const wchar_t* face_name = L"Courier");
 
 enum SoundOperations
@@ -60,7 +60,7 @@ enum SoundOperations
  *
  * @param operation Only the 'Close' option can be specified for this overload.
  */
-void handle_sound(SoundOperations operation);
+void HandleSound(SoundOperations operation);
 
 /**
  * @brief An overload of the function with just two arguments, used in any operation other than 'Open'.
@@ -69,7 +69,7 @@ void handle_sound(SoundOperations operation);
  * @param operation The operation to execute, one of: Play, Pause, Close.
  * @param alias An alias for this audio file. If you want to play on repeat, put: alias + ' repeat'.
  */
-void handle_sound(SoundOperations operation, std::string alias);
+void HandleSound(SoundOperations operation, std::string alias);
 
 /**
  * @brief A general function for handling the background music. It can open a sound file,
@@ -81,5 +81,5 @@ void handle_sound(SoundOperations operation, std::string alias);
  * @param file_path A string of type '..\\resources\\music\\file.mp3' that is the path to the audio file.
  * @param alias An alias for this particular audio file. See the description.
  */
-void handle_sound(SoundOperations operation, std::string file_path, std::string alias);
+void HandleSound(SoundOperations operation, std::string file_path, std::string alias);
 } // namespace utils

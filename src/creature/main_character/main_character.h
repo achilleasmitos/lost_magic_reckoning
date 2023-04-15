@@ -40,5 +40,5 @@ private:
 	 * @param string
 	 * @return true if the above condition holds, false otherwise.
 	 */
-	bool check_for_alpha_or_whitespace(std::string string);
+	bool CheckForAlphaOrWhitespace(std::string string);
 };
