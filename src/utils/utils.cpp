@@ -6,9 +6,9 @@
 #include <cwchar>
 #include <windows.h>
 
-int utils::sleep_for_ms = 100;
-int utils::text_size = 16;
-utils::FontWeightValues utils::Font_value = utils::FontWeightValues::Normal;
+int utils::g_sleep_for_ms = 100;
+int utils::g_text_size = 16;
+utils::FontWeightValues utils::g_text_weight = utils::FontWeightValues::Normal;
 
 void utils::get_sanitized_string(std::string& string)
 {
@@ -20,7 +20,7 @@ void utils::get_sanitized_string(std::string& string)
 	std::getline(std::cin, string);
 }
 
-void utils::print(std::initializer_list<std::string> list, int sleep_for_ms)
+void utils::Print(std::initializer_list<std::string> list, int sleep_for_ms)
 {
 	for (auto string : list)
 	{
@@ -33,7 +33,7 @@ void utils::print(std::initializer_list<std::string> list, int sleep_for_ms)
 	std::cout << std::endl;
 }
 
-void utils::customize_text(int font_size, utils::FontWeightValues font_weight, const wchar_t* face_name)
+void utils::CustomizeText(int font_size, utils::FontWeightValues font_weight, const wchar_t* face_name)
 {
 	CONSOLE_FONT_INFOEX cfi;
 	cfi.cbSize = sizeof(cfi);
@@ -46,7 +46,7 @@ void utils::customize_text(int font_size, utils::FontWeightValues font_weight, c
 	SetCurrentConsoleFontEx(GetStdHandle(STD_OUTPUT_HANDLE), FALSE, &cfi);
 }
 
-void utils::handle_sound(utils::SoundOperations operation)
+void utils::HandleSound(utils::SoundOperations operation)
 {
 	switch (operation)
 	{
@@ -59,14 +59,14 @@ void utils::handle_sound(utils::SoundOperations operation)
 			}
 		default:
 			{
-				std::cerr << "'handle_sound' with one argument can only accept "
+				std::cerr << "'HandleSound' with one argument can only accept "
 							 "'Close'..."
 						  << std::endl;
 			}
 	}
 }
 
-void utils::handle_sound(utils::SoundOperations operation, std::string alias)
+void utils::HandleSound(utils::SoundOperations operation, std::string alias)
 {
 	switch (operation)
 	{
@@ -93,14 +93,14 @@ void utils::handle_sound(utils::SoundOperations operation, std::string alias)
 			}
 		default:
 			{
-				std::cerr << "'handle_sound' with two arguments cannot accept "
+				std::cerr << "'HandleSound' with two arguments cannot accept "
 							 "'Open'..."
 						  << std::endl;
 			}
 	}
 }
 
-void utils::handle_sound(utils::SoundOperations operation, std::string file_path, std::string alias)
+void utils::HandleSound(utils::SoundOperations operation, std::string file_path, std::string alias)
 {
 	switch (operation)
 	{
@@ -119,7 +119,7 @@ void utils::handle_sound(utils::SoundOperations operation, std::string file_path
 		case utils::SoundOperations::Pause:
 		case utils::SoundOperations::Close:
 			{
-				utils::handle_sound(operation, alias); // Call the overload of this function for the rest operations.
+				utils::HandleSound(operation, alias); // Call the overload of this function for the rest operations.
 				break;
 			}
 		default:

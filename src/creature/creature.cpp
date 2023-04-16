@@ -22,7 +22,7 @@ Creature::Creature(int hp,
 	  m_speed(speed), m_ability_scores{strength, dexterity, constitution, intelligence, wisdom, charisma},
 	  m_creature_type(creature_type){};
 
-void Creature::print_stats()
+void Creature::PrintStats()
 {
 	std::cout << "==============================" << std::endl;
 	std::cout << "Your stats are: " << std::endl;

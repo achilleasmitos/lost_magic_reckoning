@@ -4,10 +4,10 @@
 
 MainCharacter::MainCharacter(std::string name)
 {
-	if (check_for_alpha_or_whitespace(name))
+	if (CheckForAlphaOrWhitespace(name))
 	{
 		m_name = name;
-		utils::print({"Welcome to the world, ", m_name, "!"});
+		utils::Print({"Welcome to the world, ", m_name, "!"});
 	}
 }
 
@@ -20,10 +20,10 @@ MainCharacter::MainCharacter(std::string name,
 	int charisma)
 	: Creature(strength, dexterity, constitution, intelligence, wisdom, charisma)
 {
-	if (check_for_alpha_or_whitespace(name))
+	if (CheckForAlphaOrWhitespace(name))
 	{
 		m_name = name;
-		utils::print({"Welcome to the world, ", m_name, "!"});
+		utils::Print({"Welcome to the world, ", m_name, "!"});
 	}
 }
 
@@ -40,10 +40,10 @@ MainCharacter::MainCharacter(std::string name,
 	std::string creature_type)
 	: Creature(hp, ac, speed, strength, dexterity, constitution, intelligence, wisdom, charisma, creature_type)
 {
-	if (check_for_alpha_or_whitespace(name))
+	if (CheckForAlphaOrWhitespace(name))
 	{
 		m_name = name;
-		utils::print({"Welcome to the world, ", m_name, "!"});
+		utils::Print({"Welcome to the world, ", m_name, "!"});
 	}
 }
 
@@ -51,14 +51,14 @@ std::string MainCharacter::get_name() { return m_name; }
 
 void MainCharacter::set_name(std::string name)
 {
-	if (check_for_alpha_or_whitespace(name))
+	if (CheckForAlphaOrWhitespace(name))
 	{
 		m_name = name;
-		utils::print({"Your new name is: ", m_name, "."});
+		utils::Print({"Your new name is: ", m_name, "."});
 	}
 }
 
-bool MainCharacter::check_for_alpha_or_whitespace(std::string string)
+bool MainCharacter::CheckForAlphaOrWhitespace(std::string string)
 {
 	bool has_digit = false;
 
@@ -72,7 +72,7 @@ bool MainCharacter::check_for_alpha_or_whitespace(std::string string)
 
 	if (has_digit)
 	{
-		utils::print(
+		utils::Print(
 			{"Sorry, your name can only contain letters and spaces..."});
 		return false;
 	}

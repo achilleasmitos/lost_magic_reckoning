@@ -20,7 +20,7 @@ public:
 		int charisma,
 		std::string creature_type);
 
-	void print_stats();
+	void PrintStats();
 
 protected:
 	int m_hp;
