@@ -12,6 +12,7 @@
                 "${workspaceFolder}\\src\\creature\\main_character\\*.cpp",
                 "${workspaceFolder}\\src\\start_menu\\*.cpp",
                 "${workspaceFolder}\\src\\utils\\*.cpp",
+                "${workspaceFolder}\\src\\utils\\roll_dice\\*.cpp",
                 "-lWinmm",
                 "-o",
                 "${workspaceFolder}\\build\\text-adventure.exe"
