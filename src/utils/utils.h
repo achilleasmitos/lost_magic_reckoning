@@ -8,13 +8,6 @@ extern int g_sleep_for_ms;
 extern int g_text_size;
 
 /**
- * @brief Receives a string to modify with std::getline after any remaining new line characters have ben dropped out.
- *
- * @param string The string to modify via std::getline and std::cin.
- */
-void get_sanitized_string(std::string& string);
-
-/**
  * @brief Function to print a list of strings to the console, pausing in-between characters.
  *
  * @param list A comma separated list of std::strings to std::cout

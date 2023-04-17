@@ -10,16 +10,6 @@ int utils::g_sleep_for_ms = 100;
 int utils::g_text_size = 16;
 utils::FontWeightValues utils::g_text_weight = utils::FontWeightValues::Normal;
 
-void utils::get_sanitized_string(std::string& string)
-{
-	if (std::cin.peek() == '\n')
-	{
-		std::cout << "Found new line character at the end, skipping it..." << std::endl;
-		std::cin.ignore();
-	}
-	std::getline(std::cin, string);
-}
-
 void utils::Print(std::initializer_list<std::string> list, int sleep_for_ms)
 {
 	for (auto string : list)
