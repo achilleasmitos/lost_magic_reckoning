@@ -1,6 +1,7 @@
 #include <iostream>
 #include <time.h>
 #include "./utils/utils.h"
+#include "./utils/get_user_input/get_user_input.h"
 #include "./utils/roll_dice/roll_dice.h"
 #include "./start_menu/start_menu.h"
 #include "./creature/creature.h"
@@ -9,6 +10,7 @@
 int main()
 {
 	srand(time(NULL));
+
 	utils::HandleSound(utils::SoundOperations::Open,
 		"..\\src\\resources\\music\\boss_battle.mp3",
 		"boss_battle");
@@ -18,13 +20,13 @@ int main()
 	{
 		std::cout << "Give me the time you want between each rendered "
 					 "character (in ms): ";
-		std::cin >> utils::g_sleep_for_ms;
+		utils::GetUserInput(utils::g_sleep_for_ms);
 
 		MainCharacter main_character("Traveler");
 
 		std::string new_name;
 		std::cout << "Give me a new name for your character: ";
-		utils::get_sanitized_string(new_name);
+		utils::GetUserInput(new_name);
 		main_character.set_name(new_name);
 		main_character.PrintStats();
 
@@ -34,13 +36,13 @@ int main()
 		utils::HandleSound(utils::SoundOperations::Play, "exploration repeat");
 
 		std::cout << "Give me the name for another character: ";
-		utils::get_sanitized_string(new_name);
+		utils::GetUserInput(new_name);
 
 		MainCharacter main_2(new_name, 15, 14, 7, 16, 13, 14);
 		main_2.PrintStats();
 
 		std::cout << "Give me the name for another character: ";
-		utils::get_sanitized_string(new_name);
+		utils::GetUserInput(new_name);
 
 		utils::HandleSound(utils::SoundOperations::Close, "boss_battle");
 

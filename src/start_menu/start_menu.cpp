@@ -1,4 +1,5 @@
 #include "start_menu.h"
+#include "../utils/get_user_input/get_user_input.h"
 #include <iostream>
 
 int start_menu::StartMenu()
@@ -14,7 +15,7 @@ int start_menu::StartMenu()
 		std::cout << "2. Settings" << std::endl;
 		std::cout << "3. Quit" << std::endl;
 
-		std::cin >> choice;
+		utils::GetUserInput(choice);
 
 		switch (choice)
 		{
@@ -36,13 +37,13 @@ int start_menu::StartMenu()
 						std::cout << "2. Font Weight" << std::endl;
 						std::cout << "3. Face Name" << std::endl;
 						int setting_shoice;
-						std::cin >> setting_shoice;
+						utils::GetUserInput(setting_shoice);
 						switch (setting_shoice)
 						{
 							case 1:
 								{
 									std::cout << "Pick Number" << std::endl;
-									std::cin >> utils::g_text_size;
+									utils::GetUserInput(utils::g_text_size);
 									utils::CustomizeText(utils::g_text_size);
 									go_back = 1;
 									break;
@@ -58,7 +59,7 @@ int start_menu::StartMenu()
 										std::cout << "4. SemiBold" << std::endl;
 										std::cout << "5. Bold" << std::endl;
 										int weight_shoice;
-										std::cin >> weight_shoice;
+										utils::GetUserInput(weight_shoice);
 										if (weight_shoice == 1)
 										{
 											utils::CustomizeText(utils::g_text_size,
