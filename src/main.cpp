@@ -1,11 +1,9 @@
-#include <iostream>
-#include <time.h>
 #include "./utils/utils.h"
-#include "./utils/get_user_input/get_user_input.h"
-#include "./utils/roll_dice/roll_dice.h"
 #include "./start_menu/start_menu.h"
 #include "./creature/creature.h"
 #include "./creature/main_character/main_character.h"
+#include <iostream>
+#include <time.h>
 
 int main()
 {
