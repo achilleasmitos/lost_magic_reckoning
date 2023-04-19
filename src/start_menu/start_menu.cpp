@@ -1,5 +1,5 @@
 #include "start_menu.h"
-#include "../utils/get_user_input/get_user_input.h"
+#include "../utils/utils.h"
 #include <iostream>
 
 int start_menu::StartMenu()

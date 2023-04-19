@@ -1,5 +1,5 @@
-#include "../../utils/utils.h"
 #include "main_character.h"
+#include "../../utils/utils.h"
 #include <iostream>
 
 MainCharacter::MainCharacter(std::string name)
