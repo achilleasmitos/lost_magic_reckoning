@@ -8,7 +8,7 @@
 
 int main()
 {
-	loading_screen::LoadingScreen();
+	LoadingScreen();
 
 	srand(time(NULL));
 

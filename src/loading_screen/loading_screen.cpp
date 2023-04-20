@@ -2,7 +2,7 @@
 #include "../utils/utils.h"
 #include <iostream>
 
-void loading_screen::LoadingScreen()
+void LoadingScreen()
 {
 	std::cout << "Welcome to our text-based game! Get ready to explore a world "
 				 "of adventure, where every choice counts. Have fun!"
