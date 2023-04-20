@@ -5,7 +5,6 @@
 int start_menu::StartMenu()
 {
 	int go_back = 0;
-	std::cout << "Welcome to the game!" << std::endl;
 	int choice = -1;
 
 	while (choice != 1)

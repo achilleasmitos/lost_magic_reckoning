@@ -10,6 +10,7 @@
                 "${workspaceFolder}\\src\\*.cpp",
                 "${workspaceFolder}\\src\\creature\\*.cpp",
                 "${workspaceFolder}\\src\\creature\\main_character\\*.cpp",
+                "${workspaceFolder}\\src\\loading_screen\\*.cpp",
                 "${workspaceFolder}\\src\\start_menu\\*.cpp",
                 "${workspaceFolder}\\src\\utils\\customize_text\\*.cpp",
                 "${workspaceFolder}\\src\\utils\\get_user_input\\*.cpp",
