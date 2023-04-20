@@ -1,5 +1,6 @@
 #include "./utils/utils.h"
 #include "./start_menu/start_menu.h"
+#include "./loading_screen/loading_screen.h"
 #include "./creature/creature.h"
 #include "./creature/main_character/main_character.h"
 #include <iostream>
@@ -7,6 +8,8 @@
 
 int main()
 {
+	loading_screen::LoadingScreen();
+
 	srand(time(NULL));
 
 	utils::HandleSound(utils::SoundOperations::Open,
@@ -16,12 +19,7 @@ int main()
 
 	while (start_menu::StartMenu() == 0)
 	{
-		std::cout << "Give me the time you want between each rendered "
-					 "character (in ms): ";
-		utils::GetUserInput(utils::g_sleep_for_ms);
-
 		MainCharacter main_character("Traveler");
-
 		std::string new_name;
 		std::cout << "Give me a new name for your character: ";
 		utils::GetUserInput(new_name);
