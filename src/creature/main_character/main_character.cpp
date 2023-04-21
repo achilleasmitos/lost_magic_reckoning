@@ -81,3 +81,4 @@ bool MainCharacter::CheckForAlphaOrWhitespace(std::string string)
 		return true;
 	}
 }
+int MainCharacter::GetHP() { return m_hp; }

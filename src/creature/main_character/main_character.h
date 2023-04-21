@@ -30,10 +30,10 @@ public:
 
 	std::string get_name();
 	void set_name(std::string name);
+	int GetHP();
 
 private:
 	std::string m_name;
-
 	/**
 	 * @brief A function that checks if the given string consists only of letters and whitespaces.
 	 *

@@ -3,6 +3,7 @@
 #include "./loading_screen/loading_screen.h"
 #include "./creature/creature.h"
 #include "./creature/main_character/main_character.h"
+#include "./battle/battle.h"
 #include <iostream>
 #include <time.h>
 
@@ -56,7 +57,7 @@ int main()
 		std::cout << "Rolling with advantage: " << utils::RollWithAdvantage() << std::endl;
 		std::cout << "Rolling with disadvantage: " << utils::RollWithDisadvantage()
 				  << std::endl;
-
+		Battle();
 		system("pause");
 	}
 	return 0;

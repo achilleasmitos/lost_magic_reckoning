@@ -21,6 +21,7 @@ public:
 		std::string creature_type);
 
 	void PrintStats();
+	int GetHP();
 
 protected:
 	int m_hp;

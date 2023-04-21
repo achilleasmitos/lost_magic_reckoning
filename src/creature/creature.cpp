@@ -38,3 +38,4 @@ void Creature::PrintStats()
 	std::cout << "Creature type: " << m_creature_type << std::endl;
 	std::cout << "==============================" << std::endl;
 }
+int Creature::GetHP() { return m_hp; }
