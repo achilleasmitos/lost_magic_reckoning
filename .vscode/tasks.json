@@ -8,6 +8,7 @@
                 "-fdiagnostics-color=always",
                 "-g",
                 "${workspaceFolder}\\src\\*.cpp",
+                "${workspaceFolder}\\src\\battle\\*.cpp",
                 "${workspaceFolder}\\src\\creature\\*.cpp",
                 "${workspaceFolder}\\src\\creature\\main_character\\*.cpp",
                 "${workspaceFolder}\\src\\loading_screen\\*.cpp",

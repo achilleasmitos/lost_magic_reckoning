@@ -22,6 +22,8 @@ public:
 
 	void PrintStats();
 
+	int get_hp();
+
 protected:
 	int m_hp;
 	int m_ac;
