@@ -5,5 +5,8 @@
 		"editor.semanticHighlighting.enabled": true,
 		"editor.formatOnSave": true,
 		"editor.formatOnPaste": true
+	},
+	"files.associations": {
+		"iostream": "cpp"
 	}
 }

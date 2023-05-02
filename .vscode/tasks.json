@@ -13,6 +13,7 @@
                 "${workspaceFolder}\\src\\creature\\main_character\\*.cpp",
                 "${workspaceFolder}\\src\\loading_screen\\*.cpp",
                 "${workspaceFolder}\\src\\start_menu\\*.cpp",
+                "${workspaceFolder}\\src\\start_menu\\main_settings\\*.cpp",
                 "${workspaceFolder}\\src\\utils\\customize_text\\*.cpp",
                 "${workspaceFolder}\\src\\utils\\get_user_input\\*.cpp",
                 "${workspaceFolder}\\src\\utils\\handle_sound\\*.cpp",
