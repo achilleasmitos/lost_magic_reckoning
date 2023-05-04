@@ -2,7 +2,7 @@
 #include "../../utils/utils.h"
 #include <iostream>
 
-void Weight()
+void ChangeFontWeight()
 {
 	do
 	{

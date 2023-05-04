@@ -5,7 +5,7 @@
 
 int start_menu::StartMenu()
 {
-		int choice = -1;
+	int choice = -1;
 
 	while (choice != 1)
 	{
@@ -26,7 +26,7 @@ int start_menu::StartMenu()
 				}
 			case 2:
 				{
-					MainSettings(); // When called, it displays a list of available settings options and prompts the user to select one
+					MainSettings();
 					break;
 				}
 			case 3:

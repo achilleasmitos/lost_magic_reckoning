@@ -26,22 +26,22 @@ void MainSettings()
 		{
 			case 1:
 				{
-					Size(); // Call the Size() function to prompt the user for a number and customize text size
+					Size();
 					break;
 				}
 			case 2:
 				{
-					Weight(); // Call the Weight() function to prompt the user for a weight choice and customize text weight
+					ChangeFontWeight();
 					break;
 				}
 			case 3:
 				{
-					Font(); // Call the Font() function to prompt the user to select the font
+					Font();
 					break;
 				}
 			case 4:
 				{
-					Speed(); // Call the Speed() function to prompt the user for the time between each rendered character
+					Speed();
 					break;
 				}
 			default:
