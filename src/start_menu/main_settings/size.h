@@ -1,4 +1,3 @@
 #pragma once
-#include "../start_menu.h"
 
-void Size();
+void Size(); //Declares the Size() function to prompt the user for a number and customize text size

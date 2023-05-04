@@ -1,4 +1,3 @@
 #pragma once
-#include "../start_menu.h"
 
-void Speed();
+void Speed(); // Declares the Speed() function to prompt the user for the time between each rendered character

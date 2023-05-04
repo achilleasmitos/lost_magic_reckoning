@@ -1,6 +1,5 @@
 #include "start_menu.h"
 #include "./main_settings/main_settings.h"
-#include "./main_settings/weight.h"
 #include "../utils/utils.h"
 #include <iostream>
 
