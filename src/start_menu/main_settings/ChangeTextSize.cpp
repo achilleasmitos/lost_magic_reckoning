@@ -1,8 +1,8 @@
-#include "size.h"
+#include "ChangeTextSize.h"
 #include "../../utils/utils.h"
 #include <iostream>
 
-void Size()
+void ChangeTextSize()
 {
 	std::cout << "Pick text size number" << std::endl;
 	utils::GetUserInput(utils::g_text_size);

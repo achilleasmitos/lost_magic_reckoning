@@ -3,4 +3,4 @@
 /**
  * @brief A function to prompt the user to select the font
  */
-void Font();
+void ChangeTextFont();

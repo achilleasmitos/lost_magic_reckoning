@@ -1,8 +1,8 @@
 #include "main_settings.h"
-#include "ChangeFontWeight.h"
-#include "font.h"
-#include "size.h"
-#include "speed.h"
+#include "ChangeTextWeight.h"
+#include "ChangeTextfont.h"
+#include "ChangeTextsize.h"
+#include "ChangeTextspeed.h"
 #include "../../utils/utils.h"
 #include <iostream>
 
@@ -26,22 +26,22 @@ void MainSettings()
 		{
 			case 1:
 				{
-					Size();
+					ChangeTextSize();
 					break;
 				}
 			case 2:
 				{
-					ChangeFontWeight();
+					ChangeTextWeight();
 					break;
 				}
 			case 3:
 				{
-					Font();
+					ChangeTextFont();
 					break;
 				}
 			case 4:
 				{
-					Speed();
+					ChangeTextSpeed();
 					break;
 				}
 			default:

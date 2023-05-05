@@ -1,8 +1,8 @@
-#include "ChangeFontWeight.h"
+#include "ChangeTextWeight.h"
 #include "../../utils/utils.h"
 #include <iostream>
 
-void ChangeFontWeight()
+void ChangeTextWeight()
 {
 	do
 	{
