@@ -1,12 +1,13 @@
 #include "creature.h"
 #include <iostream>
+#include <string>
 
 Creature::Creature()
 	: m_hp(10), m_ac(10), m_speed(30), m_ability_scores{10, 10, 10, 10, 10, 10},
 	  m_creature_type("humanoid"){};
 Creature::Creature(int strength, int dexterity, int constitution, int intelligence, int wisdom, int charisma)
-	: m_hp(10), m_ac(10 + (dexterity - 10) / 2),
-	  m_speed(30), m_ability_scores{strength, dexterity, constitution, intelligence, wisdom, charisma},
+	: m_hp(10), m_ac(10 + (dexterity - 10) / 2), m_speed(30),
+	  m_ability_scores{strength, dexterity, constitution, intelligence, wisdom, charisma},
 	  m_creature_type("humanoid"){};
 Creature::Creature(int hp,
 	int ac,
@@ -18,8 +19,8 @@ Creature::Creature(int hp,
 	int wisdom,
 	int charisma,
 	std::string creature_type)
-	: m_hp(hp), m_ac(ac),
-	  m_speed(speed), m_ability_scores{strength, dexterity, constitution, intelligence, wisdom, charisma},
+	: m_hp(hp), m_ac(ac), m_speed(speed),
+	  m_ability_scores{strength, dexterity, constitution, intelligence, wisdom, charisma},
 	  m_creature_type(creature_type){};
 
 void Creature::PrintStats()
@@ -39,4 +40,6 @@ void Creature::PrintStats()
 	std::cout << "==============================" << std::endl;
 }
 
-int Creature::get_hp() { return m_hp; }
+int Creature::get_hp() { return m_hp; };
+int Creature::get_strength(){return m_ability_scores[0];};
+std::string Creature::get_creature_type() { return m_creature_type; };

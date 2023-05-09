@@ -57,7 +57,21 @@ int main()
 		std::cout << "Rolling with advantage: " << utils::RollWithAdvantage() << std::endl;
 		std::cout << "Rolling with disadvantage: " << utils::RollWithDisadvantage()
 				  << std::endl;
-		Battle();
+		Creature goblin(11, 14, 35, 16, 14, 10, 8, 7, 12, "Goblin");
+		std::vector<Creature*> foes = {
+			&goblin,
+			&goblin,
+			&goblin,
+			&goblin,
+			&goblin,
+			&goblin,
+			&goblin,
+			&goblin,
+			&goblin,
+			&goblin,
+			&goblin,
+		};
+		Battle(&main_character, foes);
 		system("pause");
 	}
 	return 0;
