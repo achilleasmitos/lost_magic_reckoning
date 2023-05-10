@@ -1,9 +1,9 @@
 #include "main_settings.h"
 #include "change_sound_volume.h"
-#include "ChangeTextWeight.h"
-#include "ChangeTextfont.h"
-#include "ChangeTextsize.h"
-#include "ChangeTextspeed.h"
+#include "change_text_font.h"
+#include "change_text_size.h"
+#include "change_text_speed.h"
+#include "change_text_weight.h"
 #include "../../utils/utils.h"
 #include <iostream>
 
