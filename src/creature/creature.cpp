@@ -43,14 +43,17 @@ void Creature::PrintStats()
 int Creature::get_hp() { return m_hp; };
 int Creature::get_ability_score(int n)
 {
-	if (n >= -1 && n < 6)
+	if (n > -1 && n < 6)
 	{
 		return m_ability_scores[n];
 	}
 	else
 	{
-		// Return a default value for invalid ability scores
+		std::cerr << "You have asked for an invalid ability score. Valid "
+					 "values are between 0 and 6."
+				  << std::endl;
 		return -1;
 	}
 };
+
 std::string Creature::get_creature_type() { return m_creature_type; };

@@ -19,16 +19,16 @@ void Battle(MainCharacter* main_character, std::vector<Creature*>& foes)
 		foe->PrintStats();
 
 		int foe_roll = utils::RollDice(1, 20) + foe->get_ability_score(0);
-		std::cout << "foe rolled" << foe_roll << std::endl;
+		std::cout << "foe rolled " << foe_roll << std::endl;
 
 		int main_character_roll =
 			utils::RollDice(1, 20) + main_character->get_ability_score(0);
-		std::cout << "main character rolled" << main_character_roll << std::endl;
+		std::cout << "main character rolled " << main_character_roll << std::endl;
 
 		if (foe_roll > main_character_roll)
 		{
 			std::cout << "The " << foe->get_creature_type()
-					  << " has better roll than the main character!,"
+					  << " has better roll than the main character! ,"
 					  << foe->get_creature_type() << " wins!" << std::endl;
 			losses++;
 		}
