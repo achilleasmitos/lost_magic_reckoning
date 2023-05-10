@@ -22,8 +22,8 @@ public:
 
 	void PrintStats();
 	int get_hp();
+	int get_ability_score(int n);
 	std::string get_creature_type();
-	int get_strength();
 
 protected:
 	int m_hp;
