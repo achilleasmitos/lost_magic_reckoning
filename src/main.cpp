@@ -57,7 +57,10 @@ int main()
 		std::cout << "Rolling with advantage: " << utils::RollWithAdvantage() << std::endl;
 		std::cout << "Rolling with disadvantage: " << utils::RollWithDisadvantage()
 				  << std::endl;
-		Battle();
+		Creature* goblin = new Creature(11, 14, 35, 16, 14, 10, 8, 7, 12, "Goblin");
+		std::vector<Creature*> foes = {11, goblin};
+		Battle(&main_character, foes);
+		delete goblin;
 		system("pause");
 	}
 	return 0;
