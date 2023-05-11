@@ -1,4 +1,4 @@
-#include "ChangeTextWeight.h"
+#include "change_text_weight.h"
 #include "../../utils/utils.h"
 #include <iostream>
 

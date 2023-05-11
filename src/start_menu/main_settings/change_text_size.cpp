@@ -1,4 +1,4 @@
-#include "ChangeTextSize.h"
+#include "change_text_size.h"
 #include "../../utils/utils.h"
 #include <iostream>
 

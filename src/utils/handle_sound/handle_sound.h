@@ -1,8 +1,14 @@
 #pragma once
 #include <string>
+#include <vector>
 
 namespace utils
 {
+// The master volume of the application. It is an integer between 0 and 1000.
+extern int g_sound_volume;
+// A list of all the open audio files.
+extern std::vector<std::string> g_audio_list;
+
 enum SoundOperations
 {
 	Open = 0,
@@ -10,6 +16,13 @@ enum SoundOperations
 	Pause = 2,
 	Close = 3
 };
+
+/**
+ * @brief A function that adjusts the volume on which the audio files play.
+ * It first checks if `g_audio_list` is not empty, then iterates over it,
+ * sending the appropriate command to each of the open audio files.
+ */
+void HandleSoundVolume();
 
 /**
  * @brief An overload of the function with just one argument, used to close all audio files.

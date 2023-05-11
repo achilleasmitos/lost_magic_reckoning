@@ -1,8 +1,9 @@
 #include "main_settings.h"
-#include "ChangeTextWeight.h"
-#include "ChangeTextfont.h"
-#include "ChangeTextsize.h"
-#include "ChangeTextspeed.h"
+#include "change_sound_volume.h"
+#include "change_text_font.h"
+#include "change_text_size.h"
+#include "change_text_speed.h"
+#include "change_text_weight.h"
 #include "../../utils/utils.h"
 #include <iostream>
 
@@ -18,6 +19,7 @@ void MainSettings()
 		std::cout << "2. Font Weight" << std::endl;
 		std::cout << "3. Font Name" << std::endl;
 		std::cout << "4. Text Speed" << std::endl;
+		std::cout << "5. Sound Volume" << std::endl;
 
 		int setting_shoice;
 		utils::GetUserInput(setting_shoice);
@@ -42,6 +44,11 @@ void MainSettings()
 			case 4:
 				{
 					ChangeTextSpeed();
+					break;
+				}
+			case 5:
+				{
+					ChangeSoundVolume();
 					break;
 				}
 			default:
