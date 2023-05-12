@@ -1,0 +1,72 @@
+@@@TEXT
+A small sun ray manages to find its way through the grate that serves as your window,
+hitting your closed eyes and signaling the coming of a new morning. You slowly come to.
+
+Your head feels heavy, and your whole body aches as if after a long day's labor.
+You open your eyes, only to find yourself lain down on a cold, hard, stone floor
+of a cell that barely fits your height. Right next to you lies also a man
+in his 40s, dark beard and hair filled with muck.
+He won't move. After inspecting him, you realize that he has probably been dead
+for the better part of the night, if not for longer.
+
+@@@
+
+@@@SLEEP_FOR
+1000
+@@@
+
+@@@TEXT
+A loud bang on the cell's bars jostles you. You see a guard dressed in blacks,
+with a silver breastplate, helm and spear in his hand, staring down at you.
+"Come on sleeping beauty, it's time for your match!" he barks at you.
+Your ears are ringing from the loud noises of the bars and this man's voice.
+What match? What is he talking about? Where are you, and why can't you remember a thing?
+
+@@@
+
+@@@SLEEP_FOR
+1500
+@@@
+
+@@@TEXT
+The guard unlocks your tiny cell that reeks of urine and booze, grabs your arm
+with his free hand and props you up. It is hard enough to even stand on your own feet,
+let alone follow him down the corridor that he leads you.
+Almost in a daze, you manage to pull through, finally arriving at a room
+behind a closed wooden door with weapons and armor on racks.
+
+The guard waits for you for a good ten seconds, before deciding to pick something
+in your stead. It's a worn-out leather armor that fits you surprisingly well,
+a small round wooden shield, and a steel sword that has seen better days.
+He helps you (if help it is) put on the armor, then buckles the shield to your left arm.
+Handing you the sword too, he pushes you towards the exit and right to another corridor.
+
+Soon enough, you find yourself before a sturdy wooden door,
+slightly bigger than the one you just came through. You look behind
+to ask the man some questions now that your head has sort of cleared up,
+but he is missing.
+
+You hear a couple of steel bars sliding, and the door opens.
+
+@@@
+
+@@@SLEEP_FOR
+2000
+@@@
+
+@@@TEXT
+You squint your eyes at the morning sun staring down your face,
+while the voices and cheers of what seems to be hundreds upon hundreds of people
+flood your senses. As if enchanted, you take a step forward, then another, and another.
+The gate behind you shuts and locks, leaving you standing on one end
+of an oval-shaped stadium with a fine yellowish dirt ground.
+Around you, there are indeed lots of people sitting in rows, filling the space
+with a terrible ruckus. You want to take a minute and study their faces,
+which all now look completely unfamiliar to you, but there is no time.
+
+Across the stadium, there stands a hulking beast, with hoofed legs,
+dark brown fur, two horns on its bull-like head, and a great battle-axe in his hands.
+It digs the ground twice with its left hoof, then lets out an intimidating moan
+and charges at you!
+
+@@@
