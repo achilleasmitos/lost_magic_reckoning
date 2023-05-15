@@ -41,6 +41,11 @@ void Creature::PrintStats()
 }
 
 int Creature::get_hp() { return m_hp; };
+
+int Creature::get_ac() { return m_ac; };
+
+int Creature::get_speed() { return m_speed; };
+
 int Creature::get_ability_score(int n)
 {
 	if (n > -1 && n < 6)
