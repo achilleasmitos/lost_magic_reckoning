@@ -21,6 +21,7 @@
                 "${workspaceFolder}\\src\\utils\\print\\*.cpp",
                 "${workspaceFolder}\\src\\utils\\read_from_file\\*.cpp",
                 "${workspaceFolder}\\src\\utils\\roll_dice\\*.cpp",
+                "${workspaceFolder}\\src\\utils\\save_game\\*.cpp",
                 "-lWinmm",
                 "-o",
                 "${workspaceFolder}\\build\\text-adventure.exe"

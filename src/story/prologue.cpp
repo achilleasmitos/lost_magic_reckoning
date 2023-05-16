@@ -23,6 +23,8 @@ void Prologue()
 	MainCharacter main_character("Traveler");
 	main_character.PrintStats();
 
+	SaveGame(main_character);
+	
 	Creature* minotaur = new Creature(76, 14, 40, 18, 11, 16, 6, 16, 9, "large monstrosity");
 
 	std::vector<Creature*> foes = {1, minotaur};

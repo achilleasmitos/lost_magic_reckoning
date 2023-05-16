@@ -21,8 +21,15 @@ public:
 		std::string creature_type);
 
 	void PrintStats();
+
 	int get_hp();
+
+	int get_ac();
+
+	int get_speed();
+
 	int get_ability_score(int n);
+	
 	std::string get_creature_type();
 
 protected:
