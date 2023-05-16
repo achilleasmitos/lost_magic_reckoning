@@ -1,4 +1,5 @@
 #pragma once
+#include <string>
 
 namespace utils
 {
@@ -11,20 +12,20 @@ enum FontWeightValues
 	Bold = 800
 };
 
+// An integer indicating how large the font will be.
 extern int g_text_size;
+// The weight of the font, one of: Light, SemiLight, Normal, SemiBold, Bold.
 extern FontWeightValues g_text_weight;
+// A wstring for the font typeface used.
+extern std::wstring g_text_face_name;
 
 /**
- * @brief A function that changes the basic aesthetics of the text. This is only in a real cmd,
- * and should probably be changed when an (inevitable) switch to virtual terminal happens.
- * For now, it works as a proof of concept, and a starting point for further development.
- * Read more: https://learn.microsoft.com/en-us/windows/console/console-font-infoex?redirectedfrom=MSDN
+ * @brief A function that changes the basic aesthetics of the text.
+ * It sets the values of the global text variables to the appropriate places
+ * in the console font infoex.
  *
- * @param font_size An integer indicating how large the font will be.
- * @param font_weight The weight of the font, one of: Light, SemiLight, Normal, SemiBold, Bold.
- * @param face_name A wchar_t string for the font typeface used.
+ * Call this function after any change to the global text variables occurs,
+ * for it to take effect.
  */
-void CustomizeText(int font_size = g_text_size,
-	FontWeightValues font_weight = g_text_weight,
-	const wchar_t* face_name = L"Courier");
+void CustomizeText();
 } // namespace utils
