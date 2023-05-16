@@ -1,5 +1,5 @@
 Situated in the 'utils' folder is a function called 'SaveGame'. This function is responsible to write to a file the stats of our main character and the settigs of the game
-The text file has a certain syntax in order to be easily read from both humans and machines, whitch is the name of the variable followed by the value of the variable in the line below 
+The text file has a certain syntax in order to be easily read from both humans and machines, which is the name of the variable followed by the value of the variable in the line below 
 
 ## Example
 #### Main character stats

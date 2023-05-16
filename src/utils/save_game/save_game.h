@@ -3,6 +3,6 @@
 
 #pragma once
 /**
- * @brief A function that saves caracter stats in a txt document
+ * @brief A function that saves character stats in a txt document
  */
 void SaveGame(MainCharacter& main_characher);
