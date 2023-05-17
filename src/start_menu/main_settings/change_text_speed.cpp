@@ -4,7 +4,19 @@
 
 void ChangeTextSpeed()
 {
-	std::cout << "Give me the time you want between each rendered character "
-				 "(in ms): ";
-	utils::GetUserInput(utils::g_sleep_for_ms);
+	std::cout << "The current time to wait between each rendered character is: "
+			  << utils::g_sleep_for_ms << "ms." << std::endl;
+	std::cout << "Please enter your desired time to wait: ";
+
+	int desired_text_speed;
+	utils::GetUserInput(desired_text_speed);
+
+	while (desired_text_speed < 0)
+	{
+		std::cout << "Sorry, text speed must be 0 or a positive "
+					 "integer.\nPlease choose again: ";
+		utils::GetUserInput(desired_text_speed);
+	}
+
+	utils::g_sleep_for_ms = desired_text_speed;
 }

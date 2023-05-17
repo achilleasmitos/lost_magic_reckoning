@@ -1,28 +1,36 @@
 #include "start_menu.h"
 #include "./main_settings/main_settings.h"
+#include "./start_game/start_game.h"
 #include "../utils/utils.h"
 #include <iostream>
 
-int start_menu::StartMenu()
+void StartMenu()
 {
-	int choice = -1;
+	int main_menu_choice = 0;
 
-	while (choice != 1)
+	do
 	{
+		utils::ClearScreen();
+
 		std::cout << "Please select an option:" << std::endl;
 		std::cout << "1. Start Game" << std::endl;
 		std::cout << "2. Settings" << std::endl;
 		std::cout << "3. Quit" << std::endl;
 
-		utils::GetUserInput(choice);
+		utils::GetUserInput(main_menu_choice);
 
-		switch (choice)
+		while (main_menu_choice < 1 || main_menu_choice > 3)
+		{
+			std::cout << "Invalid choice! Please choose again: " << std::endl;
+			utils::GetUserInput(main_menu_choice);
+		}
+
+		switch (main_menu_choice)
 		{
 			case 1:
 				{
-					// code for starting the game
-					std::cout << "Starting the game..." << std::endl;
-					return 0;
+					StartGame();
+					break;
 				}
 			case 2:
 				{
@@ -31,17 +39,9 @@ int start_menu::StartMenu()
 				}
 			case 3:
 				{
-					// code for quitting
 					std::cout << "Quitting the game..." << std::endl;
-					return 1;
-					break;
-				}
-			default:
-				{
-					std::cout << "Invalid choice! Please choose again." << std::endl;
-					break;
 				}
 		}
 	}
-	return -1;
+	while (main_menu_choice != 3);
 }

@@ -11,9 +11,7 @@ int main()
 
 	srand(time(NULL));
 
-	while (start_menu::StartMenu() == 0)
-	{
-		Prologue();
-	}
+	StartMenu();
+
 	return 0;
 }
