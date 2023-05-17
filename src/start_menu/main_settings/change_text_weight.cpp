@@ -20,27 +20,27 @@ void ChangeTextWeight()
 		{
 			case 1:
 				{
-					utils::CustomizeText(utils::g_text_size, utils::Light);
+					utils::g_text_weight = utils::FontWeightValues::Light;
 					break;
 				}
 			case 2:
 				{
-					utils::CustomizeText(utils::g_text_size, utils::SemiLight);
+					utils::g_text_weight = utils::FontWeightValues::SemiLight;
 					break;
 				}
 			case 3:
 				{
-					utils::CustomizeText(utils::g_text_size, utils::Normal);
+					utils::g_text_weight = utils::FontWeightValues::Normal;
 					break;
 				}
 			case 4:
 				{
-					utils::CustomizeText(utils::g_text_size, utils::SemiBold);
+					utils::g_text_weight = utils::FontWeightValues::SemiBold;
 					break;
 				}
 			case 5:
 				{
-					utils::CustomizeText(utils::g_text_size, utils::Bold);
+					utils::g_text_weight = utils::FontWeightValues::Bold;
 					break;
 				}
 			default:
@@ -49,7 +49,10 @@ void ChangeTextWeight()
 					continue;
 				}
 		}
-		break;
+
+		utils::CustomizeText(); // Make the new changes take effect
+
+		break; // Exit the do...while loop
 	}
 	while (true);
 }
