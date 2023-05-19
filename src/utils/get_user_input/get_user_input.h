@@ -3,12 +3,6 @@
 
 namespace utils
 {
-/**
- * @brief Function to ask for the user's input, when this is inteded to be a string.
- * It checks the input for validity, and asks for it again if it's invalid.
- *
- * @param user_input The variable to store the user's input in (pass-by-reference)
- */
 void GetUserInput(std::string& user_input);
 
 /**
