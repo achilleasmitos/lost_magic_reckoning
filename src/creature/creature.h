@@ -24,12 +24,20 @@ public:
 
 	int get_hp();
 
+	virtual void set_hp(int hp);
+
 	int get_ac();
+
+	virtual void set_ac(int ac);
 
 	int get_speed();
 
+	virtual void set_speed(int speed);
+
 	int get_ability_score(int n);
-	
+
+	virtual void set_ability_score(int abilty_score, int value);
+
 	std::string get_creature_type();
 
 protected:

@@ -3,7 +3,7 @@
 #pragma once
 
 /**
- * @brief Starts the game after clearing the screen.
+ * @brief Continues the game after clearing the screen.
  * Currently, it only plays the prologue from start to finish.
  */
-void StartGame(MainCharacter& main_character);
+void ContinueGame(MainCharacter& main_character);

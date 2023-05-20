@@ -9,9 +9,13 @@ int main()
 {
 	LoadingScreen();
 
+	LoadSettings();
+
 	srand(time(NULL));
 
-	StartMenu();
+	MainCharacter main_character("Achilleas");
+
+	StartMenu(main_character);
 
 	return 0;
 }

@@ -23,6 +23,54 @@ Creature::Creature(int hp,
 	  m_ability_scores{strength, dexterity, constitution, intelligence, wisdom, charisma},
 	  m_creature_type(creature_type){};
 
+void Creature::set_hp(int hp)
+{
+	if (hp >= 0)
+	{
+		m_hp = hp;
+	}
+	else
+	{
+		std::cerr << "You did something wrong! You foockin idio@\n";
+	}
+}
+
+void Creature::set_ac(int ac)
+{
+	if (ac >= 0)
+	{
+		m_ac = ac;
+	}
+	else
+	{
+		std::cerr << "You did something wrong! You foockin idio@\n";
+	}
+}
+
+void Creature::set_speed(int speed)
+{
+	if (speed >= 0)
+	{
+		m_speed = speed;
+	}
+	else
+	{
+		std::cerr << "You did something wrong! You foockin idio@\n";
+	}
+}
+
+void Creature::set_ability_score(int ability_score, int value)
+{
+	if (ability_score > -1 && ability_score < 6)
+	{
+		m_ability_scores[ability_score] = value;
+	}
+	else
+	{
+		std::cerr << "You did something wrong! You foockin idio@\n";
+	}
+}
+
 void Creature::PrintStats()
 {
 	std::cout << "==============================" << std::endl;

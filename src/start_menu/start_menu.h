@@ -1,3 +1,5 @@
+#include "../creature/main_character/main_character.h"
+
 #pragma once
 
 /**
@@ -6,4 +8,4 @@
  * 2. Change the settings (text size, text weight etc)
  * 3. Quit the game
  */
-void StartMenu();
+void StartMenu(MainCharacter& main_character);
