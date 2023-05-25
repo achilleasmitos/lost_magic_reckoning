@@ -28,35 +28,19 @@ void Prologue(MainCharacter& main_character)
 	if (file)
 	{
 		LoadSavedGame(main_character);
-
-		main_character.PrintStats();
-
-		SaveGame(main_character);
-
-		Creature* minotaur =
-			new Creature(76, 14, 40, 18, 11, 16, 6, 16, 9, "large monstrosity");
-
-		std::vector<Creature*> foes = {1, minotaur};
-
-		Battle(&main_character, foes);
-
-		delete minotaur;
 	}
-	else
-	{
-		main_character.PrintStats();
 
-		SaveGame(main_character);
+	main_character.PrintStats();
 
-		Creature* minotaur =
-			new Creature(76, 14, 40, 18, 11, 16, 6, 16, 9, "large monstrosity");
+	SaveGame(main_character);
 
-		std::vector<Creature*> foes = {1, minotaur};
+	Creature* minotaur = new Creature(76, 14, 40, 18, 11, 16, 6, 16, 9, "large monstrosity");
 
-		Battle(&main_character, foes);
+	std::vector<Creature*> foes = {1, minotaur};
 
-		delete minotaur;
-	}
+	Battle(&main_character, foes);
+
+	delete minotaur;
 
 	utils::HandleSound(utils::SoundOperations::Close, "boss_battle");
 

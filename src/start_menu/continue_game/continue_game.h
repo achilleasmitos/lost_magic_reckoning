@@ -1,6 +1,6 @@
-#include "../../creature/main_character/main_character.h"
-
 #pragma once
+
+#include "../../creature/main_character/main_character.h"
 
 /**
  * @brief Continues the game after clearing the screen.

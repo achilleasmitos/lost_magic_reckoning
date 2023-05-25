@@ -1,7 +1,7 @@
 #include "start_menu.h"
+#include "./continue_game/continue_game.h"
 #include "./main_settings/main_settings.h"
 #include "./start_game/start_game.h"
-#include "./continue_game/continue_game.h"
 #include "../utils/utils.h"
 #include <iostream>
 #include <string>

@@ -1,6 +1,6 @@
-#include "../creature/main_character/main_character.h"
-
 #pragma once
+
+#include "../creature/main_character/main_character.h"
 
 /**
  * @brief A function that takes you to the start menu of the gamne, where you can:

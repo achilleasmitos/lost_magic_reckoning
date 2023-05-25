@@ -31,7 +31,7 @@ void Creature::set_hp(int hp)
 	}
 	else
 	{
-		std::cerr << "You did something wrong! You foockin idio@\n";
+		std::cerr << "The HP stat of Creature cannot be negative!\n";
 	}
 }
 
@@ -43,7 +43,7 @@ void Creature::set_ac(int ac)
 	}
 	else
 	{
-		std::cerr << "You did something wrong! You foockin idio@\n";
+		std::cerr << "The AC stat of Creature cannot be negative!\n";
 	}
 }
 
@@ -55,19 +55,20 @@ void Creature::set_speed(int speed)
 	}
 	else
 	{
-		std::cerr << "You did something wrong! You foockin idio@\n";
+		std::cerr << "The SPEED stat of Creature cannot be negative!\n";
 	}
 }
 
 void Creature::set_ability_score(int ability_score, int value)
 {
-	if (ability_score > -1 && ability_score < 6)
+	if (ability_score > -1 && ability_score < 6 && value > -1)
 	{
 		m_ability_scores[ability_score] = value;
 	}
 	else
 	{
-		std::cerr << "You did something wrong! You foockin idio@\n";
+		std::cerr << "The " << m_ability_scores[ability_score]
+				  << "stat of Creature cannot be negative!\n";
 	}
 }
 

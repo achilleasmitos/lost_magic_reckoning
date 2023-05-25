@@ -1,74 +1,64 @@
 #include "load_game.h"
-#include "../../creature/main_character/main_character.h"
 #include "../utils.h"
+#include "../../creature/main_character/main_character.h"
 #include <iostream>
 #include <fstream>
 #include <string>
 
-// struct GameData
-// {
-// 	int hp;
-// 	int ac;
-// 	int speed;
-// 	int strength;
-// 	int dexterity;
-// 	int constitution;
-// 	int intelligence;
-// 	int wisdom;
-// 	int charisma;
-// };
-
 void LoadSavedGame(MainCharacter& main_character)
 {
-	std::ifstream in_file("savefile.txt");
-	if (in_file.is_open())
+	std::ifstream file_name("savefile.txt");
+	if (file_name.is_open())
 	{
 		std::string line;
 		int lineCount = 0;
-		int game_data[] = {-1, -1, -1, -1, -1, -1, -1, -1, -1};
+		int mc_hp = -1;
+		int mc_ac = -1;
+		int mc_speed = -1;
+		int mc_ability_scores[] = {-1, -1, -1, -1, -1, -1};
 
-		while (std::getline(in_file, line))
+		while (std::getline(file_name, line))
 		{
 			lineCount++;
 			switch (lineCount)
 			{
 				case 5:
-					game_data[0] = std::stoi(line);
+					mc_hp = std::stoi(line);
 					break;
 				case 7:
-					game_data[1] = std::stoi(line);
+					mc_ac = std::stoi(line);
 					break;
 				case 9:
-					game_data[2] = std::stoi(line);
+					mc_speed = std::stoi(line);
 					break;
 				case 11:
-					game_data[3] = std::stoi(line);
+					mc_ability_scores[0] = std::stoi(line);
 					break;
 				case 13:
-					game_data[4] = std::stoi(line);
+					mc_ability_scores[1] = std::stoi(line);
 					break;
 				case 15:
-					game_data[5] = std::stoi(line);
+					mc_ability_scores[2] = std::stoi(line);
 					break;
 				case 17:
-					game_data[6] = std::stoi(line);
+					mc_ability_scores[3] = std::stoi(line);
 					break;
 				case 19:
-					game_data[7] = std::stoi(line);
+					mc_ability_scores[4] = std::stoi(line);
 					break;
 				case 21:
-					game_data[8] = std::stoi(line);
+					mc_ability_scores[5] = std::stoi(line);
 					break;
 			}
 		}
-		in_file.close();
+		file_name.close();
 
-		main_character.set_hp(game_data[0]);
-		main_character.set_ac(game_data[1]);
-		main_character.set_speed(game_data[2]);
+		main_character.set_hp(mc_hp);
+		main_character.set_ac(mc_ac);
+		main_character.set_speed(mc_speed);
 		for (int i = 0; i < 6; i++)
 		{
-			main_character.set_ability_score(i, game_data[i]);
+			main_character.set_ability_score(i, mc_ability_scores[i]);
 		}
 	}
 	else
@@ -79,13 +69,13 @@ void LoadSavedGame(MainCharacter& main_character)
 }
 void LoadSettings()
 {
-	std::ifstream in_file("savefile.txt");
-	if (in_file.is_open())
+	std::ifstream file_name("savefile.txt");
+	if (file_name.is_open())
 	{
 		std::string line;
 		int lineCount = 0;
 
-		while (std::getline(in_file, line))
+		while (std::getline(file_name, line))
 		{
 			lineCount++;
 			switch (lineCount)
@@ -117,7 +107,7 @@ void LoadSettings()
 					}
 			}
 		}
-		in_file.close();
+		file_name.close();
 
 		utils::CustomizeText();
 	}
