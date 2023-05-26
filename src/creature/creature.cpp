@@ -67,8 +67,7 @@ void Creature::set_ability_score(int ability_score, int value)
 	}
 	else
 	{
-		std::cerr << "The " << m_ability_scores[ability_score]
-				  << "stat of Creature cannot be negative!\n";
+		std::cerr << "The ability scores of Creature cannot be negative!\n";
 	}
 }
 

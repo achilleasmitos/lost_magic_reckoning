@@ -67,6 +67,7 @@ void LoadSavedGame(MainCharacter& main_character)
 		throw std::runtime_error("Unable to open file."); // Throw an exception to indicate the error
 	}
 }
+
 void LoadSettings()
 {
 	std::ifstream file_name("savefile.txt");

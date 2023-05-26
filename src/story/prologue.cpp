@@ -3,14 +3,9 @@
 #include "../battle/battle.h"
 #include "../creature/creature.h"
 #include "../creature/main_character/main_character.h"
-#include <fstream>
 
 void Prologue(MainCharacter& main_character)
 {
-	std::string file_path = "savefile.txt";
-
-	std::ifstream file(file_path);
-
 	utils::HandleSound(utils::SoundOperations::Open,
 		"..\\src\\resources\\music\\exploration.mp3",
 		"exploration");
@@ -24,11 +19,6 @@ void Prologue(MainCharacter& main_character)
 		"..\\src\\resources\\music\\boss_battle.mp3",
 		"boss_battle");
 	utils::HandleSound(utils::SoundOperations::Play, "boss_battle repeat");
-
-	if (file)
-	{
-		LoadSavedGame(main_character);
-	}
 
 	main_character.PrintStats();
 
