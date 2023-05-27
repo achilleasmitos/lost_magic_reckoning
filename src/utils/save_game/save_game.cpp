@@ -8,7 +8,7 @@ void SaveGame(MainCharacter& main_characher)
 {
 	std::ofstream output_file;
 
-	output_file.open("settings.txt");
+	output_file.open("savefile.txt");
 
 	if (output_file.is_open())
 	{
@@ -40,10 +40,10 @@ void SaveGame(MainCharacter& main_characher)
 
 		output_file.close();
 
-		std::cout << "Game saved successfully to settings.txt" << std::endl;
+		std::cout << "Game saved successfully to savefile.txt" << std::endl;
 	}
 	else
 	{
-		std::cerr << "Unable to open the savefile: settings.txt" << std::endl;
+		std::cerr << "Unable to open the savefile: savefile.txt" << std::endl;
 	}
 }

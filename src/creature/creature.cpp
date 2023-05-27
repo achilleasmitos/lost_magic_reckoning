@@ -42,9 +42,45 @@ void Creature::PrintStats()
 
 int Creature::get_hp() { return m_hp; };
 
+void Creature::set_hp(int hp)
+{
+	if (hp >= 0)
+	{
+		m_hp = hp;
+	}
+	else
+	{
+		std::cerr << "The HP stat of Creature cannot be negative!\n";
+	}
+}
+
 int Creature::get_ac() { return m_ac; };
 
+void Creature::set_ac(int ac)
+{
+	if (ac >= 0)
+	{
+		m_ac = ac;
+	}
+	else
+	{
+		std::cerr << "The AC stat of Creature cannot be negative!\n";
+	}
+}
+
 int Creature::get_speed() { return m_speed; };
+
+void Creature::set_speed(int speed)
+{
+	if (speed >= 0)
+	{
+		m_speed = speed;
+	}
+	else
+	{
+		std::cerr << "The SPEED stat of Creature cannot be negative!\n";
+	}
+}
 
 int Creature::get_ability_score(int n)
 {
@@ -59,6 +95,18 @@ int Creature::get_ability_score(int n)
 				  << std::endl;
 		return -1;
 	}
-};
+}
+
+void Creature::set_ability_score(int ability_score, int value)
+{
+	if (ability_score > -1 && ability_score < 6 && value > -1)
+	{
+		m_ability_scores[ability_score] = value;
+	}
+	else
+	{
+		std::cerr << "The ability scores of Creature cannot be negative!\n";
+	}
+}
 
 std::string Creature::get_creature_type() { return m_creature_type; };

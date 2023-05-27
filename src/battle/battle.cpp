@@ -35,8 +35,7 @@ void Battle(MainCharacter* main_character, std::vector<Creature*>& foes)
 		else
 		{
 			std::cout << "The main character has better roll than the "
-					  << main_character->get_creature_type() << "! You win!"
-					  << std::endl;
+					  << foe->get_creature_type() << "! You win!" << std::endl;
 			victories++;
 		}
 	}

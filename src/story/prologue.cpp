@@ -4,7 +4,7 @@
 #include "../creature/creature.h"
 #include "../creature/main_character/main_character.h"
 
-void Prologue()
+void Prologue(MainCharacter& main_character)
 {
 	utils::HandleSound(utils::SoundOperations::Open,
 		"..\\src\\resources\\music\\exploration.mp3",
@@ -20,7 +20,6 @@ void Prologue()
 		"boss_battle");
 	utils::HandleSound(utils::SoundOperations::Play, "boss_battle repeat");
 
-	MainCharacter main_character("Traveler");
 	main_character.PrintStats();
 
 	SaveGame(main_character);
