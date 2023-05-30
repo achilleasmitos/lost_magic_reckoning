@@ -12,6 +12,8 @@ void LoadSavedGame(MainCharacter& main_character)
 	{
 		std::string line;
 		int lineCount = 0;
+		std::string mc_race = "";
+		std::string mc_class = "";
 		int mc_hp = -1;
 		int mc_ac = -1;
 		int mc_speed = -1;
@@ -23,36 +25,44 @@ void LoadSavedGame(MainCharacter& main_character)
 			switch (lineCount)
 			{
 				case 5:
-					mc_hp = std::stoi(line);
+					mc_race = line;
 					break;
 				case 7:
-					mc_ac = std::stoi(line);
+					mc_class = line;
 					break;
 				case 9:
-					mc_speed = std::stoi(line);
+					mc_hp = std::stoi(line);
 					break;
 				case 11:
-					mc_ability_scores[0] = std::stoi(line);
+					mc_ac = std::stoi(line);
 					break;
 				case 13:
-					mc_ability_scores[1] = std::stoi(line);
+					mc_speed = std::stoi(line);
 					break;
 				case 15:
-					mc_ability_scores[2] = std::stoi(line);
+					mc_ability_scores[0] = std::stoi(line);
 					break;
 				case 17:
-					mc_ability_scores[3] = std::stoi(line);
+					mc_ability_scores[1] = std::stoi(line);
 					break;
 				case 19:
-					mc_ability_scores[4] = std::stoi(line);
+					mc_ability_scores[2] = std::stoi(line);
 					break;
 				case 21:
+					mc_ability_scores[3] = std::stoi(line);
+					break;
+				case 23:
+					mc_ability_scores[4] = std::stoi(line);
+					break;
+				case 25:
 					mc_ability_scores[5] = std::stoi(line);
 					break;
 			}
 		}
 		file_name.close();
 
+		main_character.set_race(mc_race);
+		main_character.set_class(mc_class);
 		main_character.set_hp(mc_hp);
 		main_character.set_ac(mc_ac);
 		main_character.set_speed(mc_speed);
@@ -81,16 +91,16 @@ void LoadSettings()
 			lineCount++;
 			switch (lineCount)
 			{
-				case 25:
+				case 29:
 					utils::g_sound_volume = std::stoi(line);
 					break;
-				case 27:
+				case 31:
 					utils::g_text_size = std::stoi(line);
 					break;
-				case 29:
+				case 33:
 					utils::g_sleep_for_ms = std::stoi(line);
 					break;
-				case 31:
+				case 35:
 					{
 						int weight_choice = std::stoi(line);
 
