@@ -58,6 +58,15 @@ void MainCharacter::set_name(std::string name)
 	}
 }
 
+std::string MainCharacter::get_class() { return m_class; }
+void MainCharacter::set_class(std::string player_class)
+{
+	m_class = player_class;
+}
+
+std::string MainCharacter::get_race() { return m_race; }
+void MainCharacter::set_race(std::string player_race) { m_race = player_race; }
+
 bool MainCharacter::CheckForAlphaOrWhitespace(std::string string)
 {
 	bool has_digit = false;

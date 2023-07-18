@@ -31,8 +31,16 @@ public:
 	std::string get_name();
 	void set_name(std::string name);
 
+	std::string get_class();
+	void set_class(std::string player_class);
+
+	std::string get_race();
+	void set_race(std::string player_race);
+
 private:
 	std::string m_name;
+	std::string m_class;
+	std::string m_race;
 
 	/**
 	 * @brief A function that checks if the given string consists only of letters and whitespaces.
