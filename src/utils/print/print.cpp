@@ -3,7 +3,7 @@
 #include <thread>
 #include <chrono>
 
-int utils::g_sleep_for_ms = 100;
+int utils::g_sleep_for_ms = 50;
 
 void utils::Print(std::initializer_list<std::string> list, int sleep_for_ms)
 {

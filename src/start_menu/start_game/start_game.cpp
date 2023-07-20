@@ -9,6 +9,12 @@ void StartGame(MainCharacter& main_character)
 
 	utils::ClearScreen();
 
+	std::cout << "Give me the time you want between each rendered "
+				 "character (in ms): ";
+	utils::GetUserInput(utils::g_sleep_for_ms);
+
+	utils::ClearScreen();
+
 	CreateCharacter(main_character);
 
 	SaveGame(main_character);
