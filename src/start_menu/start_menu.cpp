@@ -9,7 +9,7 @@
 
 void StartMenu(MainCharacter& main_character)
 {
-	std::string file_path = "savefile.txt";
+	std::string file_path = "save_file.json";
 
 	std::ifstream file(file_path);
 

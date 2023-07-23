@@ -22,7 +22,7 @@ void Prologue(MainCharacter& main_character)
 
 	main_character.PrintStats();
 
-	SaveGame(main_character);
+	utils::SaveGame(main_character);
 
 	Creature* minotaur = new Creature(76, 14, 40, 18, 11, 16, 6, 16, 9, "large monstrosity");
 

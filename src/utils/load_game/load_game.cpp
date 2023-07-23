@@ -4,122 +4,99 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <unordered_map>
 
-void LoadSavedGame(MainCharacter& main_character)
+using GameStateMap = std::unordered_map<std::string, std::string>;
+
+/**
+ * @brief Helper func for @see LoadGame. It updates the game values
+ * (like global settings, main character stats etc) with the values
+ * gotten from the game_state map.
+ */
+void ConvertSaveToState(GameStateMap& game_state, MainCharacter& main_character)
 {
-	std::ifstream file_name("savefile.txt");
-	if (file_name.is_open())
+	// Update the global variables from the derived game state
+	/**
+	 * IMPORTANT!!!
+	 * Keep the keys defined here up-to-date with those in @see save_game.cpp
+	 */
+	utils::g_sound_volume = std::stoi(game_state["game_settings_sound_volume"]);
+	utils::g_text_size = std::stoi(game_state["game_settings_text_size"]);
+	utils::g_sleep_for_ms = std::stoi(game_state["game_settings_sleep_for_ms"]);
+	const int text_weight = std::stoi(game_state["game_settings_text_weight"]);
+	switch (text_weight)
 	{
-		std::string line;
-		int lineCount = 0;
-		std::string mc_race = "";
-		std::string mc_class = "";
-		int mc_hp = -1;
-		int mc_ac = -1;
-		int mc_speed = -1;
-		int mc_ability_scores[] = {-1, -1, -1, -1, -1, -1};
-
-		while (std::getline(file_name, line))
-		{
-			lineCount++;
-			switch (lineCount)
+		case 100:
 			{
-				case 5:
-					mc_race = line;
-					break;
-				case 7:
-					mc_class = line;
-					break;
-				case 9:
-					mc_hp = std::stoi(line);
-					break;
-				case 11:
-					mc_ac = std::stoi(line);
-					break;
-				case 13:
-					mc_speed = std::stoi(line);
-					break;
-				case 15:
-					mc_ability_scores[0] = std::stoi(line);
-					break;
-				case 17:
-					mc_ability_scores[1] = std::stoi(line);
-					break;
-				case 19:
-					mc_ability_scores[2] = std::stoi(line);
-					break;
-				case 21:
-					mc_ability_scores[3] = std::stoi(line);
-					break;
-				case 23:
-					mc_ability_scores[4] = std::stoi(line);
-					break;
-				case 25:
-					mc_ability_scores[5] = std::stoi(line);
-					break;
+				utils::g_text_weight = utils::FontWeightValues::Light;
 			}
-		}
-		file_name.close();
-
-		main_character.set_race(mc_race);
-		main_character.set_class(mc_class);
-		main_character.set_hp(mc_hp);
-		main_character.set_ac(mc_ac);
-		main_character.set_speed(mc_speed);
-		for (int i = 0; i < 6; i++)
-		{
-			main_character.set_ability_score(i, mc_ability_scores[i]);
-		}
+		case 200:
+			{
+				utils::g_text_weight = utils::FontWeightValues::SemiLight;
+			}
+		case 600:
+			{
+				utils::g_text_weight = utils::FontWeightValues::SemiBold;
+			}
+		case 800:
+			{
+				utils::g_text_weight = utils::FontWeightValues::Bold;
+			}
+		case 400:
+		default:
+			{
+				utils::g_text_weight = utils::FontWeightValues::Normal;
+			}
 	}
-	else
+
+	// Enforce the new settings on the current game session
+	utils::CustomizeText();
+
+	// Update the main character stats from the derived game state
+	/**
+	 * IMPORTANT!!!
+	 * Keep the keys defined here up-to-date with those in @see save_game.cpp
+	 */
+	main_character.set_name(game_state["mc_name"]);
+	main_character.set_race(game_state["mc_race"]);
+	main_character.set_class(game_state["mc_class"]);
+	main_character.set_hp(std::stoi(game_state["mc_hp"]));
+	main_character.set_ac(std::stoi(game_state["mc_ac"]));
+	main_character.set_speed(std::stoi(game_state["mc_speed"]));
+
+	std::string mc_ability_score_names[] = {"mc_strength",
+		"mc_dexterity",
+		"mc_constitution",
+		"mc_intelligence",
+		"mc_wisdom",
+		"mc_charisma"};
+	int mc_ability_scores_length =
+		sizeof(mc_ability_score_names) / sizeof(mc_ability_score_names[0]);
+	for (int i = 0; i < mc_ability_scores_length; i++)
 	{
-		std::cout << "Unable to open file." << std::endl;
-		throw std::runtime_error("Unable to open file."); // Throw an exception to indicate the error
+		main_character.set_ability_score(i,
+			std::stoi(game_state[mc_ability_score_names[i]]));
 	}
 }
 
-void LoadSettings()
+void utils::LoadGame(MainCharacter& main_character)
 {
-	std::ifstream file_name("savefile.txt");
-	if (file_name.is_open())
+	// Create the game_state map from the save file
+	GameStateMap game_state = utils::ReadFromJSON("save_file.json");
+
+	if (game_state.empty())
 	{
-		std::string line;
-		int lineCount = 0;
+		return; // Save file could not be loaded or was missing
+	}
 
-		while (std::getline(file_name, line))
-		{
-			lineCount++;
-			switch (lineCount)
-			{
-				case 29:
-					utils::g_sound_volume = std::stoi(line);
-					break;
-				case 31:
-					utils::g_text_size = std::stoi(line);
-					break;
-				case 33:
-					utils::g_sleep_for_ms = std::stoi(line);
-					break;
-				case 35:
-					{
-						int weight_choice = std::stoi(line);
-
-						if (weight_choice == 100)
-							utils::g_text_weight = utils::FontWeightValues::Light;
-						else if (weight_choice == 200)
-							utils::g_text_weight = utils::FontWeightValues::SemiLight;
-						else if (weight_choice == 400)
-							utils::g_text_weight = utils::FontWeightValues::Normal;
-						else if (weight_choice == 600)
-							utils::g_text_weight = utils::FontWeightValues::SemiBold;
-						else if (weight_choice == 800)
-							utils::g_text_weight = utils::FontWeightValues::Bold;
-						break;
-					}
-			}
-		}
-		file_name.close();
-
-		utils::CustomizeText();
+	try
+	{
+		ConvertSaveToState(game_state, main_character);
+	}
+	catch (...)
+	{
+		std::cerr << "Something went wrong while trying to convert the save "
+					 "file to game state.\n"
+				  << "Your save might be corrupted...\n";
 	}
 }

@@ -3,51 +3,48 @@
 #include "../../creature/main_character/main_character.h"
 #include <iostream>
 #include <fstream>
+#include <unordered_map>
 
-void SaveGame(MainCharacter& main_character)
+void utils::SaveGame(MainCharacter& main_character)
 {
-	std::ofstream output_file;
+	std::unordered_map<std::string, std::string> game_state;
 
-	output_file.open("savefile.txt");
+	// Main character stats
+	/**
+	 * IMPORTANT!!!
+	 * Keep the keys defined here up-to-date with those in @see load_game.cpp
+	 */
+	game_state.insert({"mc_name", main_character.get_name()});
+	game_state.insert({"mc_race", main_character.get_race()});
+	game_state.insert({"mc_class", main_character.get_class()});
+	game_state.insert({"mc_hp", std::to_string(main_character.get_hp())});
+	game_state.insert({"mc_ac", std::to_string(main_character.get_ac())});
+	game_state.insert({"mc_speed", std::to_string(main_character.get_speed())});
 
-	if (output_file.is_open())
+	std::string mc_ability_scores[] = {"mc_strength",
+		"mc_dexterity",
+		"mc_constitution",
+		"mc_intelligence",
+		"mc_wisdom",
+		"mc_charisma"};
+	int mc_ability_scores_length =
+		sizeof(mc_ability_scores) / sizeof(mc_ability_scores[0]);
+	for (int i = 0; i < mc_ability_scores_length; i++)
 	{
-		output_file << "Ability Scores for: " << std::endl;
-		output_file << main_character.get_name() << std::endl;
-		output_file << "==============================" << std::endl;
-		output_file << "Race: " << std::endl;
-		output_file << main_character.get_race() << std::endl;
-		output_file << "Class: " << std::endl;
-		output_file << main_character.get_class() << std::endl;
-		output_file << "HP: " << std::endl;
-		output_file << main_character.get_hp() << std::endl;
-		output_file << "AC: " << std::endl;
-		output_file << main_character.get_ac() << std::endl;
-		output_file << "Speed: " << std::endl;
-		output_file << main_character.get_speed() << std::endl;
-		std::string ability_scores[] = {"Strength: ", "Dexterity: ", "Constitution: ", "Intelligence: ", "Wisdom: ", "Charisma: "};
-		for (int i = 0; i < sizeof(ability_scores) / sizeof(ability_scores[0]); i++)
-		{
-			output_file << ability_scores[i] << std::endl;
-			output_file << main_character.get_ability_score(i) << std::endl;
-		}
-		output_file << "==============================" << std::endl;
-		output_file << std::endl;
-		output_file << "Sound Volume: " << std::endl;
-		output_file << utils::g_sound_volume << std::endl;
-		output_file << "Text Size: " << std::endl;
-		output_file << utils::g_text_size << std::endl;
-		output_file << "Text Speed: " << std::endl;
-		output_file << utils::g_sleep_for_ms << std::endl;
-		output_file << "Text Weight: " << std::endl;
-		output_file << utils::g_text_weight << std::endl;
-
-		output_file.close();
-
-		std::cout << "Game saved successfully to savefile.txt" << std::endl;
+		game_state.insert({mc_ability_scores[i],
+			std::to_string(main_character.get_ability_score(i))});
 	}
-	else
-	{
-		std::cerr << "Unable to open the savefile: savefile.txt" << std::endl;
-	}
+
+	// Game settings
+	/**
+	 * IMPORTANT!!!
+	 * Keep the keys defined here up-to-date with those in @see load_game.cpp
+	 */
+	game_state.insert({"game_settings_sound_volume", std::to_string(utils::g_sound_volume)});
+	game_state.insert({"game_settings_text_size", std::to_string(utils::g_text_size)});
+	game_state.insert({"game_settings_sleep_for_ms", std::to_string(utils::g_sleep_for_ms)});
+	game_state.insert({"game_settings_text_weight", std::to_string(utils::g_text_weight)});
+
+	// Done creating the game_state map. Proceed with saving it to JSON.
+	utils::WriteToJSON(game_state, "save_file.json");
 }
