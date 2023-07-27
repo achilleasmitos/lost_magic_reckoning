@@ -24,13 +24,17 @@ void Prologue(MainCharacter& main_character)
 
 	SaveGame(main_character);
 
-	Creature* minotaur = new Creature(76, 14, 40, 18, 11, 16, 6, 16, 9, "large monstrosity");
+	Creature* minotaur1 =
+		new Creature(76, 14, 40, 18, 11, 16, 6, 16, 9, "large monstrosity");
+	Creature* minotaur2 =
+		new Creature(76, 14, 40, 18, 11, 16, 6, 16, 9, "large monstrosity");
 
-	std::vector<Creature*> foes = {1, minotaur};
+	std::vector<Creature*> foes = {minotaur1, minotaur2};
 
 	Battle(&main_character, foes);
 
-	delete minotaur;
+	delete minotaur1;
+	delete minotaur2;
 
 	utils::HandleSound(utils::SoundOperations::Close, "boss_battle");
 

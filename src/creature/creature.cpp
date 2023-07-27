@@ -50,7 +50,8 @@ void Creature::set_hp(int hp)
 	}
 	else
 	{
-		std::cerr << "The HP stat of Creature cannot be negative!\n";
+		m_hp = 0;
+		// std::cerr << "The HP stat of Creature cannot be negative!\n";
 	}
 }
 
