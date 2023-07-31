@@ -11,13 +11,13 @@ void StartMenu(MainCharacter& main_character)
 {
 	std::string file_path = "savefile.txt";
 
-	std::ifstream file(file_path);
-
 	int main_menu_choice = 0;
 
-	if (file)
+	while (true)
 	{
-		do
+		std::ifstream savefile(file_path);
+
+		if (savefile)
 		{
 			utils::ClearScreen();
 
@@ -55,14 +55,11 @@ void StartMenu(MainCharacter& main_character)
 				case 4:
 					{
 						std::cout << "Quitting the game..." << std::endl;
+						return;
 					}
 			}
 		}
-		while (main_menu_choice != 4);
-	}
-	else
-	{
-		do
+		else
 		{
 			utils::ClearScreen();
 
@@ -94,9 +91,11 @@ void StartMenu(MainCharacter& main_character)
 				case 3:
 					{
 						std::cout << "Quitting the game..." << std::endl;
+						return;
 					}
 			}
 		}
-		while (main_menu_choice != 3);
+
+		savefile.close(); // Close the opened save_file before doing another loop
 	}
 }
