@@ -9,11 +9,11 @@ int main()
 {
 	LoadingScreen();
 
-	LoadSettings();
-
 	srand(time(NULL));
 
 	MainCharacter main_character("Achilleas");
+
+	utils::LoadGame(main_character);
 
 	StartMenu(main_character);
 

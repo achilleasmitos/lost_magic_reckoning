@@ -17,7 +17,7 @@ void StartGame(MainCharacter& main_character)
 
 	CreateCharacter(main_character);
 
-	SaveGame(main_character);
+	utils::SaveGame(main_character);
 
 	utils::ClearScreen();
 

@@ -3,6 +3,7 @@
 #include "./customize_text/customize_text.h"
 #include "./get_user_input/get_user_input.h"
 #include "./handle_sound/handle_sound.h"
+#include "./JSON_interaction/JSON_interaction.h"
 #include "./load_game/load_game.h"
 #include "./print/print.h"
 #include "./read_from_file/read_from_file.h"

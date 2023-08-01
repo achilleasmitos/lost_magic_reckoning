@@ -13,7 +13,7 @@
  */
 bool CheckAndOverwriteSaveFile()
 {
-	std::string save_file_path = "savefile.txt";
+	std::string save_file_path = "save_file.json";
 	std::ifstream save_file(save_file_path);
 
 	if (save_file.good())

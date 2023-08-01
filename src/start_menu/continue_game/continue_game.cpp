@@ -8,7 +8,7 @@ void ContinueGame(MainCharacter& main_character)
 
 	utils::ClearScreen();
 
-	LoadSavedGame(main_character);
+	utils::LoadGame(main_character);
 
 	Prologue(main_character);
 }
