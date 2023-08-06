@@ -14,5 +14,7 @@ namespace utils
  * @param text The variable that stores the lines of the txt
  * @param cmd_begins_ends A callback for when a new command begins or ends
  */
-void HandleTextCmd(std::ifstream& source_file, std::string& text, std::function<bool()> cmd_begins_ends);
+void HandleTextCmd(std::ifstream& source_file,
+	std::string& text,
+	const std::function<bool()>& cmd_begins_ends);
 } // namespace utils

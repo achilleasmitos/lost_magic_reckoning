@@ -3,7 +3,7 @@
 
 void utils::HandleTextCmd(std::ifstream& source_file,
 	std::string& text,
-	std::function<bool()> cmd_begins_ends)
+	const std::function<bool()>& cmd_begins_ends)
 {
 	while (std::getline(source_file, text) && !cmd_begins_ends())
 	{

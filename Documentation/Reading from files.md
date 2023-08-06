@@ -17,9 +17,10 @@ At the end of this file you can find a list with all the available commands, wha
 
 | Command           | Description   |
 | :---              | :----         |
-| TEXT              | Starts a block of text that will be rendered on the console with default text speed|
+| BATTLE            | Starts a battle between the main character and the foes given as parameters. The names of the foes have to match with the names of their stat files in 'src/resources/creatures'|
 | CUSTOM_SPEED_TEXT | Starts a block of text that will be rendered on the console with the text speed (non-negative integer) defined on the second line of the block|
 | SLEEP_FOR         | Contains one line (with a non-negative integer) that instructs the program to sleep for a certain amount of milliseconds|
+| TEXT              | Starts a block of text that will be rendered on the console with default text speed|
 
 ## Examples
 #### Printing a block of text on the console:
@@ -73,6 +74,22 @@ Nam id tortor sem. Sed lacinia dignissim nisl, non malesuada purus congue in.
 * The second line should only be a non-negative integer number, that indicates the milliseconds the program should sleep for.
 * Use for dramatic effects, or as a means for the user to catch up to a large paragraph that has just been displayed.
 
+#### Starting a battle between the main character, a minotaur and a goblin:
+```
+@@@BATTLE
+MAIN_CHARACTER
+{
+minotaur
+goblin
+}
+@@@
+```
+##### Tips:
+* The first argument to this command is always 'MAIN_CHARACTER'
+* The foes list starts with a '{' and ends with a '}', with each foe argument on its own line
+* Make sure to keep the names of the foes here with the names of their stat files in 'src/resources/creatures' consistent, otherwise the command will fail!
+* Always try to keep in mind the difficulty of the constructed battle; too many easy or too many hard battles can get annoying pretty quickly.
+
 ## Troubleshooting:
 If the program does not display the desired behavior, it is good to read the output as it often contains explanations pertaining to what went wrong.
 
@@ -84,6 +101,8 @@ The command you tried to use is: {command_name}
 followed by the command you tried to use.
 
 If nothing shows up in the command name, this signals to you that you have used an extra command end ("@@@") somewhere. Check that commands always have a single start and single end, as described above.
+
+Regularly, arguments to commands are not input correctly (either due to a typo or simply dut to an illegal argument). Most times, such commands will pick up on this error and print an appropriate message to the console that is hopefully helpful enough. If you are unsure as to how to use a command, refer back to the example for it; the example should cover most (if not all) cases!
 
 Another common mis-use is the attempt to nest different commands within each other (for example, having a SLEEP_FOR command inside a TEXT command). This is not (yet) possible! Commands should always be separate.
 

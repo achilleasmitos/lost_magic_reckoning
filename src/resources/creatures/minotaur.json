@@ -1,0 +1,12 @@
+{
+	"hp": "76",
+	"ac": "14",
+	"speed": "40",
+	"strength": "18",
+	"dexterity": "11",
+	"constitution": "16",
+	"intelligence": "6",
+	"wisdom": "16",
+	"charisma": "9",
+	"creature_type": "large monstrosity"
+}
