@@ -44,7 +44,7 @@ void Battle(MainCharacter* main_character, std::vector<Creature*>& foes)
 	{
 		if (a.second == b.second)
 		{
-			return (a.first->get_ability_score(1) > a.first->get_ability_score(1));
+			return (a.first->get_ability_score(1) > b.first->get_ability_score(1));
 		}
 		else
 			return (a.second > b.second);
@@ -56,7 +56,7 @@ void Battle(MainCharacter* main_character, std::vector<Creature*>& foes)
 		std::cout << "=========================\n";
 		for (const auto combatant : combatants)
 		{
-			std::cout << combatant.first->get_creature_type() << ": Inititive "
+			std::cout << combatant.first->get_creature_type() << ": Initiative "
 					  << combatant.second << " , HP "
 					  << combatant.first->get_hp() << std::endl;
 		}
