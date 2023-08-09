@@ -4,6 +4,6 @@
 
 #pragma once
 /**
- * @brief it starts a static battle between the main character with default stats and hes foes, they roll the dice and the one with the better roll wins, if the main character loses more times than his hp he loses the battle
+ * @brief it starts a battle between the main character and his foes. They roll the dice for initiative, hit and damage. The damage is done to the HP of the enemy or the main character, and the first with 0 hp loses the battle.
  */
 void Battle(MainCharacter* main_character, std::vector<Creature*>& foes);
