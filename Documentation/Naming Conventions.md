@@ -33,6 +33,9 @@ Examples:
 ## Type names
 Type names follow the [UpperCamelCase / PascalCase](https://en.wikipedia.org/wiki/Camel_case) scheme, where every name is one word that starts with a capital letter, and every sub-word inside it starts with a capital letter as well. Entities that belong to this category are: _enum types, enum values, type aliases, type template parameters, structs and classes_.
 
+#### Pointers
+Smart pointers to classes are named after their classes appending the type of pointer at the end (following the naming scheme of classes). For example, a smart pointer to the class `Creature` would be named `CreatureSharedPtr`.
+
 ## Namespaces
 
 Namespaces follow the [snake_case](https://en.wikipedia.org/wiki/Snake_case) scheme, like variables.
@@ -50,4 +53,4 @@ Examples:
 
 ## Files and folders
 
-The names of files and folders should follow the same scheme as variables. Files should ideally have the same name as their main component.
+The names of files and folders should follow the same scheme as variables. Files should ideally have the same name as their main component. Special files called _prototypes_ contain `using` declarations for smart pointers to the classes defined in their neighboring files, and are named after these classes appending '_prototype' at the end.

@@ -1,4 +1,5 @@
 #include "./utils/utils.h"
+#include "./creature/main_character/main_character_prototypes.h"
 #include "./loading_screen/loading_screen.h"
 #include "./start_menu/start_menu.h"
 #include "./story/prologue.h"
@@ -11,7 +12,10 @@ int main()
 
 	srand(time(NULL));
 
-	MainCharacter main_character("Achilleas");
+	// MainCharacter will be around for the whole lifetime
+	// of the program, therefore, we can have it as a shared_ptr
+	MainCharacterSharedPtr main_character =
+		std::make_shared<MainCharacter>("Player");
 
 	utils::LoadGame(main_character);
 

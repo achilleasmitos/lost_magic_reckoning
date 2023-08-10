@@ -1,20 +1,19 @@
 #include "battle.h"
+#include "../utils/utils.h"
 #include "foe_attack.h"
 #include "main_character_attack.h"
-#include "../utils/utils.h"
-#include "../creature/creature.h"
-#include "../creature/main_character/main_character.h"
+
+#include <algorithm>
 #include <iostream>
 #include <vector>
-#include <algorithm>
 
-void Battle(MainCharacter* main_character, std::vector<Creature*>& foes)
+void Battle(MainCharacterSharedPtr main_character, std::vector<CreatureSharedPtr>& foes)
 {
 	std::cout << "Battle starts!" << std::endl;
 
 	// All the battle participants (including main character)
 	// Contains pairs of type { foe/main_character, initiative_roll }
-	std::vector<std::pair<Creature*, int>> combatants(foes.size() + 1,
+	std::vector<std::pair<CreatureSharedPtr, int>> combatants(foes.size() + 1,
 		{foes[0], 0}); // Add +1 to accommodate for the main character
 
 	/**
@@ -39,8 +38,8 @@ void Battle(MainCharacter* main_character, std::vector<Creature*>& foes)
 	}
 
 	// Sort the combatants list in descending order of initiative rolls
-	const auto compareCombatantsInitiative = [](std::pair<Creature*, int> a,
-												 std::pair<Creature*, int> b) -> bool
+	const auto compareCombatantsInitiative = [](std::pair<CreatureSharedPtr, int> a,
+												 std::pair<CreatureSharedPtr, int> b) -> bool
 	{
 		if (a.second == b.second)
 		{

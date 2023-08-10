@@ -1,8 +1,9 @@
 #include "main_character_attack.h"
 #include "../utils/utils.h"
+
 #include <iostream>
 
-void MainCharacterAttack(MainCharacter* main_character, Creature* target)
+void MainCharacterAttack(MainCharacterSharedPtr main_character, CreatureSharedPtr target)
 {
 	int hit_main_character_roll =
 		utils::RollDice(1, 20) + (main_character->get_ability_score(0) - 10) / 2;
