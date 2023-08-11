@@ -3,7 +3,7 @@
 
 void utils::HandleCustomSpeedTextCmd(std::ifstream& source_file,
 	std::string& text,
-	std::function<bool()> cmd_begins_ends)
+	const std::function<bool()>& cmd_begins_ends)
 {
 	std::getline(source_file, text);
 	int sleep_for_ms = std::stoi(text);

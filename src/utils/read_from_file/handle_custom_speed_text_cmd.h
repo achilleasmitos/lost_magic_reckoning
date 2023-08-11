@@ -17,5 +17,5 @@ namespace utils
  */
 void HandleCustomSpeedTextCmd(std::ifstream& source_file,
 	std::string& text,
-	std::function<bool()> cmd_begins_ends);
+	const std::function<bool()>& cmd_begins_ends);
 } // namespace utils

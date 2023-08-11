@@ -1,4 +1,5 @@
 #include "read_from_file.h"
+#include "./handle_battle_cmd.h"
 #include "handle_custom_speed_text_cmd.h"
 #include "handle_sleep_for_cmd.h"
 #include "handle_text_cmd.h"
@@ -6,7 +7,7 @@
 #include <iostream>
 #include <fstream>
 
-void utils::ReadFromFile(std::string file_path)
+void utils::ReadFromFile(std::string file_path, MainCharacterSharedPtr main_character)
 {
 	// Open the source file.
 	std::ifstream source_file(file_path);
@@ -14,7 +15,7 @@ void utils::ReadFromFile(std::string file_path)
 	// A variable that stores the lines of the txt (one line per loop, see `std::getline`).
 	std::string text;
 	// A lambda function that checks the current line for a command beginning/end.
-	auto cmd_begins_ends = [&text]() -> bool
+	const std::function<bool()> cmd_begins_ends = [&text]() -> bool
 	{ return (text.substr(0, 3) == "@@@"); };
 
 	while (std::getline(source_file, text))
@@ -37,6 +38,10 @@ void utils::ReadFromFile(std::string file_path)
 			else if (text == "SLEEP_FOR")
 			{
 				utils::HandleSleepForCmd(source_file, text);
+			}
+			else if (text == "BATTLE")
+			{
+				utils::HandleBattleCmd(source_file, text, cmd_begins_ends, main_character);
 			}
 			else
 			{

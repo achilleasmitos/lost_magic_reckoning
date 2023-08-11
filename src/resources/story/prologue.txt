@@ -18,7 +18,7 @@ for the better part of the night, if not for longer.
 @@@TEXT
 A loud bang on the cell's bars jostles you. You see a guard dressed in blacks,
 with a silver breastplate, helm and spear in his hand, staring down at you.
-"Come on sleeping beauty, it's time for your match!" he barks at you.
+- "Come on sleeping beauty, it's time for your match!" he barks at you.
 Your ears are ringing from the loud noises of the bars and this man's voice.
 What match? What is he talking about? Where are you, and why can't you remember a thing?
 
@@ -69,4 +69,74 @@ dark brown fur, two horns on its bull-like head, and a great battle-axe in his h
 It digs the ground twice with its left hoof, then lets out an intimidating moan
 and charges at you!
 
+@@@
+
+@@@BATTLE
+MAIN_CHARACTER
+{
+minotaur
+}
+@@@
+
+@@@TEXT
+The last strike sends you flying backwards, and you find yourself lying
+with your back on the dirt floor. Your head is aching as blood streams down your face,
+impeding your vision. There is a deathly silence in the large stadium;
+everybody is holding their breath. The minotaur approaches you and lifts
+his axe to deal the final blow.
+
+@@@
+
+@@@SLEEP_FOR
+2000
+@@@
+
+@@@TEXT
+There is a sudden flash of green behind the beast. Something seems to hit it
+in the back. The minotaur's skin starts turning grey, as if stone, but quickly
+it crumbles into fine dust. Two seconds later, there is nothing left of your opponent
+or his gear; only a pile of ash at your feet.
+
+Panic breaks out in the stadium as everybody realizes that somebody had used magic
+(and a powerful one, for sure) to turn the tide of battle. People start evacuating
+the premises, afraid of what might come next.
+
+You feel a hand touch your shoulder. You turn your head to see a hooded man
+with blue eyes and a black well-trimmed beard kneeling above you.
+You experience a weird sickness, like you've just lost the ground beneath you.
+You close your eyes momentarily, and when you reopen them, you and the hooded man
+are in the countryside, quite a long way from the city walls.
+
+@@@
+
+@@@SLEEP_FOR
+2000
+@@@
+
+@@@TEXT
+- "You are badly wounded, but I believe you can stand on your feet" the man says,
+and props you up. "Come, I have a mission for you, and it's best you start
+walking; the journey is long" he then adds.
+- "Sorry, do we know each other?" you mutter bewildered.
+- "I knew your father, he was a good man" he answers back. "You have to avenge him".
+- "My father? I... I can't remember my father's name, or his face, or anything..." you
+respond, rubbing your blooded head with your hand. "I must have suffered a concussion".
+
+The man suddenly pauses and takes an inquiring look at the whole of you.
+He then makes a circling motion with his hands on your torso and mutters
+some arcane words beneath his breath. When he finishes, he says:
+- "It is not a simple concussion that you have. This amnesia has been inflicted
+upon you. Change of plans then".
+- "What plans?" you ask, still confounded by this encounter with the blue eyed man.
+- "We need to heal you of this memory loss. You are going to Slyrun!"
+
+@@@
+
+@@@SLEEP_FOR
+2000
+@@@
+
+@@@CUSTOM_SPEED_TEXT
+0
+END OF PROLOGUE
 @@@
