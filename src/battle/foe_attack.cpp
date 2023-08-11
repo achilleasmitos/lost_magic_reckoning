@@ -1,8 +1,9 @@
 #include "main_character_attack.h"
 #include "../utils/utils.h"
+
 #include <iostream>
 
-void FoeAttack(Creature* attacker, MainCharacter* main_character)
+void FoeAttack(CreatureSharedPtr attacker, MainCharacterSharedPtr main_character)
 {
 	int hit_foe_roll = utils::RollDice(1, 20) + (attacker->get_ability_score(0) - 10) / 2;
 	std::cout << attacker->get_creature_type() << " rolled " << hit_foe_roll << std::endl;

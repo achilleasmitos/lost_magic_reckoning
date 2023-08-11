@@ -3,7 +3,7 @@
 #include "../../create_character/create_character.h"
 #include "../../story/prologue.h"
 
-void StartGame(MainCharacter& main_character)
+void StartGame(MainCharacterSharedPtr main_character)
 {
 	utils::Print({"Starting the game..."});
 

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../creature/main_character/main_character.h"
+#include "../creature/main_character/main_character_prototypes.h"
 
 /**
  * @brief Creates the main character of the game.
@@ -11,4 +12,4 @@
  *
  * @param main_character
  */
-void CreateCharacter(MainCharacter& main_character);
+void CreateCharacter(MainCharacterSharedPtr main_character);

@@ -1,10 +1,9 @@
-#include "prologue.h"
+#include "./prologue.h"
 #include "../utils/utils.h"
 #include "../battle/battle.h"
 #include "../creature/creature.h"
-#include "../creature/main_character/main_character.h"
 
-void Prologue(MainCharacter& main_character)
+void Prologue(MainCharacterSharedPtr main_character)
 {
 	utils::HandleSound(utils::SoundOperations::Open,
 		"..\\src\\resources\\music\\exploration.mp3",
@@ -20,21 +19,18 @@ void Prologue(MainCharacter& main_character)
 		"boss_battle");
 	utils::HandleSound(utils::SoundOperations::Play, "boss_battle repeat");
 
-	main_character.PrintStats();
+	main_character->PrintStats();
 
 	utils::SaveGame(main_character);
 
-	Creature* minotaur1 =
-		new Creature(76, 14, 40, 18, 11, 16, 6, 16, 9, "large monstrosity");
-	Creature* minotaur2 =
-		new Creature(76, 14, 40, 18, 11, 16, 6, 16, 9, "large monstrosity");
+	CreatureSharedPtr minotaur1 =
+		std::make_shared<Creature>(76, 14, 40, 18, 11, 16, 6, 16, 9, "large monstrosity");
+	CreatureSharedPtr minotaur2 =
+		std::make_shared<Creature>(76, 14, 40, 18, 11, 16, 6, 16, 9, "large monstrosity");
 
-	std::vector<Creature*> foes = {minotaur1, minotaur2};
+	std::vector<CreatureSharedPtr> foes = {minotaur1, minotaur2};
 
-	Battle(&main_character, foes);
-
-	delete minotaur1;
-	delete minotaur2;
+	Battle(main_character, foes);
 
 	utils::HandleSound(utils::SoundOperations::Close, "boss_battle");
 

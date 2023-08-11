@@ -2,7 +2,7 @@
 #include "../../utils/utils.h"
 #include "../../story/prologue.h"
 
-void ContinueGame(MainCharacter& main_character)
+void ContinueGame(MainCharacterSharedPtr main_character)
 {
 	utils::Print({"Continuing the game..."});
 
