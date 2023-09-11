@@ -71,7 +71,7 @@ and charges at you!
 
 @@@
 
-@@@BATTLE
+@@@TUTORIALBATTLE
 MAIN_CHARACTER
 {
 minotaur

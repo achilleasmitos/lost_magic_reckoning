@@ -1,4 +1,4 @@
-#include "battle.h"
+#include "tutorial_battle.h"
 #include "../utils/utils.h"
 #include "foe_attack.h"
 #include "main_character_attack.h"
@@ -6,9 +6,20 @@
 #include <iostream>
 #include <vector>
 
-void Battle(MainCharacterSharedPtr main_character, std::vector<CreatureSharedPtr>& foes)
+void TutorialBattle(MainCharacterSharedPtr main_character,
+	std::vector<CreatureSharedPtr>& foes)
 {
 	std::cout << "Battle starts!" << std::endl;
+	utils::ClearScreen();
+
+	std::cout
+		<< "At the start of the battle all the characters involved will roll "
+		   "for initiative, the character with the highest initiative score "
+		   "goes first. The initiative score is a R20 + DEXTERITY modifier\n"
+		<< std::endl;
+
+	system("pause");
+	std::cout << std::endl;
 
 	// All the battle participants (including main character)
 	// Contains pairs of type { foe/main_character, initiative_roll }
@@ -48,6 +59,18 @@ void Battle(MainCharacterSharedPtr main_character, std::vector<CreatureSharedPtr
 			return (a.second > b.second);
 	};
 	std::sort(combatants.begin(), combatants.end(), compareCombatantsInitiative);
+
+	utils::ClearScreen();
+	std::cout
+		<< "When the attack order is determined the characters begin their "
+		   "iniciative attacks, the attack roll is R20 + STRENGTH modifier. if "
+		   "the attack it higher that the AC of the enemy the attack passes "
+		   "and now you can roll for damage, the damage roll is usually R10 + "
+		   "STRENGTH modifier\n"
+		<< std::endl;
+
+	system("pause");
+	std::cout << std::endl;
 
 	const auto printCombatants = [&combatants]()
 	{
@@ -112,16 +135,5 @@ void Battle(MainCharacterSharedPtr main_character, std::vector<CreatureSharedPtr
 		utils::ClearScreen();
 		printCombatants();
 		std::cout << std::endl;
-	}
-
-	std::cout << "Battle ends!" << std::endl;
-
-	if (main_character->get_hp() > 0)
-	{
-		std::cout << "You won the battle!" << std::endl;
-	}
-	else
-	{
-		std::cout << "You lost the battle!" << std::endl;
 	}
 }

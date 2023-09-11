@@ -1,5 +1,6 @@
 #include "read_from_file.h"
 #include "./handle_battle_cmd.h"
+#include "./handle_tutorial_battle_cmd.h"
 #include "handle_custom_speed_text_cmd.h"
 #include "handle_sleep_for_cmd.h"
 #include "handle_text_cmd.h"
@@ -42,6 +43,10 @@ void utils::ReadFromFile(std::string file_path, MainCharacterSharedPtr main_char
 			else if (text == "BATTLE")
 			{
 				utils::HandleBattleCmd(source_file, text, cmd_begins_ends, main_character);
+			}
+			else if (text == "TUTORIALBATTLE")
+			{
+				utils::HandleTutorialBattleCmd(source_file, text, cmd_begins_ends, main_character);
 			}
 			else
 			{

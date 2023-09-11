@@ -1,6 +1,7 @@
 #include "./prologue.h"
 #include "../utils/utils.h"
 #include "../battle/battle.h"
+#include "../battle/tutorial_battle.h"
 #include "../creature/creature.h"
 
 void Prologue(MainCharacterSharedPtr main_character)
