@@ -12,14 +12,12 @@ int main()
 
 	srand(time(NULL));
 
-	// MainCharacter will be around for the whole lifetime
-	// of the program, therefore, we can have it as a shared_ptr
-	MainCharacterSharedPtr main_character =
-		std::make_shared<MainCharacter>("Player");
+	MainCharacterUniquePtr main_character_unique_ptr =
+		std::make_unique<MainCharacter>("Player");
 
-	utils::LoadGame(main_character);
+	utils::LoadGame(*main_character_unique_ptr);
 
-	StartMenu(main_character);
+	StartMenu(*main_character_unique_ptr);
 
 	return 0;
 }

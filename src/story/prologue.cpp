@@ -2,7 +2,7 @@
 #include "../utils/utils.h"
 #include "../battle/tutorial_battle.h"
 
-void Prologue(MainCharacterSharedPtr main_character)
+void Prologue(MainCharacter& main_character)
 {
 	utils::HandleSound(utils::SoundOperations::Open,
 		"..\\src\\resources\\music\\exploration.mp3",

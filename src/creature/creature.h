@@ -22,23 +22,23 @@ public:
 
 	void PrintStats();
 
-	int get_hp();
+	int get_hp() const;
 
 	void set_hp(int hp);
 
-	int get_ac();
+	int get_ac() const;
 
 	void set_ac(int ac);
 
-	int get_speed();
+	int get_speed() const;
 
 	void set_speed(int speed);
 
-	int get_ability_score(int n);
+	int get_ability_score(int n) const;
 
 	void set_ability_score(int abilty_score, int value);
 
-	std::string get_creature_type();
+	std::string get_creature_type() const;
 
 	void set_creature_type(std::string creature_type);
 

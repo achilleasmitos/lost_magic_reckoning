@@ -1,7 +1,6 @@
 #pragma once
 
 #include "../../creature/main_character/main_character.h"
-#include "../../creature/main_character/main_character_prototypes.h"
 
 #include <string>
 
@@ -15,5 +14,5 @@ namespace utils
  * @param file_path The path to the source file, relative to the main executable
  * @param main_character The main character variable
  */
-void ReadFromFile(std::string file_path, MainCharacterSharedPtr main_character);
+void ReadFromFile(std::string file_path, MainCharacter& main_character);
 } // namespace utils

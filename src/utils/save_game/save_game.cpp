@@ -4,7 +4,7 @@
 #include <fstream>
 #include <unordered_map>
 
-void utils::SaveGame(MainCharacterSharedPtr main_character)
+void utils::SaveGame(MainCharacter& main_character)
 {
 	std::unordered_map<std::string, std::string> game_state;
 
@@ -13,12 +13,12 @@ void utils::SaveGame(MainCharacterSharedPtr main_character)
 	 * IMPORTANT!!!
 	 * Keep the keys defined here up-to-date with those in @see load_game.cpp
 	 */
-	game_state.insert({"mc_name", main_character->get_name()});
-	game_state.insert({"mc_race", main_character->get_race()});
-	game_state.insert({"mc_class", main_character->get_class()});
-	game_state.insert({"mc_hp", std::to_string(main_character->get_hp())});
-	game_state.insert({"mc_ac", std::to_string(main_character->get_ac())});
-	game_state.insert({"mc_speed", std::to_string(main_character->get_speed())});
+	game_state.insert({"mc_name", main_character.get_name()});
+	game_state.insert({"mc_race", main_character.get_race()});
+	game_state.insert({"mc_class", main_character.get_class()});
+	game_state.insert({"mc_hp", std::to_string(main_character.get_hp())});
+	game_state.insert({"mc_ac", std::to_string(main_character.get_ac())});
+	game_state.insert({"mc_speed", std::to_string(main_character.get_speed())});
 
 	std::string mc_ability_scores[] = {"mc_strength",
 		"mc_dexterity",
@@ -31,7 +31,7 @@ void utils::SaveGame(MainCharacterSharedPtr main_character)
 	for (int i = 0; i < mc_ability_scores_length; i++)
 	{
 		game_state.insert({mc_ability_scores[i],
-			std::to_string(main_character->get_ability_score(i))});
+			std::to_string(main_character.get_ability_score(i))});
 	}
 
 	// Game settings

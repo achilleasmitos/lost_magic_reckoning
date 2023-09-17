@@ -53,10 +53,7 @@ bool CheckAndOverwriteSaveFile()
  * @param main_stats The stats that have been rolled
  * @param array_length The length of the array of stats still left to be placed
  */
-void SetAbilityScore(MainCharacterSharedPtr main_character,
-	int ability_score_pos,
-	int main_stats[],
-	int array_length)
+void SetAbilityScore(MainCharacter& main_character, int ability_score_pos, int main_stats[], int array_length)
 {
 	std::string ability_scores[6] = {"Strength", "Dexterity", "Consitution", "Intelligence", "Wisdom", "Charisma"};
 
@@ -82,7 +79,7 @@ void SetAbilityScore(MainCharacterSharedPtr main_character,
 				  << array_length << ": ";
 		utils::GetUserInput(stat_choice);
 	}
-	main_character->set_ability_score(ability_score_pos, main_stats[stat_choice - 1]);
+	main_character.set_ability_score(ability_score_pos, main_stats[stat_choice - 1]);
 
 	// Shift to the left the stats lying right of the chosen one.
 	for (int i = stat_choice - 1; i < array_length - 1; i++)
@@ -91,7 +88,7 @@ void SetAbilityScore(MainCharacterSharedPtr main_character,
 	}
 }
 
-void CreateCharacter(MainCharacterSharedPtr main_character)
+void CreateCharacter(MainCharacter& main_character)
 {
 	utils::Print({"You are about to create a new character."});
 
@@ -105,15 +102,15 @@ void CreateCharacter(MainCharacterSharedPtr main_character)
 
 	utils::Print({"Please give me your name: "});
 	utils::GetUserInput(user_answer);
-	main_character->set_name(user_answer);
+	main_character.set_name(user_answer);
 
 	utils::Print({"Please give me your race: "});
 	utils::GetUserInput(user_answer);
-	main_character->set_race(user_answer);
+	main_character.set_race(user_answer);
 
 	utils::Print({"Please give me your class: "});
 	utils::GetUserInput(user_answer);
-	main_character->set_class(user_answer);
+	main_character.set_class(user_answer);
 
 	// Roll the main stats, ala 4d6-drop-lowest style.
 	int main_stats[6];
