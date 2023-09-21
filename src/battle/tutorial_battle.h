@@ -1,3 +1,5 @@
+#pragma once
+
 #include "../creature/main_character/main_character_prototypes.h"
 
 /**
