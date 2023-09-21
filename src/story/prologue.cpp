@@ -11,7 +11,7 @@ void Prologue(MainCharacterSharedPtr main_character)
 
 	utils::ReadFromFile("..\\src\\resources\\story\\prologue.txt", main_character);
 
-	TutorialBattle(main_character);
+	TutorialBattle();
 
 	utils::ReadFromFile("..\\src\\resources\\story\\prologue_prt2.txt", main_character);
 

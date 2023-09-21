@@ -2,7 +2,7 @@
 #include "../utils/utils.h"
 #include <iostream>
 
-void TutorialBattle(MainCharacterSharedPtr main_character)
+void TutorialBattle()
 {
 	std::cout << "Battle starts!" << std::endl;
 	utils::ClearScreen();

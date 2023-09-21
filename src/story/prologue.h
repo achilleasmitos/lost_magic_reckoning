@@ -1,5 +1,5 @@
 #pragma once
-#include "../utils/utils.h"
+
 #include "../creature/main_character/main_character.h"
 #include "../creature/main_character/main_character_prototypes.h"
 
