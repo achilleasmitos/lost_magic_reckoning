@@ -120,6 +120,7 @@ void TutorialBattle()
 	std::cout << "The main character has better AC than the attack of the "
 				 "Minotaur, Minotaur misses!";
 	std::cout << std::endl;
+	std::cout << std::endl;
 
 	std::cout << "Please select the flee option:" << std::endl;
 	std::cout << "1. Attack" << std::endl;
