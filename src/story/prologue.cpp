@@ -1,7 +1,6 @@
 #include "./prologue.h"
 #include "../utils/utils.h"
-#include "../battle/battle.h"
-#include "../creature/creature.h"
+#include "../battle/tutorial_battle.h"
 
 void Prologue(MainCharacterSharedPtr main_character)
 {
@@ -10,7 +9,11 @@ void Prologue(MainCharacterSharedPtr main_character)
 		"exploration");
 	utils::HandleSound(utils::SoundOperations::Play, "exploration repeat");
 
-	utils::ReadFromFile("..\\src\\resources\\story\\prologue.txt", main_character);
+	utils::ReadFromFile("..\\src\\resources\\story\\intro.txt", main_character);
+
+	TutorialBattle();
+
+	utils::ReadFromFile("..\\src\\resources\\story\\forgotten_hero.txt", main_character);
 
 	utils::HandleSound(utils::SoundOperations::Close, "exploration");
 
