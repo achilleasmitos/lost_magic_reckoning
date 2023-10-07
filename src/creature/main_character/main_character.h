@@ -1,5 +1,8 @@
 #pragma once
+
 #include "../creature.h"
+#include "main_character_race_class/main_character_race_class.h"
+
 #include <string>
 
 class MainCharacter : public Creature
@@ -31,16 +34,16 @@ public:
 	std::string get_name() const;
 	void set_name(std::string name);
 
-	std::string get_class() const;
+	MainCharacterClass get_class() const;
 	void set_class(std::string player_class);
 
-	std::string get_race() const;
+	MainCharacterRace get_race() const;
 	void set_race(std::string player_race);
 
 private:
 	std::string m_name;
-	std::string m_class;
-	std::string m_race;
+	MainCharacterClass m_class;
+	MainCharacterRace m_race;
 
 	/**
 	 * @brief A function that checks if the given string consists only of letters and whitespaces.
