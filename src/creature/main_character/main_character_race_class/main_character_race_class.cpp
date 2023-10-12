@@ -15,16 +15,16 @@ std::string main_character_race::MCRaceToString(main_character_race::MCRace play
 	switch (player_race)
 	{
 		case main_character_race::MCRace::DwarfHill:
-			return "Dwarf (Hill)";
+			return "Hill Dwarf";
 			break;
 		case main_character_race::MCRace::DwarfMountain:
-			return "Dwarf (Mountain)";
+			return "Mountain Dwarf";
 			break;
 		case main_character_race::MCRace::ElfHigh:
-			return "Elf (High)";
+			return "High Elf";
 			break;
 		case main_character_race::MCRace::ElfWood:
-			return "Elf (Wood)";
+			return "Wood Elf";
 			break;
 		case main_character_race::MCRace::Human:
 			return "Human";
