@@ -1,7 +1,6 @@
 #pragma once
 
 #include "../../creature/main_character/main_character.h"
-#include "../../creature/main_character/main_character_prototypes.h"
 
 #include <fstream>
 #include <functional>
@@ -22,5 +21,5 @@ namespace utils
 void HandleBattleCmd(std::ifstream& source_file,
 	std::string& text,
 	const std::function<bool()>& cmd_begins_ends,
-	MainCharacterSharedPtr main_character);
+	MainCharacter& main_character);
 } // namespace utils

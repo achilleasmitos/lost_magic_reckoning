@@ -47,7 +47,7 @@ MainCharacter::MainCharacter(std::string name,
 	}
 }
 
-std::string MainCharacter::get_name() { return m_name; }
+std::string MainCharacter::get_name() const { return m_name; }
 
 void MainCharacter::set_name(std::string name)
 {
@@ -58,13 +58,13 @@ void MainCharacter::set_name(std::string name)
 	}
 }
 
-std::string MainCharacter::get_class() { return m_class; }
+std::string MainCharacter::get_class() const { return m_class; }
 void MainCharacter::set_class(std::string player_class)
 {
 	m_class = player_class;
 }
 
-std::string MainCharacter::get_race() { return m_race; }
+std::string MainCharacter::get_race() const { return m_race; }
 void MainCharacter::set_race(std::string player_race) { m_race = player_race; }
 
 bool MainCharacter::CheckForAlphaOrWhitespace(std::string string)

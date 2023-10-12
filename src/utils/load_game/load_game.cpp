@@ -1,6 +1,5 @@
 #include "load_game.h"
 #include "../utils.h"
-#include "../../creature/main_character/main_character.h"
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -13,7 +12,7 @@ using GameStateMap = std::unordered_map<std::string, std::string>;
  * (like global settings, main character stats etc) with the values
  * gotten from the game_state map.
  */
-void ConvertSaveToState(GameStateMap& game_state, MainCharacterSharedPtr main_character)
+void ConvertSaveToState(GameStateMap& game_state, MainCharacter& main_character)
 {
 	// Update the global variables from the derived game state
 	/**
@@ -57,12 +56,12 @@ void ConvertSaveToState(GameStateMap& game_state, MainCharacterSharedPtr main_ch
 	 * IMPORTANT!!!
 	 * Keep the keys defined here up-to-date with those in @see save_game.cpp
 	 */
-	main_character->set_name(game_state["mc_name"]);
-	main_character->set_race(game_state["mc_race"]);
-	main_character->set_class(game_state["mc_class"]);
-	main_character->set_hp(std::stoi(game_state["mc_hp"]));
-	main_character->set_ac(std::stoi(game_state["mc_ac"]));
-	main_character->set_speed(std::stoi(game_state["mc_speed"]));
+	main_character.set_name(game_state["mc_name"]);
+	main_character.set_race(game_state["mc_race"]);
+	main_character.set_class(game_state["mc_class"]);
+	main_character.set_hp(std::stoi(game_state["mc_hp"]));
+	main_character.set_ac(std::stoi(game_state["mc_ac"]));
+	main_character.set_speed(std::stoi(game_state["mc_speed"]));
 
 	std::string mc_ability_score_names[] = {"mc_strength",
 		"mc_dexterity",
@@ -74,12 +73,12 @@ void ConvertSaveToState(GameStateMap& game_state, MainCharacterSharedPtr main_ch
 		sizeof(mc_ability_score_names) / sizeof(mc_ability_score_names[0]);
 	for (int i = 0; i < mc_ability_scores_length; i++)
 	{
-		main_character->set_ability_score(i,
+		main_character.set_ability_score(i,
 			std::stoi(game_state[mc_ability_score_names[i]]));
 	}
 }
 
-void utils::LoadGame(MainCharacterSharedPtr main_character)
+void utils::LoadGame(MainCharacter& main_character)
 {
 	// Create the game_state map from the save file
 	GameStateMap game_state = utils::ReadFromJSON("save_file.json");

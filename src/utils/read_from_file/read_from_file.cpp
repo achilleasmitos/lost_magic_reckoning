@@ -7,7 +7,7 @@
 #include <iostream>
 #include <fstream>
 
-void utils::ReadFromFile(std::string file_path, MainCharacterSharedPtr main_character)
+void utils::ReadFromFile(std::string file_path, MainCharacter& main_character)
 {
 	// Open the source file.
 	std::ifstream source_file(file_path);

@@ -40,7 +40,7 @@ void Creature::PrintStats()
 	std::cout << "==============================" << std::endl;
 }
 
-int Creature::get_hp() { return m_hp; };
+int Creature::get_hp() const { return m_hp; };
 
 void Creature::set_hp(int hp)
 {
@@ -55,7 +55,7 @@ void Creature::set_hp(int hp)
 	}
 }
 
-int Creature::get_ac() { return m_ac; };
+int Creature::get_ac() const { return m_ac; };
 
 void Creature::set_ac(int ac)
 {
@@ -69,7 +69,7 @@ void Creature::set_ac(int ac)
 	}
 }
 
-int Creature::get_speed() { return m_speed; };
+int Creature::get_speed() const { return m_speed; };
 
 void Creature::set_speed(int speed)
 {
@@ -83,7 +83,7 @@ void Creature::set_speed(int speed)
 	}
 }
 
-int Creature::get_ability_score(int n)
+int Creature::get_ability_score(int n) const
 {
 	if (n > -1 && n < 6)
 	{
@@ -110,7 +110,7 @@ void Creature::set_ability_score(int ability_score, int value)
 	}
 }
 
-std::string Creature::get_creature_type() { return m_creature_type; };
+std::string Creature::get_creature_type() const { return m_creature_type; };
 
 void Creature::set_creature_type(std::string creature_type)
 {

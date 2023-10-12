@@ -7,7 +7,7 @@
 #include <string>
 #include <fstream>
 
-void StartMenu(MainCharacterSharedPtr main_character)
+void StartMenu(MainCharacter& main_character)
 {
 	std::string file_path = "save_file.json";
 
