@@ -3,6 +3,7 @@
 #include <iostream>
 
 MainCharacter::MainCharacter(std::string name)
+	: m_race(MainCharacterRace()), m_class(MainCharacterClass())
 {
 	if (CheckForAlphaOrWhitespace(name))
 	{
@@ -18,7 +19,8 @@ MainCharacter::MainCharacter(std::string name,
 	int intelligence,
 	int wisdom,
 	int charisma)
-	: Creature(strength, dexterity, constitution, intelligence, wisdom, charisma)
+	: Creature(strength, dexterity, constitution, intelligence, wisdom, charisma),
+	  m_race(MainCharacterRace()), m_class(MainCharacterClass())
 {
 	if (CheckForAlphaOrWhitespace(name))
 	{
@@ -38,7 +40,8 @@ MainCharacter::MainCharacter(std::string name,
 	int wisdom,
 	int charisma,
 	std::string creature_type)
-	: Creature(hp, ac, speed, strength, dexterity, constitution, intelligence, wisdom, charisma, creature_type)
+	: Creature(hp, ac, speed, strength, dexterity, constitution, intelligence, wisdom, charisma, creature_type),
+	  m_race(MainCharacterRace()), m_class(MainCharacterClass())
 {
 	if (CheckForAlphaOrWhitespace(name))
 	{
@@ -58,14 +61,17 @@ void MainCharacter::set_name(std::string name)
 	}
 }
 
-std::string MainCharacter::get_class() const { return m_class; }
+MainCharacterClass MainCharacter::get_class() const { return m_class; }
 void MainCharacter::set_class(std::string player_class)
 {
-	m_class = player_class;
+	m_class.set_class(player_class);
 }
 
-std::string MainCharacter::get_race() const { return m_race; }
-void MainCharacter::set_race(std::string player_race) { m_race = player_race; }
+MainCharacterRace MainCharacter::get_race() const { return m_race; }
+void MainCharacter::set_race(std::string player_race)
+{
+	m_race.set_race(player_race);
+}
 
 bool MainCharacter::CheckForAlphaOrWhitespace(std::string string)
 {

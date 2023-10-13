@@ -1,5 +1,7 @@
 #include "./create_character.h"
 #include "../utils/utils.h"
+#include "../creature/main_character/main_character_race_class/main_character_race_class.h"
+
 #include <string>
 #include <fstream>
 
@@ -104,11 +106,19 @@ void CreateCharacter(MainCharacter& main_character)
 	utils::GetUserInput(user_answer);
 	main_character.set_name(user_answer);
 
-	utils::Print({"Please give me your race: "});
+	utils::Print({"Please choose your race from the available options: "});
+	for (const auto player_race : main_character_race::AVAILABLE_MCRACES_LIST)
+	{
+		utils::Print({main_character_race::MCRaceToString(player_race)});
+	}
 	utils::GetUserInput(user_answer);
 	main_character.set_race(user_answer);
 
-	utils::Print({"Please give me your class: "});
+	utils::Print({"Please choose your class from the available options: "});
+	for (const auto player_class : main_character_class::AVAILABLE_MCCLASSES_LIST)
+	{
+		utils::Print({main_character_class::MCClassToString(player_class)});
+	}
 	utils::GetUserInput(user_answer);
 	main_character.set_class(user_answer);
 
