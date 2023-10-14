@@ -2,6 +2,7 @@
 #include "../utils/utils.h"
 #include "../creature/main_character/main_character_race_class/main_character_race_class.h"
 
+#include <algorithm>
 #include <string>
 #include <fstream>
 
@@ -23,19 +24,12 @@ bool CheckAndOverwriteSaveFile()
 		utils::Print({"A save file with an already-created character has been "
 					  "detected."});
 		utils::Print({"Do you want to continue with the character creation and "
-					  "overwrite it? (yes/no)"});
+					  "overwrite it?"});
 
-		std::string overwrite_character = "yes";
-		utils::GetUserInput(overwrite_character);
+		std::vector<std::string> const yes_or_no{"Yes", "No"};
+		int overwrite_character = utils::GetUserConstrainedChoice(yes_or_no, true);
 
-		while (overwrite_character != "yes" && overwrite_character != "no")
-		{
-			std::cout << "Your answer is invalid. Please enter either \"yes\" "
-						 "or \"no\": ";
-			utils::GetUserInput(overwrite_character);
-		}
-
-		if (overwrite_character == "no")
+		if (overwrite_character == 2)
 		{
 			return false;
 		}
@@ -55,39 +49,17 @@ bool CheckAndOverwriteSaveFile()
  * @param main_stats The stats that have been rolled
  * @param array_length The length of the array of stats still left to be placed
  */
-void SetAbilityScore(MainCharacter& main_character, int ability_score_pos, int main_stats[], int array_length)
+void SetAbilityScore(MainCharacter& main_character, int ability_score_pos, std::vector<int>& main_stats)
 {
 	std::string ability_scores[6] = {"Strength", "Dexterity", "Consitution", "Intelligence", "Wisdom", "Charisma"};
 
-	// Print the remaining scores.
-	std::cout << "Your remaining scores:" << std::endl;
-	for (int i = 0; i < array_length; i++)
-	{
-		std::cout << i + 1 << ") " << main_stats[i] << std::endl;
-	}
-
-	int stat_choice = 0;
-
 	// Ask for user input.
-	utils::Print({"Which stat would you like for your " + ability_scores[ability_score_pos] +
-		"? (1-" + std::to_string(array_length) + ")"});
-	utils::GetUserInput(stat_choice);
-
-	// Check for valid input, and set the appropriate ability score.
-	while (stat_choice < 1 || stat_choice > array_length)
-	{
-		std::cout << "Sorry, that is an invalid number. Please give me an "
-					 "intger\nbetween 1 and "
-				  << array_length << ": ";
-		utils::GetUserInput(stat_choice);
-	}
+	utils::Print({"Which stat would you like for your " +
+		ability_scores[ability_score_pos] + "?"});
+	int stat_choice = utils::GetUserConstrainedChoice(main_stats);
 	main_character.set_ability_score(ability_score_pos, main_stats[stat_choice - 1]);
 
-	// Shift to the left the stats lying right of the chosen one.
-	for (int i = stat_choice - 1; i < array_length - 1; i++)
-	{
-		main_stats[i] = main_stats[i + 1];
-	}
+	main_stats.erase(main_stats.begin() + stat_choice - 1);
 }
 
 void CreateCharacter(MainCharacter& main_character)
@@ -101,29 +73,41 @@ void CreateCharacter(MainCharacter& main_character)
 
 	// Begin the actual character creation.
 	std::string user_answer;
+	int user_choice;
 
 	utils::Print({"Please give me your name: "});
-	utils::GetUserInput(user_answer);
+	utils::GetUserFreeChoice(user_answer);
 	main_character.set_name(user_answer);
 
-	utils::Print({"Please choose your race from the available options: "});
-	for (const auto player_race : main_character_race::AVAILABLE_MCRACES_LIST)
+	utils::Print({"Please choose your race from the available options."});
+	int options_size = main_character_race::AVAILABLE_MCRACES_LIST.size();
+	std::vector<std::string> main_character_race_options(options_size, "");
+	int iter = 0;
+	for (const auto& mc_race : main_character_race::AVAILABLE_MCRACES_LIST)
 	{
-		utils::Print({main_character_race::MCRaceToString(player_race)});
+		main_character_race_options[iter] = main_character_race::MCRaceToString(mc_race);
+		iter++;
 	}
-	utils::GetUserInput(user_answer);
+	user_choice = utils::GetUserConstrainedChoice(main_character_race_options);
+	user_answer = main_character_race_options[user_choice - 1];
 	main_character.set_race(user_answer);
 
-	utils::Print({"Please choose your class from the available options: "});
-	for (const auto player_class : main_character_class::AVAILABLE_MCCLASSES_LIST)
+	utils::Print({"Please choose your class from the available options."});
+	options_size = main_character_class::AVAILABLE_MCCLASSES_LIST.size();
+	std::vector<std::string> main_character_class_options(options_size, "");
+	iter = 0;
+	for (const auto& mc_class : main_character_class::AVAILABLE_MCCLASSES_LIST)
 	{
-		utils::Print({main_character_class::MCClassToString(player_class)});
+		main_character_class_options[iter] =
+			main_character_class::MCClassToString(mc_class);
+		iter++;
 	}
-	utils::GetUserInput(user_answer);
+	user_choice = utils::GetUserConstrainedChoice(main_character_class_options);
+	user_answer = main_character_class_options[user_choice - 1];
 	main_character.set_class(user_answer);
 
 	// Roll the main stats, ala 4d6-drop-lowest style.
-	int main_stats[6];
+	std::vector<int> main_stats(6, 0);
 	for (int i = 0; i < 6; i++)
 	{
 		int rolls[4];
@@ -153,8 +137,8 @@ void CreateCharacter(MainCharacter& main_character)
 	}
 	std::cout << main_stats[5] << std::endl; // Special printing for the last abilty score.
 
-	for (int i = 0; i < 6; i++)
+	for (int ability_score_pos = 0; ability_score_pos < 6; ability_score_pos++)
 	{
-		SetAbilityScore(main_character, i, main_stats, 6 - i);
+		SetAbilityScore(main_character, ability_score_pos, main_stats);
 	}
 }

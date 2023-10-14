@@ -21,19 +21,14 @@ void StartMenu(MainCharacter& main_character)
 		{
 			utils::ClearScreen();
 
-			std::cout << "Please select an option:" << std::endl;
-			std::cout << "1. Start Game" << std::endl;
-			std::cout << "2. Continue Game" << std::endl;
-			std::cout << "3. Settings" << std::endl;
-			std::cout << "4. Quit" << std::endl;
-
-			utils::GetUserInput(main_menu_choice);
-
-			while (main_menu_choice < 1 || main_menu_choice > 4)
-			{
-				std::cout << "Invalid choice! Please choose again: " << std::endl;
-				utils::GetUserInput(main_menu_choice);
-			}
+			std::cout << "Please select an option from the main menu.\n";
+			std::vector<std::string> main_menu_options_with_continue{
+				"Start Game",
+				"Continue Game",
+				"Settings",
+				"Quit"};
+			main_menu_choice =
+				utils::GetUserConstrainedChoice(main_menu_options_with_continue);
 
 			switch (main_menu_choice)
 			{
@@ -63,18 +58,9 @@ void StartMenu(MainCharacter& main_character)
 		{
 			utils::ClearScreen();
 
-			std::cout << "Please select an option:" << std::endl;
-			std::cout << "1. Start Game" << std::endl;
-			std::cout << "2. Settings" << std::endl;
-			std::cout << "3. Quit" << std::endl;
-
-			utils::GetUserInput(main_menu_choice);
-
-			while (main_menu_choice < 1 || main_menu_choice > 3)
-			{
-				std::cout << "Invalid choice! Please choose again: " << std::endl;
-				utils::GetUserInput(main_menu_choice);
-			}
+			std::cout << "Please select an option from the main menu.\n";
+			std::vector<std::string> main_menu_options{"Start Game", "Settings", "Quit"};
+			main_menu_choice = utils::GetUserConstrainedChoice(main_menu_options);
 
 			switch (main_menu_choice)
 			{

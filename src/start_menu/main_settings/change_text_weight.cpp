@@ -12,13 +12,13 @@ void ChangeTextWeight()
 	std::cout << "5. Bold" << std::endl;
 
 	int text_weight_choice = 0;
-	utils::GetUserInput(text_weight_choice);
+	utils::GetUserFreeChoice(text_weight_choice);
 
 	while (text_weight_choice < 1 || text_weight_choice > 5)
 	{
 		std::cout << "Sorry, this option is not supported yet.\nPlease choose "
-					 "one of the options provided: ";
-		utils::GetUserInput(text_weight_choice);
+					 "one of the options provided.\n";
+		utils::GetUserFreeChoice(text_weight_choice);
 	}
 
 	switch (text_weight_choice)

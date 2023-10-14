@@ -46,12 +46,12 @@ void TutorialBattle()
 	std::cout << "2. Dodge" << std::endl;
 	std::cout << "3. Flee" << std::endl;
 
-	utils::GetUserInput(tutorial_choice);
+	utils::GetUserFreeChoice(tutorial_choice);
 	std::cout << std::endl;
 	while (tutorial_choice != 1)
 	{
 		std::cout << "Invalid choice! Please choose again: " << std::endl;
-		utils::GetUserInput(tutorial_choice);
+		utils::GetUserFreeChoice(tutorial_choice);
 	}
 
 	std::cout << "Main character attacks!" << std::endl;
@@ -73,12 +73,12 @@ void TutorialBattle()
 	std::cout << "2. Dodge" << std::endl;
 	std::cout << "3. Flee" << std::endl;
 
-	utils::GetUserInput(tutorial_choice);
+	utils::GetUserFreeChoice(tutorial_choice);
 	std::cout << std::endl;
 	while (tutorial_choice != 1)
 	{
 		std::cout << "Invalid choice! Please choose again: " << std::endl;
-		utils::GetUserInput(tutorial_choice);
+		utils::GetUserFreeChoice(tutorial_choice);
 	}
 	std::cout << "Main character attacks!" << std::endl;
 	std::cout
@@ -104,12 +104,12 @@ void TutorialBattle()
 	std::cout << "2. Dodge" << std::endl;
 	std::cout << "3. Flee" << std::endl;
 
-	utils::GetUserInput(tutorial_choice);
+	utils::GetUserFreeChoice(tutorial_choice);
 	std::cout << std::endl;
 	while (tutorial_choice != 2)
 	{
 		std::cout << "Invalid choice! Please choose again: " << std::endl;
-		utils::GetUserInput(tutorial_choice);
+		utils::GetUserFreeChoice(tutorial_choice);
 	}
 
 	std::cout << "Main character takes a dodge action! The enemy has "
@@ -127,12 +127,12 @@ void TutorialBattle()
 	std::cout << "2. Dodge" << std::endl;
 	std::cout << "3. Flee" << std::endl;
 
-	utils::GetUserInput(tutorial_choice);
+	utils::GetUserFreeChoice(tutorial_choice);
 	std::cout << std::endl;
 	while (tutorial_choice != 3)
 	{
 		std::cout << "Invalid choice! Please choose again: " << std::endl;
-		utils::GetUserInput(tutorial_choice);
+		utils::GetUserFreeChoice(tutorial_choice);
 	}
 	std::cout << "You look around to find an opening to flee, but find none in "
 				 "this locked up arena."
