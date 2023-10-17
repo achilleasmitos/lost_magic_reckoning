@@ -31,6 +31,13 @@
                 "${workspaceFolder}\\src\\utils\\user_choice\\helpers\\*.cpp",
                 "${workspaceFolder}\\src\\utils\\user_choice\\reserved_words\\*.cpp",
                 "-lWinmm",
+                "-Wall",
+                "-Wextra",
+                "-Wpedantic",
+                "-pedantic-errors",
+                "-Werror",
+                "-Wmissing-declarations",
+                "-std=c++20",
                 "-o",
                 "${workspaceFolder}\\build\\text-adventure.exe"
             ],

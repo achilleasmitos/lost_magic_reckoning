@@ -1,3 +1,4 @@
+#include "foe_attack.h"
 #include "main_character_attack.h"
 #include "../utils/utils.h"
 

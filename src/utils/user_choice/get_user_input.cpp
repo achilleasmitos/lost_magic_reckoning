@@ -7,7 +7,7 @@
  *
  * @param input The user input (pass-by-reference)
  */
-void TrimWhitespaceFromStartEnd(std::string& input)
+static void TrimWhitespaceFromStartEnd(std::string& input)
 {
 	const std::string WHITESPACE = " \n\r\t\f\v";
 
@@ -38,7 +38,7 @@ void TrimWhitespaceFromStartEnd(std::string& input)
  * @param input The user input (pass-by-reference)
  * @return True, only if all checks passed
  */
-bool CheckInputValidity(std::string& input)
+static bool CheckInputValidity(std::string& input)
 {
 	// Check that the string is not empty
 	if (input.length() == 0)

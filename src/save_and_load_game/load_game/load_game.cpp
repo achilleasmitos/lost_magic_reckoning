@@ -13,7 +13,7 @@ using GameStateMap = std::unordered_map<std::string, std::string>;
  * (like global settings, main character stats etc) with the values
  * gotten from the game_state map.
  */
-void ConvertSaveToState(GameStateMap& game_state, MainCharacter& main_character)
+static void ConvertSaveToState(GameStateMap& game_state, MainCharacter& main_character)
 {
 	// Update the global variables from the derived game state
 	/**
@@ -29,18 +29,22 @@ void ConvertSaveToState(GameStateMap& game_state, MainCharacter& main_character)
 		case 100:
 			{
 				utils::g_text_weight = utils::FontWeightValues::Light;
+				break;
 			}
 		case 200:
 			{
 				utils::g_text_weight = utils::FontWeightValues::SemiLight;
+				break;
 			}
 		case 600:
 			{
 				utils::g_text_weight = utils::FontWeightValues::SemiBold;
+				break;
 			}
 		case 800:
 			{
 				utils::g_text_weight = utils::FontWeightValues::Bold;
+				break;
 			}
 		case 400:
 		default:
