@@ -44,12 +44,4 @@ private:
 	std::string m_name;
 	MainCharacterClass m_class;
 	MainCharacterRace m_race;
-
-	/**
-	 * @brief A function that checks if the given string consists only of letters and whitespaces.
-	 *
-	 * @param string
-	 * @return true if the above condition holds, false otherwise.
-	 */
-	bool CheckForAlphaOrWhitespace(std::string string);
 };
