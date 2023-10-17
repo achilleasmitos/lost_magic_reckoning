@@ -1,5 +1,6 @@
-#include "./clear_screen.h"
-#include "../print/print.h"
+#include "clear_screen.h"
+#include "print.h"
+
 #include <iostream>
 
 void utils::ClearScreen()

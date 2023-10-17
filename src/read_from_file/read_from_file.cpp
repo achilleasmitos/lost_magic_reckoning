@@ -1,13 +1,14 @@
 #include "read_from_file.h"
-#include "./handle_battle_cmd.h"
+#include "../utils/utils.h"
+#include "handle_battle_cmd.h"
 #include "handle_custom_speed_text_cmd.h"
 #include "handle_sleep_for_cmd.h"
 #include "handle_text_cmd.h"
-#include "../print/print.h"
+
 #include <iostream>
 #include <fstream>
 
-void utils::ReadFromFile(std::string file_path, MainCharacter& main_character)
+void ReadFromFile(std::string file_path, MainCharacter& main_character)
 {
 	// Open the source file.
 	std::ifstream source_file(file_path);
@@ -29,19 +30,19 @@ void utils::ReadFromFile(std::string file_path, MainCharacter& main_character)
 			// and call the appropriate function to handle it.
 			if (text == "TEXT")
 			{
-				utils::HandleTextCmd(source_file, text, cmd_begins_ends);
+				HandleTextCmd(source_file, text, cmd_begins_ends);
 			}
 			else if (text == "CUSTOM_SPEED_TEXT")
 			{
-				utils::HandleCustomSpeedTextCmd(source_file, text, cmd_begins_ends);
+				HandleCustomSpeedTextCmd(source_file, text, cmd_begins_ends);
 			}
 			else if (text == "SLEEP_FOR")
 			{
-				utils::HandleSleepForCmd(source_file, text);
+				HandleSleepForCmd(source_file, text);
 			}
 			else if (text == "BATTLE")
 			{
-				utils::HandleBattleCmd(source_file, text, cmd_begins_ends, main_character);
+				HandleBattleCmd(source_file, text, cmd_begins_ends, main_character);
 			}
 			else
 			{

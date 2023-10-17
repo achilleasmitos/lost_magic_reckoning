@@ -1,16 +1,13 @@
 #pragma once
-#include "./clear_screen/clear_screen.h"
-#include "./customize_text/customize_text.h"
-#include "./user_choice/get_user_constrained_choice.h"
-#include "./user_choice/get_user_free_choice.h"
-#include "./user_choice/get_user_input.h"
-#include "./handle_sound/handle_sound.h"
-#include "./JSON_interaction/JSON_interaction.h"
-#include "./load_game/load_game.h"
-#include "./print/print.h"
-#include "./read_from_file/read_from_file.h"
-#include "./roll_dice/roll_dice.h"
-#include "./save_game/save_game.h"
+#include "customize_text/customize_text.h"
+#include "user_choice/get_user_constrained_choice.h"
+#include "user_choice/get_user_free_choice.h"
+#include "user_choice/get_user_input.h"
+#include "handle_sound/handle_sound.h"
+#include "JSON_interaction/JSON_interaction.h"
+#include "print_and_clear_screen/clear_screen.h"
+#include "print_and_clear_screen/print.h"
+#include "roll_dice/roll_dice.h"
 
 namespace utils
 {

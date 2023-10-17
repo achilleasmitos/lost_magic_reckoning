@@ -1,9 +1,10 @@
 #include "handle_sleep_for_cmd.h"
+
+#include <chrono>
 #include <iostream>
 #include <thread>
-#include <chrono>
 
-void utils::HandleSleepForCmd(std::ifstream& source_file, std::string& text)
+void HandleSleepForCmd(std::ifstream& source_file, std::string& text)
 {
 	std::getline(source_file, text);
 

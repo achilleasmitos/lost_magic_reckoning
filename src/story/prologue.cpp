@@ -1,6 +1,8 @@
 #include "./prologue.h"
 #include "../utils/utils.h"
 #include "../battle/tutorial_battle.h"
+#include "../read_from_file/read_from_file.h"
+#include "../save_and_load_game/save_game/save_game.h"
 
 void Prologue(MainCharacter& main_character)
 {
@@ -9,15 +11,15 @@ void Prologue(MainCharacter& main_character)
 		"exploration");
 	utils::HandleSound(utils::SoundOperations::Play, "exploration repeat");
 
-	utils::ReadFromFile("..\\src\\resources\\story\\intro.txt", main_character);
+	ReadFromFile("..\\src\\resources\\story\\intro.txt", main_character);
 
 	TutorialBattle();
 
-	utils::ReadFromFile("..\\src\\resources\\story\\forgotten_hero.txt", main_character);
+	ReadFromFile("..\\src\\resources\\story\\forgotten_hero.txt", main_character);
 
 	utils::HandleSound(utils::SoundOperations::Close, "exploration");
 
-	utils::SaveGame(main_character);
+	SaveGame(main_character);
 
 	system("pause");
 }

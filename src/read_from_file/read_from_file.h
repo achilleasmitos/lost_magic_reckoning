@@ -1,11 +1,9 @@
 #pragma once
 
-#include "../../creature/main_character/main_character.h"
+#include "../creature/main_character/main_character.h"
 
 #include <string>
 
-namespace utils
-{
 /**
  * @brief This function reads from a supplied text file line-by-line and prints
  * to the console. It checks for certain types of reserved characters to
@@ -15,4 +13,3 @@ namespace utils
  * @param main_character The main character variable
  */
 void ReadFromFile(std::string file_path, MainCharacter& main_character);
-} // namespace utils
