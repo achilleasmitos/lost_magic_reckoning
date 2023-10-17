@@ -1,7 +1,9 @@
 #pragma once
 #include "./clear_screen/clear_screen.h"
 #include "./customize_text/customize_text.h"
-#include "./get_user_input/get_user_input.h"
+#include "./user_choice/get_user_constrained_choice.h"
+#include "./user_choice/get_user_free_choice.h"
+#include "./user_choice/get_user_input.h"
 #include "./handle_sound/handle_sound.h"
 #include "./JSON_interaction/JSON_interaction.h"
 #include "./load_game/load_game.h"

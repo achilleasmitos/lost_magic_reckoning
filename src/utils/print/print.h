@@ -1,4 +1,7 @@
+#pragma once
+
 #include <string>
+#include <vector>
 
 namespace utils
 {
@@ -11,5 +14,5 @@ extern int g_sleep_for_ms;
  * @param list A comma separated list of std::strings to std::cout
  * @param sleep_for_ms (optional) The amount of milliseconds to sleep between characters.
  */
-void Print(std::initializer_list<std::string> list, int sleep_for_ms = g_sleep_for_ms);
+void Print(std::vector<std::string> const& list, int sleep_for_ms = g_sleep_for_ms);
 } // namespace utils

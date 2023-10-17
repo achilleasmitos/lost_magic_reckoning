@@ -9,24 +9,16 @@
 
 void MainSettings()
 {
-	std::cout << "Opening settings..." << std::endl;
-	std::cout << "Choose the setting that you want to change:" << std::endl;
-	std::cout << "1. Text Size" << std::endl;
-	std::cout << "2. Text Weight" << std::endl;
-	std::cout << "3. Text Font" << std::endl;
-	std::cout << "4. Text Speed" << std::endl;
-	std::cout << "5. Sound Volume" << std::endl;
+	std::cout << "Opening settings...\n";
+	std::cout << "Choose the setting that you want to change.\n";
+	std::vector<std::string> main_settings_options = {"Text Size",
+		"Text Weight",
+		"Text Font",
+		"Text Speed",
+		"Sound Volume"};
+	int main_settings_choice = utils::GetUserConstrainedChoice(main_settings_options);
 
-	int main_settings_shoice;
-	utils::GetUserInput(main_settings_shoice);
-
-	while (main_settings_shoice < 1 || main_settings_shoice > 5)
-	{
-		std::cout << "Invalid choice!\nPlease choose an option from above: ";
-		utils::GetUserInput(main_settings_shoice);
-	}
-
-	switch (main_settings_shoice)
+	switch (main_settings_choice)
 	{
 		case 1:
 			{

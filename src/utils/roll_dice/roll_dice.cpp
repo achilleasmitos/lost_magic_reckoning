@@ -1,4 +1,4 @@
-#include "./roll_dice.h"
+#include "roll_dice.h"
 #include <iostream>
 
 int utils::RollDice(int number_of_dice, int number_of_faces)
@@ -13,11 +13,11 @@ int utils::RollDice(int number_of_dice, int number_of_faces)
 	return sum;
 }
 
-int utils::RollDice(std::initializer_list<std::string> list)
+int utils::RollDice(std::vector<std::string> const& list)
 {
 	int sum{0};
 
-	for (auto dice_group : list)
+	for (const auto dice_group : list)
 	{
 		try
 		{

@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <vector>
 
 namespace utils
 {
@@ -21,7 +22,7 @@ int RollDice(int number_of_dice, int number_of_faces);
  * @param list A comma separated list of strings in the form "5d10".
  * @return The total sum of the random dice rolls. If an error occurs, -1 is returned instead.
  */
-int RollDice(std::initializer_list<std::string> list);
+int RollDice(std::vector<std::string> const& list);
 
 /**
  * @brief Rolls 2d20 with advantage.
