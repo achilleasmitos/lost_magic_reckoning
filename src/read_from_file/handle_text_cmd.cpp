@@ -1,7 +1,7 @@
 #include "handle_text_cmd.h"
-#include "../print/print.h"
+#include "../utils/utils.h"
 
-void utils::HandleTextCmd(std::ifstream& source_file,
+void HandleTextCmd(std::ifstream& source_file,
 	std::string& text,
 	const std::function<bool()>& cmd_begins_ends)
 {

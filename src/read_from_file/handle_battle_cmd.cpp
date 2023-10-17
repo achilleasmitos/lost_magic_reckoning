@@ -1,7 +1,7 @@
-#include "./handle_battle_cmd.h"
-#include "../JSON_interaction/JSON_interaction.h"
-#include "../../battle/battle.h"
-#include "../../creature/creature.h"
+#include "handle_battle_cmd.h"
+#include "../utils/utils.h"
+#include "../battle/battle.h"
+#include "../creature/creature.h"
 
 #include <iostream>
 #include <memory>
@@ -53,7 +53,7 @@ void ReadToEndOfCmd(std::ifstream& source_file,
 	}
 }
 
-void utils::HandleBattleCmd(std::ifstream& source_file,
+void HandleBattleCmd(std::ifstream& source_file,
 	std::string& text,
 	const std::function<bool()>& cmd_begins_ends,
 	MainCharacter& main_character)

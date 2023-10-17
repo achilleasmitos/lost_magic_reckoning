@@ -1,10 +1,9 @@
 #pragma once
-#include <fstream>
-#include <string>
-#include <functional>
 
-namespace utils
-{
+#include <fstream>
+#include <functional>
+#include <string>
+
 /**
  * @brief This function handles the case for the "TEXT" command from
  * `ReadFromFile()`. It simply reads the source file and prints it line-by-line
@@ -17,4 +16,3 @@ namespace utils
 void HandleTextCmd(std::ifstream& source_file,
 	std::string& text,
 	const std::function<bool()>& cmd_begins_ends);
-} // namespace utils

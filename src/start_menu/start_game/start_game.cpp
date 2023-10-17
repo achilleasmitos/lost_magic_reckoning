@@ -1,6 +1,7 @@
 #include "start_game.h"
 #include "../../utils/utils.h"
 #include "../../create_character/create_character.h"
+#include "../../save_and_load_game/save_game/save_game.h"
 #include "../../story/prologue.h"
 
 void StartGame(MainCharacter& main_character)
@@ -17,7 +18,7 @@ void StartGame(MainCharacter& main_character)
 
 	CreateCharacter(main_character);
 
-	utils::SaveGame(main_character);
+	SaveGame(main_character);
 
 	utils::ClearScreen();
 

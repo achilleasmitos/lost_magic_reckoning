@@ -1,7 +1,7 @@
 #include "handle_custom_speed_text_cmd.h"
-#include "../print/print.h"
+#include "../utils/utils.h"
 
-void utils::HandleCustomSpeedTextCmd(std::ifstream& source_file,
+void HandleCustomSpeedTextCmd(std::ifstream& source_file,
 	std::string& text,
 	const std::function<bool()>& cmd_begins_ends)
 {

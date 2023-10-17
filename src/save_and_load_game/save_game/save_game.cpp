@@ -1,10 +1,11 @@
 #include "save_game.h"
-#include "../utils.h"
+#include "../../utils/utils.h"
+
 #include <iostream>
 #include <fstream>
 #include <unordered_map>
 
-void utils::SaveGame(MainCharacter& main_character)
+void SaveGame(MainCharacter& main_character)
 {
 	std::unordered_map<std::string, std::string> game_state;
 

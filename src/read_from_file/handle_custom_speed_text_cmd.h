@@ -1,10 +1,9 @@
 #pragma once
-#include <fstream>
-#include <string>
-#include <functional>
 
-namespace utils
-{
+#include <fstream>
+#include <functional>
+#include <string>
+
 /**
  * @brief This function handles the case for the "CUSTOM_SPEED_TEXT" command from
  * `ReadFromFile()`. It reads the next line after the command, extracts the text speed from it,
@@ -18,4 +17,3 @@ namespace utils
 void HandleCustomSpeedTextCmd(std::ifstream& source_file,
 	std::string& text,
 	const std::function<bool()>& cmd_begins_ends);
-} // namespace utils

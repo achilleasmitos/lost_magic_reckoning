@@ -1,5 +1,6 @@
 #include "load_game.h"
-#include "../utils.h"
+#include "../../utils/utils.h"
+
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -78,7 +79,7 @@ void ConvertSaveToState(GameStateMap& game_state, MainCharacter& main_character)
 	}
 }
 
-void utils::LoadGame(MainCharacter& main_character)
+void LoadGame(MainCharacter& main_character)
 {
 	// Create the game_state map from the save file
 	GameStateMap game_state = utils::ReadFromJSON("save_file.json");

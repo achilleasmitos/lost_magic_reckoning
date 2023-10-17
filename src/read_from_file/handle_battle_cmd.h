@@ -1,13 +1,11 @@
 #pragma once
 
-#include "../../creature/main_character/main_character.h"
+#include "../creature/main_character/main_character.h"
 
 #include <fstream>
 #include <functional>
 #include <string>
 
-namespace utils
-{
 /**
  * @brief This function handles the "BATTLE" command from `ReadFromFile()`.
  * It reads the lines after the command, tries to extract the inputs to the
@@ -22,4 +20,3 @@ void HandleBattleCmd(std::ifstream& source_file,
 	std::string& text,
 	const std::function<bool()>& cmd_begins_ends,
 	MainCharacter& main_character);
-} // namespace utils
