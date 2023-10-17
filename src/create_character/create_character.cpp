@@ -72,9 +72,9 @@ void CreateCharacter(MainCharacter& main_character)
 	}
 
 	// Construct a new main character on the heap, use it, then immediately destroy it.
-	MainCharacter* new_Main_character_ptr = new MainCharacter("Player");
-	main_character = *new_Main_character_ptr;
-	delete new_Main_character_ptr;
+	MainCharacter* new_main_character_ptr = new MainCharacter("Player");
+	main_character = *new_main_character_ptr;
+	delete new_main_character_ptr;
 
 	// Begin the actual character creation.
 	std::string user_answer;

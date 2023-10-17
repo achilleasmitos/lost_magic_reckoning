@@ -4,24 +4,21 @@
 
 bool main_character_helpers::CheckForAlphaOrWhitespace(std::string string)
 {
-	bool has_digit = false;
+	bool has_invalid_char{false};
 
-	for (const auto character : string)
+	for (const auto& character : string)
 	{
 		if (!(std::isalpha(character) || character == ' '))
 		{
-			has_digit = true;
+			has_invalid_char = true;
 		}
 	}
 
-	if (has_digit)
+	if (has_invalid_char)
 	{
 		std::cout
-			<< "Sorry, your name can only contain letters and spaces...\n";
-		return false;
+			<< "Sorry, your name can only contain letters and spaces...\n\n";
 	}
-	else
-	{
-		return true;
-	}
+
+	return !has_invalid_char;
 }
