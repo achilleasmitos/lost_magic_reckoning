@@ -1,3 +1,8 @@
+@@@SOUND
+PLAY
+exploration.mp3
+@@@
+
 @@@TEXT
 A small sun ray manages to find its way through the grate that serves as your window,
 hitting your closed eyes and signaling the coming of a new morning. You slowly come to.
@@ -69,4 +74,14 @@ dark brown fur, two horns on its bull-like head, and a great battle-axe in his h
 It digs the ground twice with its left hoof, then lets out an intimidating moan
 and charges at you!
 
+@@@
+
+@@@SOUND
+CLOSE
+exploration.mp3
+@@@
+
+@@@SOUND
+PLAY
+boss_battle.mp3
 @@@

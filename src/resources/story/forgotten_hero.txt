@@ -1,3 +1,13 @@
+@@@SOUND
+CLOSE
+boss_battle.mp3
+@@@
+
+@@@SOUND
+PLAY
+exploration.mp3
+@@@
+
 @@@TEXT
 The last strike sends you flying backwards, and you find yourself lying
 with your back on the dirt floor. Your head is aching as blood streams down your face,
@@ -54,6 +64,11 @@ upon you. Change of plans then".
 
 @@@SLEEP_FOR
 2000
+@@@
+
+@@@SOUND
+CLOSE
+exploration.mp3
 @@@
 
 @@@CUSTOM_SPEED_TEXT

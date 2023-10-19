@@ -20,6 +20,7 @@ At the end of this file you can find a list with all the available commands, wha
 | BATTLE            | Starts a battle between the main character and the foes given as parameters. The names of the foes have to match with the names of their stat files in 'src/resources/creatures'|
 | CUSTOM_SPEED_TEXT | Starts a block of text that will be rendered on the console with the text speed (non-negative integer) defined on the second line of the block|
 | SLEEP_FOR         | Contains one line (with a non-negative integer) that instructs the program to sleep for a certain amount of milliseconds|
+| SOUND				| Handles the background music track. Can start/resume a track, pause it, and close it. The command accepts two arguments, each in its own line. The first is one of "PLAY", "PAUSE", "CLOSE". The second is the filename inside 'resources/music' that is meant to be handled. |
 | TEXT              | Starts a block of text that will be rendered on the console with default text speed|
 
 ## Examples
@@ -89,6 +90,18 @@ goblin
 * The foes list starts with a '{' and ends with a '}', with each foe argument on its own line
 * Make sure to keep the names of the foes here with the names of their stat files in 'src/resources/creatures' consistent, otherwise the command will fail!
 * Always try to keep in mind the difficulty of the constructed battle; too many easy or too many hard battles can get annoying pretty quickly.
+
+#### Pause an already playing track:
+```
+@@@SOUND
+PAUSE
+exploration.mp3
+@@@
+```
+##### Tips:
+* Make sure to match the filename that you want to handle with this command, including the extension (.mp3)
+* Pausing then playing the same track again resumes the track. Closing and then playing starts the track over from the beginning
+* Always close tracks that you won't be using for quite some time. This helps save up memory as well
 
 ## Troubleshooting:
 If the program does not display the desired behavior, it is good to read the output as it often contains explanations pertaining to what went wrong.

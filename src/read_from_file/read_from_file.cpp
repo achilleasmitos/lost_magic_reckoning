@@ -3,6 +3,7 @@
 #include "handle_battle_cmd.h"
 #include "handle_custom_speed_text_cmd.h"
 #include "handle_sleep_for_cmd.h"
+#include "handle_sound_cmd.h"
 #include "handle_text_cmd.h"
 
 #include <iostream>
@@ -43,6 +44,10 @@ void ReadFromFile(std::string file_path, MainCharacter& main_character)
 			else if (text == "BATTLE")
 			{
 				HandleBattleCmd(source_file, text, cmd_begins_ends, main_character);
+			}
+			else if (text == "SOUND")
+			{
+				HandleSoundCmd(source_file, text);
 			}
 			else
 			{
