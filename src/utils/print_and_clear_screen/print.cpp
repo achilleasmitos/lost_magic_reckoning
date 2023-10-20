@@ -7,7 +7,7 @@ int utils::g_sleep_for_ms = 50;
 
 void utils::Print(std::vector<std::string> const& list, int sleep_for_ms)
 {
-	for (const auto string : list)
+	for (const auto& string : list)
 	{
 		for (const auto character : string)
 		{

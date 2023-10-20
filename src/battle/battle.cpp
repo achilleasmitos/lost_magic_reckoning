@@ -13,7 +13,7 @@ void Battle(MainCharacter& main_character, std::vector<Creature>& foes)
 
 	MainCharacter* main_character_ptr = &main_character;
 	std::vector<Creature*> foes_ptrs;
-	for (int i = 0; i < foes.size(); i++)
+	for (size_t i = 0; i < foes.size(); i++)
 	{
 		foes_ptrs.push_back(&(foes[i]));
 	}
@@ -60,7 +60,7 @@ void Battle(MainCharacter& main_character, std::vector<Creature>& foes)
 	const auto printCombatants = [&combatants]()
 	{
 		std::cout << "=========================\n";
-		for (const auto combatant : combatants)
+		for (const auto& combatant : combatants)
 		{
 			std::cout << combatant.first->get_creature_type() << ": Initiative "
 					  << combatant.second << " , HP "
@@ -75,7 +75,7 @@ void Battle(MainCharacter& main_character, std::vector<Creature>& foes)
 	while (main_character_ptr->get_hp() > 0 && combatants.size() > 1)
 	{
 		// Go down the initiative order (descending) one by one and act
-		for (int i = 0; i < combatants.size(); ++i)
+		for (size_t i = 0; i < combatants.size(); ++i)
 		{
 			if (combatants[i].first == main_character_ptr)
 			{

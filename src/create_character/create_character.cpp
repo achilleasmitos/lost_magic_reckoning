@@ -14,7 +14,7 @@
  * @return true If the character creation should continue
  * @return false If the character creation should be aborted
  */
-bool CheckAndOverwriteSaveFile()
+static bool CheckAndOverwriteSaveFile()
 {
 	std::string save_file_path = "save_file.json";
 	std::ifstream save_file(save_file_path);
@@ -49,7 +49,9 @@ bool CheckAndOverwriteSaveFile()
  * @param main_stats The stats that have been rolled
  * @param array_length The length of the array of stats still left to be placed
  */
-void SetAbilityScore(MainCharacter& main_character, int ability_score_pos, std::vector<int>& main_stats)
+static void SetAbilityScore(MainCharacter& main_character,
+	int ability_score_pos,
+	std::vector<int>& main_stats)
 {
 	std::string ability_scores[6] = {"Strength", "Dexterity", "Consitution", "Intelligence", "Wisdom", "Charisma"};
 

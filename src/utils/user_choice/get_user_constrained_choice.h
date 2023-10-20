@@ -30,6 +30,5 @@ int GetUserConstrainedChoice(std::vector<std::string> const& expected_answers,
  * @param use_strict_comparison If the comparison should ignore letter casing
  * @return The index of the matched option
  */
-int GetUserConstrainedChoice(std::vector<int> const& expected_answers,
-	bool use_strict_comparison = false);
+int GetUserConstrainedChoice(std::vector<int> const& expected_answers);
 } // namespace utils

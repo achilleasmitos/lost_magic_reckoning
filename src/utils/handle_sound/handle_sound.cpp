@@ -13,7 +13,7 @@ std::vector<std::string> utils::g_audio_list;
  * @param audio_track The alias of the audio track to change the volume of,
  * as declared during the opening of the file.
  */
-void HandleTrackVolume(std::string audio_track)
+static void HandleTrackVolume(std::string audio_track)
 {
 	std::string command = "setaudio " + audio_track + " volume to " +
 		std::to_string(utils::g_sound_volume);

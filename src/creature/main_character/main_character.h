@@ -42,6 +42,6 @@ public:
 
 private:
 	std::string m_name;
-	MainCharacterClass m_class;
 	MainCharacterRace m_race;
+	MainCharacterClass m_class;
 };

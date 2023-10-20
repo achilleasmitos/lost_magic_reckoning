@@ -100,7 +100,7 @@ int utils::GetUserConstrainedChoice(std::vector<std::string> const& expected_ans
 	return return_value;
 }
 
-int utils::GetUserConstrainedChoice(std::vector<int> const& expected_answers, bool use_strict_comparison)
+int utils::GetUserConstrainedChoice(std::vector<int> const& expected_answers)
 {
 	std::vector<std::string> stringified_expected_answers(expected_answers.size(), "");
 

@@ -11,7 +11,7 @@
  * It reads from the appropriate JSON file the stats of the creature
  * specified as `foe_name` and pushes it to the `foes` vector.
  */
-void ExtractCreatureFromFile(std::string& foe_name, std::vector<Creature>& foes)
+static void ExtractCreatureFromFile(std::string& foe_name, std::vector<Creature>& foes)
 {
 	// The resources file with the stats of the supplied foe with foe_name
 	const std::string file_path = "..\\src\\resources\\creatures\\" + foe_name + ".json";
@@ -40,7 +40,7 @@ void ExtractCreatureFromFile(std::string& foe_name, std::vector<Creature>& foes)
  * It advances the reading of the open file to the end
  * of the command. Used in error handling.
  */
-void ReadToEndOfCmd(std::ifstream& source_file,
+static void ReadToEndOfCmd(std::ifstream& source_file,
 	std::string& text,
 	const std::function<bool()>& cmd_begins_ends)
 {

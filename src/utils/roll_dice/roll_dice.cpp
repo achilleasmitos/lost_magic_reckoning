@@ -17,7 +17,7 @@ int utils::RollDice(std::vector<std::string> const& list)
 {
 	int sum{0};
 
-	for (const auto dice_group : list)
+	for (const auto& dice_group : list)
 	{
 		try
 		{
