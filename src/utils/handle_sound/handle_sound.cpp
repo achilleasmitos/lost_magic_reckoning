@@ -108,6 +108,13 @@ void utils::HandleSound(utils::SoundOperations operation, std::string file_path,
 	{
 		case utils::SoundOperations::Open: // Only the 'Open' case needs the file path
 			{
+				auto index =
+					std::find(utils::g_audio_list.begin(), utils::g_audio_list.end(), alias);
+				if (index != utils::g_audio_list.end())
+				{
+					break; // The file is already open, skip re-opening it.
+				}
+
 				// Construct a string for the desired command.
 				std::string command =
 					"open \"" + file_path + "\" type mpegvideo alias " + alias;
