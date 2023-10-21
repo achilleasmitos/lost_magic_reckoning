@@ -1,4 +1,5 @@
 #include "roll_dice.h"
+
 #include <iostream>
 
 int utils::RollDice(int number_of_dice, int number_of_faces)

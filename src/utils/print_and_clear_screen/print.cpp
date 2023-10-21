@@ -1,7 +1,8 @@
 #include "print.h"
+
+#include <chrono>
 #include <iostream>
 #include <thread>
-#include <chrono>
 
 int utils::g_sleep_for_ms = 50;
 

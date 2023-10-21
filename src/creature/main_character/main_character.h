@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../creature.h"
+#include "creature/creature.h"
 #include "main_character_race_class/main_character_race_class.h"
 
 #include <string>

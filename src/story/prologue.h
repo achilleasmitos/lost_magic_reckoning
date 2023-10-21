@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../creature/main_character/main_character.h"
+#include "creature/main_character/main_character.h"
 
 /**
  * @brief Plays the prologue chapter of the main story.

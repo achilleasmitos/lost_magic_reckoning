@@ -1,7 +1,7 @@
-#include "./prologue.h"
-#include "../battle/tutorial_battle.h"
-#include "../read_from_file/read_from_file.h"
-#include "../save_and_load_game/save_game/save_game.h"
+#include "prologue.h"
+#include "battle/tutorial_battle.h"
+#include "read_from_file/read_from_file.h"
+#include "save_and_load_game/save_game/save_game.h"
 
 void Prologue(MainCharacter& main_character)
 {

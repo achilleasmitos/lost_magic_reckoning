@@ -1,6 +1,6 @@
 #pragma once
 
-#include "./creature.h"
+#include "creature.h"
 #include <memory>
 
 using CreatureUniquePtr = std::unique_ptr<Creature>;

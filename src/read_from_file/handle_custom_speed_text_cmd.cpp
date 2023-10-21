@@ -1,5 +1,5 @@
 #include "handle_custom_speed_text_cmd.h"
-#include "../utils/utils.h"
+#include "utils/utils.h"
 
 void HandleCustomSpeedTextCmd(std::ifstream& source_file,
 	std::string& text,

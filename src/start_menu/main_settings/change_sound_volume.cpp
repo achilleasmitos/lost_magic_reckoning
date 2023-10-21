@@ -1,5 +1,6 @@
 #include "change_sound_volume.h"
-#include "../../utils/utils.h"
+#include "utils/utils.h"
+
 #include <iostream>
 
 void ChangeSoundVolume()

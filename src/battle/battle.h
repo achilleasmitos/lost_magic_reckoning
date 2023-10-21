@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../creature/creature.h"
-#include "../creature/main_character/main_character.h"
+#include "creature/creature.h"
+#include "creature/main_character/main_character.h"
 #include <vector>
 #include <memory>
 

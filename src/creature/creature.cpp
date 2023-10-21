@@ -1,4 +1,5 @@
 #include "creature.h"
+
 #include <iostream>
 #include <string>
 
