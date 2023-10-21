@@ -1,5 +1,5 @@
 #include "handle_text_cmd.h"
-#include "../utils/utils.h"
+#include "utils/utils.h"
 
 void HandleTextCmd(std::ifstream& source_file,
 	std::string& text,

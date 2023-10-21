@@ -1,7 +1,7 @@
 #include "handle_battle_cmd.h"
-#include "../utils/utils.h"
-#include "../battle/battle.h"
-#include "../creature/creature.h"
+#include "utils/utils.h"
+#include "battle/battle.h"
+#include "creature/creature.h"
 
 #include <iostream>
 #include <memory>

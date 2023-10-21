@@ -1,5 +1,6 @@
 #include "change_text_speed.h"
-#include "../../utils/utils.h"
+#include "utils/utils.h"
+
 #include <iostream>
 
 void ChangeTextSpeed()

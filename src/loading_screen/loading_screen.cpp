@@ -1,5 +1,6 @@
 #include "loading_screen.h"
-#include "../utils/utils.h"
+#include "utils/utils.h"
+
 #include <iostream>
 
 void LoadingScreen()

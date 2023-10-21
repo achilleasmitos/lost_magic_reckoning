@@ -1,6 +1,6 @@
 #pragma once
 
-#include "./main_character.h"
+#include "main_character.h"
 #include <memory>
 
 using MainCharacterUniquePtr = std::unique_ptr<MainCharacter>;

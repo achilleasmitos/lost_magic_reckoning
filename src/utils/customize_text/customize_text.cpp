@@ -1,4 +1,5 @@
 #include "customize_text.h"
+
 #include <cwchar>
 #include <windows.h>
 

@@ -1,6 +1,6 @@
-#include "./create_character.h"
-#include "../utils/utils.h"
-#include "../creature/main_character/main_character_race_class/main_character_race_class.h"
+#include "create_character.h"
+#include "utils/utils.h"
+#include "creature/main_character/main_character_race_class/main_character_race_class.h"
 
 #include <algorithm>
 #include <string>

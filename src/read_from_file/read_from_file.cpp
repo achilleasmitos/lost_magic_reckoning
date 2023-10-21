@@ -1,5 +1,5 @@
 #include "read_from_file.h"
-#include "../utils/utils.h"
+#include "utils/utils.h"
 #include "handle_battle_cmd.h"
 #include "handle_custom_speed_text_cmd.h"
 #include "handle_sleep_for_cmd.h"

@@ -1,5 +1,5 @@
 #include "save_game.h"
-#include "../../utils/utils.h"
+#include "utils/utils.h"
 
 #include <iostream>
 #include <fstream>

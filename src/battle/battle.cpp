@@ -1,5 +1,5 @@
 #include "battle.h"
-#include "../utils/utils.h"
+#include "utils/utils.h"
 #include "foe_attack.h"
 #include "main_character_attack.h"
 

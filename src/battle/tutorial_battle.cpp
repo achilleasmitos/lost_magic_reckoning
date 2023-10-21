@@ -1,5 +1,6 @@
 #include "tutorial_battle.h"
-#include "../utils/utils.h"
+#include "utils/utils.h"
+
 #include <iostream>
 
 void TutorialBattle()
