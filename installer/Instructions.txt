@@ -1,0 +1,29 @@
+END USER (PLAYER) INSTRUCTIONS
+
+Thank you for downloading our game! We hope you have fun playing it,
+so much that you will share it with your friends, and let us know about it!
+In case something is wrong with it or with the installation, don't hesitate to contact us
+via GitHub!
+
+Speaking of installation, this game has none! You have already downloaded the zip file and
+extracted it, so you are done! Feel free to open the executable and start playing.
+
+What you CAN DO:
+- You can change the contents of any file in this folder (and any subfolder), but
+keep in mind that this might affect the game in weird ways. Be certain of what you are doing,
+before doing it.
+- You can add files in this folder (and you probably want to, at some point). Again,
+be sure of what you are doing and why.
+- You can create a shortcut of the exe, place it anywhere on your PC, and play from there.
+You can move it, rename it, delete it, and generally do anything you wish with that shortcut.
+- You can move this folder anywhere on your PC: your Downloads, your Games, or even
+your Program Files. It doesn't matter where this folder is, as long as its contents
+follow the rules described here.
+
+What you CANNOT DO:
+- You cannot rename or delete any file in here. This might lead to unexpected behavior
+from the game, which is undesirable for both you and us.
+- You cannot move files around, and you cannot change the folder structure.
+This is similar to the point above.
+
+HAPPY GAMING!

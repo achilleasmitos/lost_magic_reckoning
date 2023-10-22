@@ -3,7 +3,11 @@
 
 #include <iostream>
 
-std::string const PATH_TO_RESOURCES_MUSIC = "..\\src\\resources\\music\\";
+#ifdef RELEASE_BUILD
+std::string const PATH_TO_RESOURCES_MUSIC{"resources\\music\\"};
+#else
+std::string const PATH_TO_RESOURCES_MUSIC{"..\\src\\resources\\music\\"};
+#endif
 
 static void OnPlay(std::ifstream& source_file, std::string& text)
 {
