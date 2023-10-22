@@ -52,6 +52,7 @@ static void ConvertSaveToState(GameStateMap& game_state, MainCharacter& main_cha
 				utils::g_text_weight = utils::FontWeightValues::Normal;
 			}
 	}
+	utils::g_text_face_name = game_state["game_settings_text_face_name"];
 
 	// Enforce the new settings on the current game session
 	utils::CustomizeText();

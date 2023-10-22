@@ -17,8 +17,8 @@ enum FontWeightValues
 extern int g_text_size;
 // The weight of the font, one of: Light, SemiLight, Normal, SemiBold, Bold.
 extern FontWeightValues g_text_weight;
-// A wstring for the font typeface used.
-extern std::wstring g_text_face_name;
+// A string for the font typeface used.
+extern std::string g_text_face_name;
 
 /**
  * @brief A function that changes the basic aesthetics of the text.
