@@ -3,6 +3,7 @@
 #include "continue_game/continue_game.h"
 #include "main_settings/main_settings.h"
 #include "start_game/start_game.h"
+#include "save_and_load_game/save_game/save_game.h"
 
 #include <iostream>
 #include <string>
@@ -46,6 +47,7 @@ void StartMenu(MainCharacter& main_character)
 				case 3:
 					{
 						MainSettings();
+						SaveGame(main_character);
 						break;
 					}
 				case 4:
@@ -73,6 +75,7 @@ void StartMenu(MainCharacter& main_character)
 				case 2:
 					{
 						MainSettings();
+						SaveGame(main_character);
 						break;
 					}
 				case 3:
