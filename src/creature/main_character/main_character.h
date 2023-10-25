@@ -29,7 +29,8 @@ public:
 		int intelligence,
 		int wisdom,
 		int charisma,
-		std::string creature_type);
+		std::string creature_type,
+		std::string display_name);
 
 	std::string get_name() const;
 	void set_name(std::string name);

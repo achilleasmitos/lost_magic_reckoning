@@ -19,6 +19,16 @@ static void ExtractCreatureFromFile(std::string& foe_name, std::vector<Creature>
 	std::unordered_map<std::string, std::string> foe_stats_map =
 		utils::ReadFromJSON(file_path);
 
+	std::string foe_display_name = foe_name;
+
+	for (size_t i = 0; i < foe_display_name.length(); i++)
+	{
+		if (foe_display_name[i] == '_')
+		{
+			foe_display_name[i] = ' ';
+		}
+	}
+
 	// Create the foe creature to be added to the `foes` vector
 	Creature foe(std::stoi(foe_stats_map["hp"]),
 		std::stoi(foe_stats_map["ac"]),
@@ -29,7 +39,8 @@ static void ExtractCreatureFromFile(std::string& foe_name, std::vector<Creature>
 		std::stoi(foe_stats_map["intelligence"]),
 		std::stoi(foe_stats_map["wisdom"]),
 		std::stoi(foe_stats_map["charisma"]),
-		foe_stats_map["creature_type"]);
+		foe_stats_map["creature_type"],
+		foe_display_name);
 
 	// Add the foe to the foes vector
 	foes.push_back(foe);

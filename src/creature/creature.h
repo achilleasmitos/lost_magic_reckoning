@@ -19,7 +19,8 @@ public:
 		int intelligence,
 		int wisdom,
 		int charisma,
-		std::string creature_type);
+		std::string creature_type,
+		std::string display_name);
 
 	void PrintStats();
 
@@ -43,10 +44,15 @@ public:
 
 	void set_creature_type(std::string creature_type);
 
+	std::string get_display_name() const;
+
+	void set_display_name(std::string display_name);
+
 protected:
 	int m_hp;
 	int m_ac;
 	int m_speed;
 	int m_ability_scores[6];
 	std::string m_creature_type;
+	std::string m_display_name;
 };

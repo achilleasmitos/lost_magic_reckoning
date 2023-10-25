@@ -38,8 +38,9 @@ MainCharacter::MainCharacter(std::string name,
 	int intelligence,
 	int wisdom,
 	int charisma,
-	std::string creature_type)
-	: Creature(hp, ac, speed, strength, dexterity, constitution, intelligence, wisdom, charisma, creature_type),
+	std::string creature_type,
+	std::string display_name)
+	: Creature(hp, ac, speed, strength, dexterity, constitution, intelligence, wisdom, charisma, creature_type,display_name),
 	  m_race(MainCharacterRace()), m_class(MainCharacterClass())
 {
 	if (main_character_helpers::CheckForAlphaOrWhitespace(name))

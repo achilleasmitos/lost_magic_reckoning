@@ -62,7 +62,7 @@ void Battle(MainCharacter& main_character, std::vector<Creature>& foes)
 		std::cout << "=========================\n";
 		for (const auto& combatant : combatants)
 		{
-			std::cout << combatant.first->get_creature_type() << ": Initiative "
+			std::cout << combatant.first->get_display_name() << ": Initiative "
 					  << combatant.second << " , HP "
 					  << combatant.first->get_hp() << std::endl;
 		}
@@ -87,7 +87,7 @@ void Battle(MainCharacter& main_character, std::vector<Creature>& foes)
 				// Eliminate (erase) foes with 0 hp
 				if (foes_ptrs[foes_ptrs.size() - 1]->get_hp() == 0)
 				{
-					std::cout << foes_ptrs[foes_ptrs.size() - 1]->get_creature_type()
+					std::cout << foes_ptrs[foes_ptrs.size() - 1]->get_display_name()
 							  << " has been eliminated!\n";
 					for (int j = foes_ptrs.size() - 1; j >= 0; j--)
 					{
@@ -108,7 +108,7 @@ void Battle(MainCharacter& main_character, std::vector<Creature>& foes)
 			}
 			else
 			{
-				std::cout << combatants[i].first->get_creature_type() << " attacks!\n";
+				std::cout << combatants[i].first->get_display_name() << " attacks!\n";
 
 				FoeAttack(*combatants[i].first, *main_character_ptr);
 
