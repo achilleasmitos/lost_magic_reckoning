@@ -62,8 +62,8 @@ void Battle(MainCharacter& main_character, std::vector<Creature>& foes)
 		std::cout << "=========================\n";
 		for (const auto& combatant : combatants)
 		{
-			std::cout << combatant.first->get_display_name() << ": Initiative "
-					  << combatant.second << " , HP "
+			std::cout << utils::UpercaseLetter(combatant.first->get_display_name())
+					  << ": Initiative " << combatant.second << " , HP "
 					  << combatant.first->get_hp() << std::endl;
 		}
 		std::cout << "=========================\n";
@@ -80,16 +80,30 @@ void Battle(MainCharacter& main_character, std::vector<Creature>& foes)
 			if (combatants[i].first == main_character_ptr)
 			{
 				std::cout << "Main character attacks!\n";
+				std::cout << "select a target\n";
+				for (size_t i = 0; i < foes_ptrs.size(); i++)
+				{
+					std::cout << i + 1 << " " << foes_ptrs[i] << std::endl;
+				}
 
-				MainCharacterAttack(*main_character_ptr,
-					*(foes_ptrs[foes_ptrs.size() - 1]));
+				size_t target;
+				std::cin >> target;
+
+				while (target <= 0 || target > foes_ptrs.size())
+				{
+					std::cout << "Invalid choice! Please choose again: " << std::endl;
+					std::cin >> target;
+				}
+
+				MainCharacterAttack(*main_character_ptr, *(foes_ptrs[target - 1]));
 
 				// Eliminate (erase) foes with 0 hp
-				if (foes_ptrs[foes_ptrs.size() - 1]->get_hp() == 0)
+				if (foes_ptrs[target - 1]->get_hp() == 0)
 				{
-					std::cout << foes_ptrs[foes_ptrs.size() - 1]->get_display_name()
+					std::cout << utils::UpercaseLetter(
+									 foes_ptrs[target - 1]->get_display_name())
 							  << " has been eliminated!\n";
-					for (int j = foes_ptrs.size() - 1; j >= 0; j--)
+					for (int j = target - 1; j >= 0; j--)
 					{
 						if (foes_ptrs[j]->get_hp() == 0)
 						{
@@ -108,7 +122,8 @@ void Battle(MainCharacter& main_character, std::vector<Creature>& foes)
 			}
 			else
 			{
-				std::cout << combatants[i].first->get_display_name() << " attacks!\n";
+				std::cout << utils::UpercaseLetter(combatants[i].first->get_display_name())
+						  << " attacks!\n";
 
 				FoeAttack(*combatants[i].first, *main_character_ptr);
 

@@ -5,11 +5,11 @@
 
 Creature::Creature()
 	: m_hp(10), m_ac(10), m_speed(30), m_ability_scores{10, 10, 10, 10, 10, 10},
-	  m_creature_type("humanoid"), m_display_name("main_character"){};
+	  m_creature_type("humanoid"), m_display_name("creature"){};
 Creature::Creature(int strength, int dexterity, int constitution, int intelligence, int wisdom, int charisma)
 	: m_hp(10), m_ac(10 + (dexterity - 10) / 2), m_speed(30),
 	  m_ability_scores{strength, dexterity, constitution, intelligence, wisdom, charisma},
-	  m_creature_type("humanoid"), m_display_name("main_character"){};
+	  m_creature_type("humanoid"), m_display_name("creature"){};
 Creature::Creature(int hp,
 	int ac,
 	int speed,
@@ -28,7 +28,7 @@ Creature::Creature(int hp,
 void Creature::PrintStats()
 {
 	std::cout << "==============================" << std::endl;
-	std::cout << "Your stats are: " << std::endl;
+	std::cout << "Stats for: " << m_display_name << std::endl;
 	std::cout << "HP: " << m_hp << std::endl;
 	std::cout << "AC: " << m_ac << std::endl;
 	std::cout << "Speed: " << m_speed << std::endl;
@@ -39,7 +39,6 @@ void Creature::PrintStats()
 	std::cout << "Wisdom: " << m_ability_scores[4] << std::endl;
 	std::cout << "Charisma: " << m_ability_scores[5] << std::endl;
 	std::cout << "Creature type: " << m_creature_type << std::endl;
-	std::cout << "Display name: " << m_display_name << std::endl;
 	std::cout << "==============================" << std::endl;
 }
 
@@ -122,7 +121,7 @@ void Creature::set_creature_type(std::string creature_type)
 
 std::string Creature::get_display_name() const { return m_display_name; };
 
-void Creature::set_display_name(std::string display_name)
+void Creature::set_display_name(std::string const& display_name)
 {
 	m_display_name = display_name;
 }

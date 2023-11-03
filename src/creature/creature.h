@@ -46,7 +46,7 @@ public:
 
 	std::string get_display_name() const;
 
-	void set_display_name(std::string display_name);
+	void set_display_name(std::string const& display_name);
 
 protected:
 	int m_hp;
