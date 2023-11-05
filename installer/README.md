@@ -12,7 +12,7 @@ When the time has come for a new release, there are certain steps we need to fol
 1. **Create a release branch** from the latest master. The release branch should have the name `Release_vX_Y_Z`, where X.Y.Z is the version of the release (eg 1.0.6). This is the branch which will be heavily tested before release, with any emerging bugs being fixed for it first-hand. When all bugs have been fixed and the release is ready, continue with step 2.
 The release branch remains in a 'no-op' condition after the release, for ever in our project.
 2. **Update the 'CHANGELOGS.md'** inside the root folder with the latest changes. This file will outline (in bulletpoints) what changes were made in each publicly released version of the product. Keep this concise, and stick to the points that are **of interest to an end user**!
-3. **Update the main 'README.md'** if necessary.
+3. **Update the main 'README.md'** if necessary, as well as the application_info as needed.
 4. **Update the 'Build Release' task** in '.vscode/tasks.json'. Specifically, copy-paste the files-to-be-built from the Debug Build task to this one, and make any other necessary changes.
 5. **Open a pull-request** with the changes from steps 2-4 to master. When that is approved and merged, cherry-pick those changes to the release branch from step 1.
 6. **Freeze the release branch** once the cherry-pick from the previous step has been merged to it.

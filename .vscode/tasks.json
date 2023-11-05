@@ -9,6 +9,7 @@
                 "-g",
                 "-I${workspaceFolder}\\src",
                 "${workspaceFolder}\\src\\*.cpp",
+                "${workspaceFolder}\\src\\application_info\\*.res",
                 "${workspaceFolder}\\src\\battle\\*.cpp",
                 "${workspaceFolder}\\src\\create_character\\*.cpp",
                 "${workspaceFolder}\\src\\creature\\*.cpp",
@@ -41,7 +42,7 @@
                 "-Wmissing-declarations",
                 "-std=c++20",
                 "-o",
-                "${workspaceFolder}\\build\\lost-magic_reckoning.exe"
+                "${workspaceFolder}\\build\\lost_magic_reckoning.exe"
             ],
             "options": {
                 "cwd": "${fileDirname}"
@@ -65,12 +66,12 @@
                 "-Os",
                 "-I${workspaceFolder}\\src",
                 "${workspaceFolder}\\src\\*.cpp",
+                "${workspaceFolder}\\src\\application_info\\*.res",
                 "${workspaceFolder}\\src\\battle\\*.cpp",
                 "${workspaceFolder}\\src\\create_character\\*.cpp",
                 "${workspaceFolder}\\src\\creature\\*.cpp",
                 "${workspaceFolder}\\src\\creature\\main_character\\*.cpp",
                 "${workspaceFolder}\\src\\creature\\main_character\\helpers\\*.cpp",
-                "${workspaceFolder}\\src\\creature\\main_character\\main_character_race_class\\*.cpp",
                 "${workspaceFolder}\\src\\loading_screen\\*.cpp",
                 "${workspaceFolder}\\src\\read_from_file\\*.cpp",
                 "${workspaceFolder}\\src\\save_and_load_game\\load_game\\*.cpp",
@@ -85,6 +86,7 @@
                 "${workspaceFolder}\\src\\utils\\handle_sound\\*.cpp",
                 "${workspaceFolder}\\src\\utils\\print_and_clear_screen\\*.cpp",
                 "${workspaceFolder}\\src\\utils\\roll_dice\\*.cpp",
+                "${workspaceFolder}\\src\\utils\\string_sanitization\\*.cpp",
                 "${workspaceFolder}\\src\\utils\\user_choice\\*.cpp",
                 "${workspaceFolder}\\src\\utils\\user_choice\\helpers\\*.cpp",
                 "${workspaceFolder}\\src\\utils\\user_choice\\reserved_words\\*.cpp",
@@ -97,7 +99,7 @@
                 "-Wmissing-declarations",
                 "-std=c++20",
                 "-o",
-                "${workspaceFolder}\\build\\lost-magic_reckoning_Release.exe"
+                "${workspaceFolder}\\build\\lost_magic_reckoning_Release.exe"
             ],
             "options": {
                 "cwd": "${fileDirname}"
