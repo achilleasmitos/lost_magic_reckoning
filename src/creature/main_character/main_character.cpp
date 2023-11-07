@@ -10,6 +10,7 @@ MainCharacter::MainCharacter(std::string name)
 	{
 		m_name = name;
 	}
+	m_display_name = "main character";
 }
 
 MainCharacter::MainCharacter(std::string name,
@@ -39,7 +40,7 @@ MainCharacter::MainCharacter(std::string name,
 	int wisdom,
 	int charisma,
 	std::string creature_type)
-	: Creature(hp, ac, speed, strength, dexterity, constitution, intelligence, wisdom, charisma, creature_type),
+	: Creature(hp, ac, speed, strength, dexterity, constitution, intelligence, wisdom, charisma, creature_type, "main character"),
 	  m_race(MainCharacterRace()), m_class(MainCharacterClass())
 {
 	if (main_character_helpers::CheckForAlphaOrWhitespace(name))

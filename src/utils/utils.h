@@ -1,5 +1,6 @@
 #pragma once
 
+#include "alter_text/alter_text.h"
 #include "customize_text/customize_text.h"
 #include "handle_sound/handle_sound.h"
 #include "JSON_interaction/JSON_interaction.h"

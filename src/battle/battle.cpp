@@ -62,14 +62,16 @@ void Battle(MainCharacter& main_character, std::vector<Creature>& foes)
 		std::cout << "=========================\n";
 		for (const auto& combatant : combatants)
 		{
-			std::cout << combatant.first->get_creature_type() << ": Initiative "
-					  << combatant.second << " , HP "
+			std::cout << utils::UppercasedFirstChar(combatant.first->get_display_name())
+					  << ": Initiative " << combatant.second << " , HP "
 					  << combatant.first->get_hp() << std::endl;
 		}
 		std::cout << "=========================\n";
 	};
 	printCombatants();
 	std::cout << std::endl;
+
+	int user_choice;
 
 	// Battle loop
 	while (main_character_ptr->get_hp() > 0 && combatants.size() > 1)
@@ -81,20 +83,30 @@ void Battle(MainCharacter& main_character, std::vector<Creature>& foes)
 			{
 				std::cout << "Main character attacks!\n";
 
-				MainCharacterAttack(*main_character_ptr,
-					*(foes_ptrs[foes_ptrs.size() - 1]));
+				utils::Print(
+					{"Please choose your target from the available options."});
+				int options_size = foes_ptrs.size();
+				std::vector<std::string> main_character_attack_options(options_size, "");
+				for (size_t iter = 0; iter < foes_ptrs.size(); iter++)
+				{
+					main_character_attack_options[iter] = utils::UppercasedFirstChar(
+						foes_ptrs[iter]->get_display_name());
+				}
+				user_choice = utils::GetUserConstrainedChoice(main_character_attack_options);
+
+				MainCharacterAttack(*main_character_ptr, *(foes_ptrs[user_choice - 1]));
 
 				// Eliminate (erase) foes with 0 hp
-				if (foes_ptrs[foes_ptrs.size() - 1]->get_hp() == 0)
+				if (foes_ptrs[user_choice - 1]->get_hp() == 0)
 				{
-					std::cout << foes_ptrs[foes_ptrs.size() - 1]->get_creature_type()
+					std::cout << utils::UppercasedFirstChar(
+									 foes_ptrs[user_choice - 1]->get_display_name())
 							  << " has been eliminated!\n";
 					for (int j = foes_ptrs.size() - 1; j >= 0; j--)
 					{
 						if (foes_ptrs[j]->get_hp() == 0)
 						{
 							foes_ptrs.erase(foes_ptrs.begin() + j);
-							foes.erase(foes.begin() + j);
 						}
 					}
 					for (int j = combatants.size() - 1; j >= 0; j--)
@@ -108,7 +120,9 @@ void Battle(MainCharacter& main_character, std::vector<Creature>& foes)
 			}
 			else
 			{
-				std::cout << combatants[i].first->get_creature_type() << " attacks!\n";
+				std::cout << utils::UppercasedFirstChar(
+								 combatants[i].first->get_display_name())
+						  << " attacks!\n";
 
 				FoeAttack(*combatants[i].first, *main_character_ptr);
 
