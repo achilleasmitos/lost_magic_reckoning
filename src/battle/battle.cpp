@@ -89,20 +89,21 @@ void Battle(MainCharacter& main_character, std::vector<Creature>& foes)
 				std::vector<std::string> main_character_attack_options(options_size, "");
 				for (size_t iter = 0; iter < foes_ptrs.size(); iter++)
 				{
-					main_character_attack_options[iter] =
-						foes_ptrs[iter]->get_display_name();
+					main_character_attack_options[iter] = utils::UppercasedFirstChar(
+						foes_ptrs[iter]->get_display_name());
 				}
 				user_choice = utils::GetUserConstrainedChoice(main_character_attack_options);
 
 				MainCharacterAttack(*main_character_ptr, *(foes_ptrs[user_choice - 1]));
 
 				// Eliminate (erase) foes with 0 hp
-				if (foes_ptrs[user_choice - 1]->get_hp() == 0)
+				if (foes_ptrs[foes_ptrs.size() - 1]->get_hp() == 0)
 				{
-					std::cout << utils::UppercasedFirstChar(
-									 foes_ptrs[user_choice - 1]->get_display_name())
-							  << " has been eliminated!\n";
-					for (int j = user_choice - 1; j >= 0; j--)
+					std::cout
+						<< utils::UppercasedFirstChar(
+							   foes_ptrs[foes_ptrs.size() - 1]->get_display_name())
+						<< " has been eliminated!\n";
+					for (int j = foes_ptrs.size() - 1; j >= 0; j--)
 					{
 						if (foes_ptrs[j]->get_hp() == 0)
 						{

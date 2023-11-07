@@ -2,20 +2,20 @@
 
 #include <iostream>
 
-std::string utils::UppercasedFirstChar(std::string inputstring)
+std::string utils::UppercasedFirstChar(std::string input_string)
 {
-	inputstring[0] = toupper(inputstring[0]);
-	return inputstring;
+	input_string[0] = toupper(input_string[0]);
+	return input_string;
 }
 
-std::string utils::ReplaceUnderscoreWIthSpace(std::string inputstring)
+std::string utils::ReplaceUnderscoreWIthSpace(std::string input_string)
 {
-	for (size_t i = 0; i < inputstring.length(); i++)
+	for (size_t i = 0; i < input_string.length(); i++)
 	{
-		if (inputstring[i] == '_')
+		if (input_string[i] == '_')
 		{
-			inputstring[i] = ' ';
+			input_string[i] = ' ';
 		}
 	}
-	return inputstring;
+	return input_string;
 }
