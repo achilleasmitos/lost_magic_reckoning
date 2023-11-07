@@ -99,10 +99,9 @@ void Battle(MainCharacter& main_character, std::vector<Creature>& foes)
 				// Eliminate (erase) foes with 0 hp
 				if (foes_ptrs[user_choice - 1]->get_hp() == 0)
 				{
-					std::cout
-						<< utils::UppercasedFirstChar(
-							   foes_ptrs[foes_ptrs.size() - 1]->get_display_name())
-						<< " has been eliminated!\n";
+					std::cout << utils::UppercasedFirstChar(
+									 foes_ptrs[user_choice - 1]->get_display_name())
+							  << " has been eliminated!\n";
 					for (int j = foes_ptrs.size() - 1; j >= 0; j--)
 					{
 						if (foes_ptrs[j]->get_hp() == 0)
