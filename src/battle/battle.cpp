@@ -71,7 +71,6 @@ void Battle(MainCharacter& main_character, std::vector<Creature>& foes)
 	printCombatants();
 	std::cout << std::endl;
 
-	std::string user_answer;
 	int user_choice;
 
 	// Battle loop
@@ -94,7 +93,6 @@ void Battle(MainCharacter& main_character, std::vector<Creature>& foes)
 						foes_ptrs[iter]->get_display_name();
 				}
 				user_choice = utils::GetUserConstrainedChoice(main_character_attack_options);
-				user_answer = main_character_attack_options[user_choice - 1];
 
 				MainCharacterAttack(*main_character_ptr, *(foes_ptrs[user_choice - 1]));
 
