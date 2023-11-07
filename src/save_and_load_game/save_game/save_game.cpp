@@ -44,6 +44,7 @@ void SaveGame(MainCharacter& main_character)
 	game_state.insert({"game_settings_text_size", std::to_string(utils::g_text_size)});
 	game_state.insert({"game_settings_sleep_for_ms", std::to_string(utils::g_sleep_for_ms)});
 	game_state.insert({"game_settings_text_weight", std::to_string(utils::g_text_weight)});
+	game_state.insert({"game_settings_text_face_name", utils::g_text_face_name});
 
 	// Done creating the game_state map. Proceed with saving it to JSON.
 	utils::WriteToJSON(game_state, "save_file.json");

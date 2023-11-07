@@ -5,22 +5,10 @@
 
 void ChangeTextWeight()
 {
-	std::cout << "Pick text weight:" << std::endl;
-	std::cout << "1. Light" << std::endl;
-	std::cout << "2. SemiLight" << std::endl;
-	std::cout << "3. Normal" << std::endl;
-	std::cout << "4. SemiBold" << std::endl;
-	std::cout << "5. Bold" << std::endl;
+	std::cout << "Pick text weight.\n" << std::endl;
+	std::vector<std::string> const text_weight_options{"Light", "Semi-light", "Normal", "Semi-bold", "Bold"};
 
-	int text_weight_choice = 0;
-	utils::GetUserFreeChoice(text_weight_choice);
-
-	while (text_weight_choice < 1 || text_weight_choice > 5)
-	{
-		std::cout << "Sorry, this option is not supported yet.\nPlease choose "
-					 "one of the options provided.\n";
-		utils::GetUserFreeChoice(text_weight_choice);
-	}
+	int text_weight_choice = utils::GetUserConstrainedChoice(text_weight_options);
 
 	switch (text_weight_choice)
 	{
