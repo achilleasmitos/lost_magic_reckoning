@@ -97,7 +97,7 @@ void Battle(MainCharacter& main_character, std::vector<Creature>& foes)
 				MainCharacterAttack(*main_character_ptr, *(foes_ptrs[user_choice - 1]));
 
 				// Eliminate (erase) foes with 0 hp
-				if (foes_ptrs[foes_ptrs.size() - 1]->get_hp() == 0)
+				if (foes_ptrs[user_choice - 1]->get_hp() == 0)
 				{
 					std::cout
 						<< utils::UppercasedFirstChar(
