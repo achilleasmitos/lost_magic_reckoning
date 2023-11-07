@@ -30,7 +30,7 @@ static void ExtractCreatureFromFile(std::string& foe_name, std::vector<Creature>
 		std::stoi(foe_stats_map["wisdom"]),
 		std::stoi(foe_stats_map["charisma"]),
 		foe_stats_map["creature_type"],
-		utils::RemoveUnderscore(foe_name));
+		utils::ReplaceUnderscoreWIthSpace(foe_name));
 
 	// Add the foe to the foes vector
 	foes.push_back(foe);

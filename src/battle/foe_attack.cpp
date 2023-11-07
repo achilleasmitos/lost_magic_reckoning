@@ -7,20 +7,20 @@
 void FoeAttack(Creature& attacker, MainCharacter& main_character)
 {
 	int hit_foe_roll = utils::RollDice(1, 20) + (attacker.get_ability_score(0) - 10) / 2;
-	std::cout << utils::UpercaseLetter(attacker.get_display_name())
+	std::cout << utils::UppercasedFirstChar(attacker.get_display_name())
 			  << " rolled " << hit_foe_roll << std::endl;
 
 	if (hit_foe_roll >= main_character.get_ac())
 	{
 		std::cout << "The " << attacker.get_display_name()
 				  << " has better roll than the AC of the main character! "
-				  << utils::UpercaseLetter(attacker.get_display_name())
+				  << utils::UppercasedFirstChar(attacker.get_display_name())
 				  << " hits!" << std::endl;
 
 		int damage_foe_roll =
 			utils::RollDice(1, 10) + (attacker.get_ability_score(0) - 10) / 2;
 
-		std::cout << utils::UpercaseLetter(attacker.get_display_name()) << " did "
+		std::cout << utils::UppercasedFirstChar(attacker.get_display_name()) << " did "
 				  << damage_foe_roll << " damage to the main character..." << std::endl;
 
 		main_character.set_hp(main_character.get_hp() - damage_foe_roll);

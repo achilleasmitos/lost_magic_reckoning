@@ -62,7 +62,7 @@ void Battle(MainCharacter& main_character, std::vector<Creature>& foes)
 		std::cout << "=========================\n";
 		for (const auto& combatant : combatants)
 		{
-			std::cout << utils::UpercaseLetter(combatant.first->get_display_name())
+			std::cout << utils::UppercasedFirstChar(combatant.first->get_display_name())
 					  << ": Initiative " << combatant.second << " , HP "
 					  << combatant.first->get_hp() << std::endl;
 		}
@@ -70,6 +70,9 @@ void Battle(MainCharacter& main_character, std::vector<Creature>& foes)
 	};
 	printCombatants();
 	std::cout << std::endl;
+
+	std::string user_answer;
+	int user_choice;
 
 	// Battle loop
 	while (main_character_ptr->get_hp() > 0 && combatants.size() > 1)
@@ -80,35 +83,32 @@ void Battle(MainCharacter& main_character, std::vector<Creature>& foes)
 			if (combatants[i].first == main_character_ptr)
 			{
 				std::cout << "Main character attacks!\n";
-				std::cout << "select a target\n";
-				for (size_t i = 0; i < foes_ptrs.size(); i++)
+
+				utils::Print(
+					{"Please choose your target from the available options."});
+				int options_size = foes_ptrs.size();
+				std::vector<std::string> main_character_attack_options(options_size, "");
+				for (size_t iter = 0; iter < foes_ptrs.size(); iter++)
 				{
-					std::cout << i + 1 << " " << foes_ptrs[i] << std::endl;
+					main_character_attack_options[iter] =
+						foes_ptrs[iter]->get_display_name();
 				}
+				user_choice = utils::GetUserConstrainedChoice(main_character_attack_options);
+				user_answer = main_character_attack_options[user_choice - 1];
 
-				size_t target;
-				std::cin >> target;
-
-				while (target <= 0 || target > foes_ptrs.size())
-				{
-					std::cout << "Invalid choice! Please choose again: " << std::endl;
-					std::cin >> target;
-				}
-
-				MainCharacterAttack(*main_character_ptr, *(foes_ptrs[target - 1]));
+				MainCharacterAttack(*main_character_ptr, *(foes_ptrs[user_choice - 1]));
 
 				// Eliminate (erase) foes with 0 hp
-				if (foes_ptrs[target - 1]->get_hp() == 0)
+				if (foes_ptrs[user_choice - 1]->get_hp() == 0)
 				{
-					std::cout << utils::UpercaseLetter(
-									 foes_ptrs[target - 1]->get_display_name())
+					std::cout << utils::UppercasedFirstChar(
+									 foes_ptrs[user_choice - 1]->get_display_name())
 							  << " has been eliminated!\n";
-					for (int j = target - 1; j >= 0; j--)
+					for (int j = user_choice - 1; j >= 0; j--)
 					{
 						if (foes_ptrs[j]->get_hp() == 0)
 						{
 							foes_ptrs.erase(foes_ptrs.begin() + j);
-							foes.erase(foes.begin() + j);
 						}
 					}
 					for (int j = combatants.size() - 1; j >= 0; j--)
@@ -122,7 +122,8 @@ void Battle(MainCharacter& main_character, std::vector<Creature>& foes)
 			}
 			else
 			{
-				std::cout << utils::UpercaseLetter(combatants[i].first->get_display_name())
+				std::cout << utils::UppercasedFirstChar(
+								 combatants[i].first->get_display_name())
 						  << " attacks!\n";
 
 				FoeAttack(*combatants[i].first, *main_character_ptr);
