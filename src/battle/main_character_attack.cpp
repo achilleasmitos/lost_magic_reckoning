@@ -12,8 +12,7 @@ void MainCharacterAttack(MainCharacter& main_character, Creature& target)
 	if (hit_main_character_roll >= target.get_ac())
 	{
 		std::cout << "The main character has better roll than the AC of the "
-				  << target.get_display_name() << ", main character hits!"
-				  << std::endl;
+				  << target.get_display_name() << ", main character hits!" << std::endl;
 
 		int damage_main_character_roll =
 			utils::RollDice(1, 10) + (main_character.get_ability_score(0) - 10) / 2;

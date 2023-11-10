@@ -85,6 +85,7 @@ IndentCaseLabels: true
 # IndentGotoLabels: true
 # IndentPPDirectives: false
 IndentWrappedFunctionNames: true
+InsertNewlineAtEOF: true
 
 KeepEmptyLinesAtTheStartOfBlocks: false
 # MaxEmptyLinesToKeep: 2
