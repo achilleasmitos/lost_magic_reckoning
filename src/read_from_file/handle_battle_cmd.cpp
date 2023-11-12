@@ -6,6 +6,13 @@
 #include <iostream>
 #include <memory>
 
+#ifdef RELEASE_BUILD
+std::string const PATH_TO_RESOURCES_CREATURES{"resources\\creatures\\"};
+#else
+std::string const PATH_TO_RESOURCES_CREATURES{
+	"..\\src\\resources\\creatures\\"};
+#endif
+
 /**
  * @brief Helper func for `HandleBattleCmd()` below.
  * It reads from the appropriate JSON file the stats of the creature
@@ -14,7 +21,7 @@
 static void ExtractCreatureFromFile(std::string& foe_name, std::vector<Creature>& foes)
 {
 	// The resources file with the stats of the supplied foe with foe_name
-	const std::string file_path = "..\\src\\resources\\creatures\\" + foe_name + ".json";
+	const std::string file_path = PATH_TO_RESOURCES_CREATURES + foe_name + ".json";
 	// Extract a map object with the values read from the JSON
 	std::unordered_map<std::string, std::string> foe_stats_map =
 		utils::ReadFromJSON(file_path);
