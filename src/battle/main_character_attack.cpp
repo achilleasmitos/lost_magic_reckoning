@@ -18,7 +18,7 @@ void MainCharacterAttack(MainCharacter& main_character, Creature& target)
 			utils::RollDice(1, 10) + (main_character.get_ability_score(0) - 10) / 2;
 
 		std::cout << "The main character did " << damage_main_character_roll
-				  << " to the " << target.get_display_name() << std::endl;
+				  << " damage to the " << target.get_display_name() << std::endl;
 
 		target.set_hp(target.get_hp() - damage_main_character_roll);
 
