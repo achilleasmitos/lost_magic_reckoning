@@ -53,7 +53,7 @@ static void SetAbilityScore(MainCharacter& main_character,
 	int ability_score_pos,
 	std::vector<int>& main_stats)
 {
-	std::string ability_scores[6] = {"Strength", "Dexterity", "Consitution", "Intelligence", "Wisdom", "Charisma"};
+	std::string ability_scores[6] = {"Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma"};
 
 	// Ask for user input.
 	utils::Print({"Which stat would you like for your " +

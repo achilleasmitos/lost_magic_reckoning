@@ -31,7 +31,7 @@ void FoeAttack(Creature& attacker, MainCharacter& main_character)
 	}
 	else
 	{
-		std::cout << "The main character has better AC than the attack of "
+		std::cout << "The main character has better AC than the attack of the "
 				  << attacker.get_display_name() << ", "
 				  << attacker.get_display_name() << " misses!" << std::endl;
 	}

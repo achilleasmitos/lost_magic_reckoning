@@ -34,7 +34,7 @@ void TutorialBattle()
 
 	std::cout << "=========================\n";
 	std::cout << "Main character: Initiative 16 , HP 10\n";
-	std::cout << "Minotaur: Initiative 11, HP 76\n";
+	std::cout << "Minotaur: Initiative 11 , HP 76\n";
 	std::cout << "=========================\n";
 
 	std::cout << std::endl;
@@ -58,14 +58,14 @@ void TutorialBattle()
 	std::cout << "Main character attacks!" << std::endl;
 	std::cout << "The main character rolled 17" << std::endl;
 	std::cout << "The main character has better roll than the AC of the "
-				 "Minotaur, main character hits!"
+				 "minotaur, main character hits!"
 			  << std::endl;
-	std::cout << "The main character did 6 damage to the Minotaur" << std::endl;
-	std::cout << "The Minotaur's HP is now 70" << std::endl;
+	std::cout << "The main character did 6 damage to the minotaur" << std::endl;
+	std::cout << "The minotaur's HP is now 70" << std::endl;
 	std::cout << "Minotaur attacks!" << std::endl;
 	std::cout << "Minotaur rolled 9" << std::endl;
 	std::cout << "The main character has better AC than the attack of the "
-				 "Minotaur, Minotaur misses!"
+				 "minotaur, minotaur misses!"
 			  << std::endl;
 	std::cout << std::endl;
 
@@ -87,20 +87,20 @@ void TutorialBattle()
 		   "roll will be doubled"
 		<< std::endl;
 	std::cout << "The main character has better roll than the AC of the "
-				 "Minotaur, main character hits!"
+				 "minotaur, main character hits!"
 			  << std::endl;
-	std::cout << "The main character did 15 damage to the Minotaur" << std::endl;
-	std::cout << "The Minotaur's HP is now 55" << std::endl;
+	std::cout << "The main character did 15 damage to the minotaur" << std::endl;
+	std::cout << "The minotaur's HP is now 55" << std::endl;
 	std::cout << "Minotaur attacks!" << std::endl;
 	std::cout << "Minotaur rolled 16" << std::endl;
-	std::cout << "The Minotaur has better roll than the AC of the "
-				 "main character, Minotaur hits!"
+	std::cout << "The minotaur has better roll than the AC of the "
+				 "main character, minotaur hits!"
 			  << std::endl;
-	std::cout << "The Minotaur did 8  damage to the main character" << std::endl;
+	std::cout << "The minotaur did 8  damage to the main character" << std::endl;
 	std::cout << "The main character's HP is now 2" << std::endl;
 	std::cout << std::endl;
 
-	std::cout << "Please select the dodge option:" << std::endl;
+	std::cout << "Please select the Dodge option:" << std::endl;
 	std::cout << "1. Attack" << std::endl;
 	std::cout << "2. Dodge" << std::endl;
 	std::cout << "3. Flee" << std::endl;
@@ -119,11 +119,11 @@ void TutorialBattle()
 	std::cout << "Minotaur attacks!" << std::endl;
 	std::cout << "Minotaur rolled 8" << std::endl;
 	std::cout << "The main character has better AC than the attack of the "
-				 "Minotaur, Minotaur misses!";
+				 "minotaur, minotaur misses!";
 	std::cout << std::endl;
 	std::cout << std::endl;
 
-	std::cout << "Please select the flee option:" << std::endl;
+	std::cout << "Please select the Flee option:" << std::endl;
 	std::cout << "1. Attack" << std::endl;
 	std::cout << "2. Dodge" << std::endl;
 	std::cout << "3. Flee" << std::endl;
