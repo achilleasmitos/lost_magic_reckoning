@@ -110,6 +110,12 @@ void Creature::set_ability_score(int ability_score, int value)
 	{
 		std::cerr << "The ability scores of Creature cannot be negative!\n";
 	}
+
+	// AC may also need to be updated (when dexterity score changes)
+	if (ability_score == 1)
+	{
+		m_ac = 10 + (m_ability_scores[1] - 10) / 2;
+	}
 }
 
 std::string Creature::get_creature_type() const { return m_creature_type; };
