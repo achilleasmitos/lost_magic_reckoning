@@ -5,10 +5,9 @@
 class Creature
 {
 public:
-	// Create a new creature with default ability scores (all 10s)
+	// Create a new creature with default ability scores
 	Creature();
-	// Create a new creature with given ability scores
-	Creature(int strength, int dexterity, int constitution, int intelligence, int wisdom, int charisma);
+
 	// Create a new creature with all essential stats given
 	Creature(int hp,
 		int ac,
@@ -22,30 +21,27 @@ public:
 		std::string creature_type,
 		std::string display_name);
 
+	// Resets all member variables of this Creature to their default values
+	virtual void ResetToDefault();
+
 	void PrintStats();
 
 	int get_hp() const;
-
 	void set_hp(int hp);
 
 	int get_ac() const;
-
 	void set_ac(int ac);
 
 	int get_speed() const;
-
 	void set_speed(int speed);
 
 	int get_ability_score(int n) const;
-
 	void set_ability_score(int abilty_score, int value);
 
 	std::string get_creature_type() const;
-
 	void set_creature_type(std::string creature_type);
 
 	std::string get_display_name() const;
-
 	void set_display_name(std::string const& display_name);
 
 protected:

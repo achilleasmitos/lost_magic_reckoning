@@ -3,13 +3,34 @@
 #include <iostream>
 #include <string>
 
+struct DefaultStats
+{
+	static int const hp;
+	static int const ac;
+	static int const speed;
+	static int const ability_scores[6];
+	static std::string const creature_type;
+	static std::string const display_name;
+};
+
+int const DefaultStats::hp{10};
+int const DefaultStats::ac{10};
+int const DefaultStats::speed{10};
+int const DefaultStats::ability_scores[6] = {10, 10, 10, 10, 10, 10};
+std::string const DefaultStats::creature_type{"humanoid"};
+std::string const DefaultStats::display_name{"creature"};
+
 Creature::Creature()
-	: m_hp(10), m_ac(10), m_speed(30), m_ability_scores{10, 10, 10, 10, 10, 10},
-	  m_creature_type("humanoid"), m_display_name("creature"){};
-Creature::Creature(int strength, int dexterity, int constitution, int intelligence, int wisdom, int charisma)
-	: m_hp(10), m_ac(10 + (dexterity - 10) / 2), m_speed(30),
-	  m_ability_scores{strength, dexterity, constitution, intelligence, wisdom, charisma},
-	  m_creature_type("humanoid"), m_display_name("creature"){};
+	: m_hp(DefaultStats::hp), m_ac(DefaultStats::ac), m_speed(DefaultStats::speed),
+	  m_ability_scores{DefaultStats::ability_scores[0],
+		  DefaultStats::ability_scores[1],
+		  DefaultStats::ability_scores[2],
+		  DefaultStats::ability_scores[3],
+		  DefaultStats::ability_scores[4],
+		  DefaultStats::ability_scores[5]},
+	  m_creature_type(DefaultStats::creature_type),
+	  m_display_name(DefaultStats::display_name){};
+
 Creature::Creature(int hp,
 	int ac,
 	int speed,
@@ -24,6 +45,19 @@ Creature::Creature(int hp,
 	: m_hp(hp), m_ac(ac), m_speed(speed),
 	  m_ability_scores{strength, dexterity, constitution, intelligence, wisdom, charisma},
 	  m_creature_type(creature_type), m_display_name(display_name){};
+
+void Creature::ResetToDefault()
+{
+	m_hp = DefaultStats::hp;
+	m_ac = DefaultStats::ac;
+	m_speed = DefaultStats::speed;
+	for (int i = 0; i < 6; i++)
+	{
+		m_ability_scores[i] = DefaultStats::ability_scores[i];
+	}
+	m_creature_type = DefaultStats::creature_type;
+	m_display_name = DefaultStats::display_name;
+}
 
 void Creature::PrintStats()
 {
@@ -43,7 +77,6 @@ void Creature::PrintStats()
 }
 
 int Creature::get_hp() const { return m_hp; };
-
 void Creature::set_hp(int hp)
 {
 	if (hp >= 0)
@@ -58,7 +91,6 @@ void Creature::set_hp(int hp)
 }
 
 int Creature::get_ac() const { return m_ac; };
-
 void Creature::set_ac(int ac)
 {
 	if (ac >= 0)
@@ -72,7 +104,6 @@ void Creature::set_ac(int ac)
 }
 
 int Creature::get_speed() const { return m_speed; };
-
 void Creature::set_speed(int speed)
 {
 	if (speed >= 0)
@@ -99,7 +130,6 @@ int Creature::get_ability_score(int n) const
 		return -1;
 	}
 }
-
 void Creature::set_ability_score(int ability_score, int value)
 {
 	if (ability_score > -1 && ability_score < 6 && value > -1)
@@ -119,14 +149,12 @@ void Creature::set_ability_score(int ability_score, int value)
 }
 
 std::string Creature::get_creature_type() const { return m_creature_type; };
-
 void Creature::set_creature_type(std::string creature_type)
 {
 	m_creature_type = creature_type;
 }
 
 std::string Creature::get_display_name() const { return m_display_name; };
-
 void Creature::set_display_name(std::string const& display_name)
 {
 	m_display_name = display_name;

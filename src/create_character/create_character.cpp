@@ -1,6 +1,7 @@
 #include "create_character.h"
 #include "utils/utils.h"
-#include "creature/main_character/main_character_race_class/main_character_race_class.h"
+#include "creature/main_character/helpers/main_character_class.h"
+#include "creature/main_character/helpers/main_character_race.h"
 
 #include <algorithm>
 #include <string>
@@ -73,10 +74,7 @@ void CreateCharacter(MainCharacter& main_character)
 		return; // Exit CreateCharacter() without modifying the main character.
 	}
 
-	// Construct a new main character on the heap, use it, then immediately destroy it.
-	MainCharacter* new_main_character_ptr = new MainCharacter("Player");
-	main_character = *new_main_character_ptr;
-	delete new_main_character_ptr;
+	main_character.ResetToDefault();
 
 	// Begin the actual character creation.
 	std::string user_answer;
