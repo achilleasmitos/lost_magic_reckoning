@@ -4,8 +4,8 @@
 #include <iostream>
 
 MainCharacter::MainCharacter(std::string name)
-	: m_race(MainCharacterRace::CreateMainCharacterRace()),
-	  m_class(MainCharacterClass::CreateMainCharacterClass())
+	: m_race(main_character_race::MainCharacterRace::CreateMainCharacterRace()),
+	  m_class(main_character_class::MainCharacterClass::CreateMainCharacterClass())
 {
 	if (utils::CheckForAlphaOrWhitespace(name))
 	{
@@ -27,8 +27,8 @@ void MainCharacter::ResetToDefault()
 
 	// Reset to defaults all own member variables
 	m_name = "Player";
-	m_race->set_race("Undefined");
-	m_class->set_class("Undefined");
+	m_race->ResetToDefault();
+	m_class->ResetToDefault();
 
 	m_display_name = "main character";
 }

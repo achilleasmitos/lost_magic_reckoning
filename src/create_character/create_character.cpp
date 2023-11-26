@@ -85,31 +85,12 @@ void CreateCharacter(MainCharacter& main_character)
 	main_character.set_name(user_answer);
 
 	utils::Print({"Please choose your race from the available options."});
-	int options_size = main_character_race::AVAILABLE_MCRACES_LIST.size();
-	std::vector<std::string> main_character_race_options(options_size, "");
-	int iter = 0;
-	for (const auto& mc_race : main_character_race::AVAILABLE_MCRACES_LIST)
-	{
-		main_character_race_options[iter] = main_character_race::MCRaceToString(mc_race);
-		iter++;
-	}
-	user_choice = utils::GetUserConstrainedChoice(main_character_race_options);
-	user_answer = main_character_race_options[user_choice - 1];
-	main_character.set_race(user_answer);
+	user_choice = utils::GetUserConstrainedChoice(main_character_race::AVAILABLE_RACES);
+	main_character.set_race(main_character_race::AVAILABLE_RACES[user_choice - 1]);
 
 	utils::Print({"Please choose your class from the available options."});
-	options_size = main_character_class::AVAILABLE_MCCLASSES_LIST.size();
-	std::vector<std::string> main_character_class_options(options_size, "");
-	iter = 0;
-	for (const auto& mc_class : main_character_class::AVAILABLE_MCCLASSES_LIST)
-	{
-		main_character_class_options[iter] =
-			main_character_class::MCClassToString(mc_class);
-		iter++;
-	}
-	user_choice = utils::GetUserConstrainedChoice(main_character_class_options);
-	user_answer = main_character_class_options[user_choice - 1];
-	main_character.set_class(user_answer);
+	user_choice = utils::GetUserConstrainedChoice(main_character_class::AVAILABLE_CLASSES);
+	main_character.set_class(main_character_class::AVAILABLE_CLASSES[user_choice - 1]);
 
 	// Roll the main stats, ala 4d6-drop-lowest style.
 	std::vector<int> main_stats(6, 0);

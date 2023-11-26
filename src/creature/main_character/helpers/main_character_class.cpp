@@ -1,88 +1,40 @@
 #include "main_character_class.h"
 
+#include <algorithm>
 #include <iostream>
 
-const std::vector<main_character_class::MCClass> main_character_class::AVAILABLE_MCCLASSES_LIST = {
-	main_character_class::MCClass::Barbarian,
-	main_character_class::MCClass::Bard,
-	main_character_class::MCClass::Cleric,
-	main_character_class::MCClass::Druid,
-	main_character_class::MCClass::Fighter,
-	main_character_class::MCClass::Paladin,
-	main_character_class::MCClass::Wizard};
+using namespace main_character_class;
 
-std::string main_character_class::MCClassToString(main_character_class::MCClass player_class)
+struct AllMainCharacterClasses
 {
-	switch (player_class)
-	{
-		case main_character_class::MCClass::Barbarian:
-			return "Barbarian";
-			break;
-		case main_character_class::MCClass::Bard:
-			return "Bard";
-			break;
-		case main_character_class::MCClass::Cleric:
-			return "Cleric";
-			break;
-		case main_character_class::MCClass::Druid:
-			return "Druid";
-			break;
-		case main_character_class::MCClass::Fighter:
-			return "Fighter";
-			break;
-		case main_character_class::MCClass::Paladin:
-			return "Paladin";
-			break;
-		case main_character_class::MCClass::Wizard:
-			return "Wizard";
-			break;
-		case main_character_class::MCClass::Undefined:
-		default:
-			return "Undefined";
-	}
-}
+	static std::string const Undefined;
+	static std::string const Barbarian;
+	static std::string const Bard;
+	static std::string const Cleric;
+	static std::string const Druid;
+	static std::string const Fighter;
+	static std::string const Paladin;
+	static std::string const Wizard;
+};
 
-main_character_class::MCClass main_character_class::StringToMCClass(std::string player_class)
-{
-	if (player_class == "Barbarian")
-	{
-		return main_character_class::MCClass::Barbarian;
-	}
-	else if (player_class == "Bard")
-	{
-		return main_character_class::MCClass::Bard;
-	}
-	else if (player_class == "Cleric")
-	{
-		return main_character_class::MCClass::Cleric;
-	}
-	else if (player_class == "Druid")
-	{
-		return main_character_class::MCClass::Druid;
-	}
-	else if (player_class == "Fighter")
-	{
-		return main_character_class::MCClass::Fighter;
-	}
-	else if (player_class == "Paladin")
-	{
-		return main_character_class::MCClass::Paladin;
-	}
-	else if (player_class == "Wizard")
-	{
-		return main_character_class::MCClass::Wizard;
-	}
-	else if (player_class == "Undefined")
-	{
-		return main_character_class::MCClass::Undefined;
-	}
-	else
-	{
-		std::cerr << "Class \"" << player_class
-				  << "\" not recognized. Setting it to \"Undefined\".\n";
-		return main_character_class::MCClass::Undefined;
-	}
-}
+std::string const AllMainCharacterClasses::Undefined{"Undefined"};
+std::string const AllMainCharacterClasses::Barbarian{"Barbarian"};
+std::string const AllMainCharacterClasses::Bard{"Bard"};
+std::string const AllMainCharacterClasses::Cleric{"Cleric"};
+std::string const AllMainCharacterClasses::Druid{"Druid"};
+std::string const AllMainCharacterClasses::Fighter{"Fighter"};
+std::string const AllMainCharacterClasses::Paladin{"Paladin"};
+std::string const AllMainCharacterClasses::Wizard{"Wizard"};
+
+std::vector<std::string> const main_character_class::AVAILABLE_CLASSES = {
+	AllMainCharacterClasses::Barbarian,
+	AllMainCharacterClasses::Bard,
+	AllMainCharacterClasses::Cleric,
+	AllMainCharacterClasses::Druid,
+	AllMainCharacterClasses::Fighter,
+	AllMainCharacterClasses::Paladin,
+	AllMainCharacterClasses::Wizard,
+};
 
 std::unique_ptr<MainCharacterClass> MainCharacterClass::CreateMainCharacterClass()
 {
@@ -90,19 +42,26 @@ std::unique_ptr<MainCharacterClass> MainCharacterClass::CreateMainCharacterClass
 }
 
 MainCharacterClass::MainCharacterClass()
-	: m_class(main_character_class::MCClass::Undefined){};
+	: m_class(AllMainCharacterClasses::Undefined){};
 
-main_character_class::MCClass MainCharacterClass::get_class() const
+void MainCharacterClass::ResetToDefault()
 {
-	return m_class;
-};
+	m_class = AllMainCharacterClasses::Undefined;
+}
 
+std::string MainCharacterClass::get_class() const { return m_class; };
 void MainCharacterClass::set_class(std::string player_class)
 {
-	m_class = main_character_class::StringToMCClass(player_class);
+	const auto it =
+		std::find(AVAILABLE_CLASSES.begin(), AVAILABLE_CLASSES.end(), player_class);
+	if (it == AVAILABLE_CLASSES.end())
+	{
+		std::cerr << "Class " << player_class
+				  << " is not a valid main character class." << std::endl
+				  << "Setting main character class to \"Undefined\"." << std::endl;
+		player_class = AllMainCharacterClasses::Undefined;
+	}
+	m_class = player_class;
 };
 
-MainCharacterClass::operator std::string()
-{
-	return (main_character_class::MCClassToString(m_class));
-};
+MainCharacterClass::operator std::string() { return m_class; };
