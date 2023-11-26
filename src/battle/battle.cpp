@@ -7,46 +7,87 @@
 #include <iostream>
 #include <vector>
 
-void Battle(MainCharacter& main_character, std::vector<Creature>& foes)
+using CreatureWithInitiative = std::pair<Creature*, int>;
+using Combatants = std::vector<CreatureWithInitiative>;
+
+static void OnMainCharacterAttack(MainCharacter* main_character_ptr,
+	int main_character_pos,
+	Combatants& combatants)
+{
+	std::cout << "Main character attacks!\n";
+
+	utils::Print({"Please choose your target from the available options."});
+	std::vector<std::string> main_character_attack_options;
+	main_character_attack_options.reserve(combatants.size() - 1);
+	for (size_t iter = 0; iter < combatants.size(); iter++)
+	{
+		if (combatants[iter].first != main_character_ptr)
+		{
+			main_character_attack_options.push_back(utils::UppercasedFirstChar(
+				combatants[iter].first->get_display_name()));
+		}
+	}
+	int user_choice = utils::GetUserConstrainedChoice(main_character_attack_options);
+
+	// Shift the user choice by one (so that main_character does not get selected as the target)
+	if (user_choice <= main_character_pos)
+	{
+		user_choice--;
+	}
+	MainCharacterAttack(*main_character_ptr, *(combatants[user_choice].first));
+
+	// Eliminate (erase) foes with 0 hp
+	for (int i = combatants.size() - 1; i >= 0; i--)
+	{
+		if (combatants[i].first->get_hp() == 0)
+		{
+			std::cout << utils::UppercasedFirstChar(combatants[i].first->get_display_name())
+					  << " has been eliminated!\n";
+			combatants.erase(combatants.begin() + i);
+		}
+	}
+}
+
+static void OnFoeAttack(MainCharacter* main_character_ptr, Creature* foe)
+{
+	std::cout << utils::UppercasedFirstChar(foe->get_display_name()) << " attacks!\n";
+
+	FoeAttack(*foe, *main_character_ptr);
+}
+
+void Battle(MainCharacter& main_character, std::vector<CreatureSharedPtr> const& foes)
 {
 	std::cout << "Battle starts!" << std::endl;
 
 	MainCharacter* main_character_ptr = &main_character;
-	std::vector<Creature*> foes_ptrs;
-	for (size_t i = 0; i < foes.size(); i++)
-	{
-		foes_ptrs.push_back(&(foes[i]));
-	}
 
 	// All the battle participants (including main character)
 	// Contains pairs of type { foe/main_character, initiative_roll }
-	std::vector<std::pair<Creature*, int>> combatants(foes_ptrs.size() + 1,
-		{foes_ptrs[0], 0}); // Add +1 to accommodate for the main character
+	Combatants combatants;
+	combatants.reserve(foes.size() + 1); // Add +1 to accommodate for the main character
 
 	/**
 	 * Roll initiative for main_character and foes,
 	 * and initialize the combatants list
 	 */
 
-	int main_character_initiative_roll =
+	int dice_roll =
 		utils::RollDice(1, 20) + (main_character_ptr->get_ability_score(1) - 10) / 2;
-	std::cout << "Main character rolled initiative "
-			  << main_character_initiative_roll << std::endl;
+	std::cout << "Main character rolled initiative " << dice_roll << std::endl;
 
-	combatants[0] = {main_character_ptr, main_character_initiative_roll};
+	combatants.push_back({main_character_ptr, dice_roll});
 
 	for (size_t i = 0; i < foes.size(); ++i)
 	{
-		int foe_initiative_roll =
-			utils::RollDice(1, 20) + (foes_ptrs[i]->get_ability_score(1) - 10) / 2;
-		std::cout << "Foe rolled initiative " << foe_initiative_roll << std::endl;
+		dice_roll = utils::RollDice(1, 20) + (foes[i]->get_ability_score(1) - 10) / 2;
+		std::cout << "Foe rolled initiative " << dice_roll << std::endl;
 
-		combatants[i + 1] = {foes_ptrs[i], foe_initiative_roll};
+		combatants.push_back({&(*foes[i]), dice_roll});
 	}
 
 	// Sort the combatants list in descending order of initiative rolls
-	const auto compareCombatantsInitiative = [](std::pair<Creature*, int> a,
-												 std::pair<Creature*, int> b) -> bool
+	const auto compareCombatantsInitiative = [](CreatureWithInitiative a,
+												 CreatureWithInitiative b) -> bool
 	{
 		if (a.second == b.second)
 		{
@@ -56,17 +97,6 @@ void Battle(MainCharacter& main_character, std::vector<Creature>& foes)
 			return (a.second > b.second);
 	};
 	std::sort(combatants.begin(), combatants.end(), compareCombatantsInitiative);
-
-	int foes_i = 0;
-
-	for (size_t i = 0; i < combatants.size(); i++)
-	{
-		if (combatants[i].first->get_display_name()!="main character")
-			{
-				foes_ptrs[foes_i] = combatants[i].first;
-				foes_i++;
-			}
-	}
 
 	const auto printCombatants = [&combatants]()
 	{
@@ -82,8 +112,6 @@ void Battle(MainCharacter& main_character, std::vector<Creature>& foes)
 	printCombatants();
 	std::cout << std::endl;
 
-	int user_choice;
-
 	// Battle loop
 	while (main_character_ptr->get_hp() > 0 && combatants.size() > 1)
 	{
@@ -92,50 +120,11 @@ void Battle(MainCharacter& main_character, std::vector<Creature>& foes)
 		{
 			if (combatants[i].first == main_character_ptr)
 			{
-				std::cout << "Main character attacks!\n";
-
-				utils::Print(
-					{"Please choose your target from the available options."});
-				int options_size = foes_ptrs.size();
-				std::vector<std::string> main_character_attack_options(options_size, "");
-				for (size_t iter = 0; iter < foes_ptrs.size(); iter++)
-				{
-					main_character_attack_options[iter] = utils::UppercasedFirstChar(
-						foes_ptrs[iter]->get_display_name());
-				}
-				user_choice = utils::GetUserConstrainedChoice(main_character_attack_options);
-
-				MainCharacterAttack(*main_character_ptr, *(foes_ptrs[user_choice - 1]));
-
-				// Eliminate (erase) foes with 0 hp
-				if (foes_ptrs[user_choice - 1]->get_hp() == 0)
-				{
-					std::cout << utils::UppercasedFirstChar(
-									 foes_ptrs[user_choice - 1]->get_display_name())
-							  << " has been eliminated!\n";
-					for (int j = foes_ptrs.size() - 1; j >= 0; j--)
-					{
-						if (foes_ptrs[j]->get_hp() == 0)
-						{
-							foes_ptrs.erase(foes_ptrs.begin() + j);
-						}
-					}
-					for (int j = combatants.size() - 1; j >= 0; j--)
-					{
-						if (combatants[j].first->get_hp() == 0)
-						{
-							combatants.erase(combatants.begin() + j);
-						}
-					}
-				}
+				OnMainCharacterAttack(main_character_ptr, i, combatants);
 			}
 			else
 			{
-				std::cout << utils::UppercasedFirstChar(
-								 combatants[i].first->get_display_name())
-						  << " attacks!\n";
-
-				FoeAttack(*combatants[i].first, *main_character_ptr);
+				OnFoeAttack(main_character_ptr, combatants[i].first);
 
 				if (main_character_ptr->get_hp() == 0)
 				{

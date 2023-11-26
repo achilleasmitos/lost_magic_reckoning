@@ -1,3 +1,11 @@
+@@@BATTLE
+MAIN_CHARACTER
+{
+goblin
+goblin
+}
+@@@
+
 @@@SOUND
 PLAY
 exploration.mp3

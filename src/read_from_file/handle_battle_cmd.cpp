@@ -1,6 +1,7 @@
 #include "handle_battle_cmd.h"
 #include "utils/utils.h"
 #include "battle/battle.h"
+#include "creature/creature_prototypes.h"
 #include "creature/creature.h"
 
 #include <iostream>
@@ -18,7 +19,8 @@ std::string const PATH_TO_RESOURCES_CREATURES{
  * It reads from the appropriate JSON file the stats of the creature
  * specified as `foe_name` and pushes it to the `foes` vector.
  */
-static void ExtractCreatureFromFile(std::string& foe_name, std::vector<Creature>& foes)
+static void ExtractCreatureFromFile(std::string& foe_name,
+	std::vector<CreatureSharedPtr>& foes)
 {
 	// The resources file with the stats of the supplied foe with foe_name
 	const std::string file_path = PATH_TO_RESOURCES_CREATURES + foe_name + ".json";
@@ -27,7 +29,7 @@ static void ExtractCreatureFromFile(std::string& foe_name, std::vector<Creature>
 		utils::ReadFromJSON(file_path);
 
 	// Create the foe creature to be added to the `foes` vector
-	Creature foe(std::stoi(foe_stats_map["hp"]),
+	CreatureSharedPtr foe = std::make_shared<Creature>(std::stoi(foe_stats_map["hp"]),
 		std::stoi(foe_stats_map["ac"]),
 		std::stoi(foe_stats_map["speed"]),
 		std::stoi(foe_stats_map["strength"]),
@@ -94,7 +96,7 @@ void HandleBattleCmd(std::ifstream& source_file,
 	}
 
 	// The foes to be passed into the `Battle()` func
-	std::vector<Creature> foes;
+	std::vector<CreatureSharedPtr> foes;
 
 	// Reading argument list for foes
 	while (std::getline(source_file, text) && text != "}")
