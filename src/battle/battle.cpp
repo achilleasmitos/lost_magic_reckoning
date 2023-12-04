@@ -61,11 +61,11 @@ void Battle(MainCharacter& main_character, std::vector<Creature>& foes)
 
 	for (size_t i = 0; i < combatants.size(); i++)
 	{
-		if (combatants[i].first->get_display_name()!="main character")
-			{
-				foes_ptrs[foes_i] = combatants[i].first;
-				foes_i++;
-			}
+		if (combatants[i].first->get_display_name() != "main character")
+		{
+			foes_ptrs[foes_i] = combatants[i].first;
+			foes_i++;
+		}
 	}
 
 	const auto printCombatants = [&combatants]()

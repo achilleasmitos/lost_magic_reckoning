@@ -1,72 +1,61 @@
 #include "main_character.h"
-#include "helpers/name_helpers.h"
+#include "utils/utils.h"
 
 #include <iostream>
 
 MainCharacter::MainCharacter(std::string name)
-	: m_race(MainCharacterRace()), m_class(MainCharacterClass())
+	: m_race(main_character_race::MainCharacterRace::CreateMainCharacterRace()),
+	  m_class(main_character_class::MainCharacterClass::CreateMainCharacterClass())
 {
-	if (main_character_helpers::CheckForAlphaOrWhitespace(name))
+	if (utils::CheckForAlphaOrWhitespace(name))
 	{
 		m_name = name;
+	}
+	else
+	{
+		std::cout
+			<< "Sorry, your name can only contain letters and spaces...\n\n";
+		m_name = "Player";
 	}
 	m_display_name = "main character";
 }
 
-MainCharacter::MainCharacter(std::string name,
-	int strength,
-	int dexterity,
-	int constitution,
-	int intelligence,
-	int wisdom,
-	int charisma)
-	: Creature(strength, dexterity, constitution, intelligence, wisdom, charisma),
-	  m_race(MainCharacterRace()), m_class(MainCharacterClass())
+void MainCharacter::ResetToDefault()
 {
-	if (main_character_helpers::CheckForAlphaOrWhitespace(name))
-	{
-		m_name = name;
-	}
-}
+	// Reset to defaults all member variables inherited from Creature
+	this->Creature::ResetToDefault();
 
-MainCharacter::MainCharacter(std::string name,
-	int hp,
-	int ac,
-	int speed,
-	int strength,
-	int dexterity,
-	int constitution,
-	int intelligence,
-	int wisdom,
-	int charisma,
-	std::string creature_type)
-	: Creature(hp, ac, speed, strength, dexterity, constitution, intelligence, wisdom, charisma, creature_type, "main character"),
-	  m_race(MainCharacterRace()), m_class(MainCharacterClass())
-{
-	if (main_character_helpers::CheckForAlphaOrWhitespace(name))
-	{
-		m_name = name;
-	}
+	// Reset to defaults all own member variables
+	m_name = "Player";
+	m_race->ResetToDefault();
+	m_class->ResetToDefault();
+
+	m_display_name = "main character";
 }
 
 std::string MainCharacter::get_name() const { return m_name; }
-
 void MainCharacter::set_name(std::string name)
 {
-	if (main_character_helpers::CheckForAlphaOrWhitespace(name))
+	if (utils::CheckForAlphaOrWhitespace(name))
 	{
 		m_name = name;
 	}
+	else
+	{
+		std::cout
+			<< "Sorry, your name can only contain letters and spaces...\n\n";
+		m_name = "Player";
+	}
 }
 
-MainCharacterClass MainCharacter::get_class() const { return m_class; }
-void MainCharacter::set_class(std::string player_class)
-{
-	m_class.set_class(player_class);
-}
-
-MainCharacterRace MainCharacter::get_race() const { return m_race; }
+std::string MainCharacter::get_race() const { return (std::string)(*m_race); }
 void MainCharacter::set_race(std::string player_race)
 {
-	m_race.set_race(player_race);
+	m_race->set_race(player_race);
+}
+
+std::string MainCharacter::get_class() const { return (std::string)(*m_class); }
+void MainCharacter::set_class(std::string player_class)
+{
+	m_class->set_class(player_class);
 }

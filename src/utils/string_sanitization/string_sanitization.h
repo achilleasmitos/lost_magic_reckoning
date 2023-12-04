@@ -2,7 +2,7 @@
 
 #include <string>
 
-namespace main_character_helpers
+namespace utils
 {
 /**
  * @brief A function that checks if the given string consists only of letters and whitespaces.
@@ -10,5 +10,5 @@ namespace main_character_helpers
  * @param string
  * @return true if the above condition holds, false otherwise.
  */
-bool CheckForAlphaOrWhitespace(std::string string);
-} // namespace main_character_helpers
+bool CheckForAlphaOrWhitespace(std::string const string);
+} // namespace utils

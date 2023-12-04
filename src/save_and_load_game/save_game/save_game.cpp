@@ -15,8 +15,8 @@ void SaveGame(MainCharacter& main_character)
 	 * Keep the keys defined here up-to-date with those in @see load_game.cpp
 	 */
 	game_state.insert({"mc_name", main_character.get_name()});
-	game_state.insert({"mc_race", (std::string)(main_character.get_race())});
-	game_state.insert({"mc_class", (std::string)(main_character.get_class())});
+	game_state.insert({"mc_race", main_character.get_race()});
+	game_state.insert({"mc_class", main_character.get_class()});
 	game_state.insert({"mc_hp", std::to_string(main_character.get_hp())});
 	game_state.insert({"mc_ac", std::to_string(main_character.get_ac())});
 	game_state.insert({"mc_speed", std::to_string(main_character.get_speed())});
