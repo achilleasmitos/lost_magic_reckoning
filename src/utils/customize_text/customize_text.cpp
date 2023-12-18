@@ -1,19 +1,31 @@
 #include "customize_text.h"
 
-#include <codecvt>
-#include <cwchar>
-#include <locale>
+#include <iostream>
+#include <unordered_map>
 #include <windows.h>
 
 int utils::g_text_size = 16;
 utils::FontWeightValues utils::g_text_weight = utils::FontWeightValues::Normal;
-std::string utils::g_text_face_name = "Consolas";
+std::string utils::g_text_face_name = utils::AVAILABLE_TEXT_FACE_NAMES[0];
 
-static std::wstring to_wstring(const std::string& stringToConvert)
+std::unordered_map<std::string, std::wstring> const string_to_wstring_face_name_map{
+	{utils::AVAILABLE_TEXT_FACE_NAMES[0], L"Consolas"},
+	{utils::AVAILABLE_TEXT_FACE_NAMES[1], L"DejaVu Sans Mono"},
+	{utils::AVAILABLE_TEXT_FACE_NAMES[2], L"Liberation Mono"},
+	{utils::AVAILABLE_TEXT_FACE_NAMES[3], L"Lucida Console"},
+	{utils::AVAILABLE_TEXT_FACE_NAMES[4], L"MS Gothic"}};
+
+static std::wstring to_wstring(const std::string& textFaceNameToConvert)
 {
-	std::wstring const wideString =
-		std::wstring_convert<std::codecvt_utf8<wchar_t>>().from_bytes(stringToConvert);
-	return wideString;
+	const auto it = string_to_wstring_face_name_map.find(textFaceNameToConvert);
+	if (it != string_to_wstring_face_name_map.end())
+	{
+		return it->second;
+	}
+
+	std::cerr << "The font face " << it->first
+			  << " could not be converted to a known wide-string font face.\n";
+	return L"Consolas";
 }
 
 void utils::CustomizeText()
