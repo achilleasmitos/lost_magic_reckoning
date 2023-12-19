@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <vector>
 
 namespace utils
 {
@@ -19,6 +20,12 @@ extern int g_text_size;
 extern FontWeightValues g_text_weight;
 // A string for the font typeface used.
 extern std::string g_text_face_name;
+
+std::vector<std::string> const AVAILABLE_TEXT_FACE_NAMES{"Consolas",
+	"DejaVu Sans Mono",
+	"Liberation Mono",
+	"Lucida Console",
+	"MS Gothic"};
 
 /**
  * @brief A function that changes the basic aesthetics of the text.
