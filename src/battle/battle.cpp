@@ -150,18 +150,18 @@ void Battle(MainCharacter& main_character, std::vector<Creature>& foes)
 							}
 							break;
 						}
-						// Dodge option
+					// Dodge option
 					case 2:
 						{
-							std::cout << "You have taken a Dodge action" << std::endl;
+							std::cout << "You have taken the Dodge action." << std::endl;
 							dodge_action = true;
 							break;
 						}
-						// Flee option
+					// Flee option
 					case 3:
 						{
 							int flee_roll = utils::RollDice(1, 20) +
-								(combatants[i].first->get_ability_score(1) - 10) / 2;
+								(main_character_ptr->get_ability_score(1) - 10) / 2;
 							std::cout << "The main character rolled "
 									  << flee_roll << std::endl;
 							if (flee_roll >= 12)
@@ -198,7 +198,7 @@ void Battle(MainCharacter& main_character, std::vector<Creature>& foes)
 			}
 			if (flee == true)
 			{
-				break; // Exit the Battle loop if dodge is successful
+				break; // Exit the Battle loop if flee was successful
 			}
 		}
 
