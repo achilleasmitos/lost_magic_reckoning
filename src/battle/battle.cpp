@@ -1,6 +1,7 @@
 #include "battle.h"
 #include "utils/utils.h"
 #include "foe_attack.h"
+#include "foe_attack_with_disadvantage.h"
 #include "main_character_attack.h"
 
 #include <algorithm>
@@ -83,50 +84,97 @@ void Battle(MainCharacter& main_character, std::vector<Creature>& foes)
 	std::cout << std::endl;
 
 	int user_choice;
+	bool dodge_action = false;
+	bool flee = false;
 
 	// Battle loop
-	while (main_character_ptr->get_hp() > 0 && combatants.size() > 1)
+	while (main_character_ptr->get_hp() > 0 && combatants.size() > 1 && flee == false)
 	{
 		// Go down the initiative order (descending) one by one and act
 		for (size_t i = 0; i < combatants.size(); ++i)
 		{
 			if (combatants[i].first == main_character_ptr)
 			{
+				dodge_action = false;
 				std::cout << "Main character attacks!\n";
 
-				utils::Print(
-					{"Please choose your target from the available options."});
-				int options_size = foes_ptrs.size();
-				std::vector<std::string> main_character_attack_options(options_size, "");
-				for (size_t iter = 0; iter < foes_ptrs.size(); iter++)
-				{
-					main_character_attack_options[iter] = utils::UppercasedFirstChar(
-						foes_ptrs[iter]->get_display_name());
-				}
-				user_choice = utils::GetUserConstrainedChoice(main_character_attack_options);
+				int battle_options_choice = 0;
+				std::vector<std::string> battle_options{"Attack", "Dodge", "Flee"};
 
-				MainCharacterAttack(*main_character_ptr, *(foes_ptrs[user_choice - 1]));
+				// Ask for user input.
+				utils::Print({"Please choose from the available options."});
+				battle_options_choice = utils::GetUserConstrainedChoice(battle_options);
 
-				// Eliminate (erase) foes with 0 hp
-				if (foes_ptrs[user_choice - 1]->get_hp() == 0)
+				switch (battle_options_choice)
 				{
-					std::cout << utils::UppercasedFirstChar(
-									 foes_ptrs[user_choice - 1]->get_display_name())
-							  << " has been eliminated!\n";
-					for (int j = foes_ptrs.size() - 1; j >= 0; j--)
-					{
-						if (foes_ptrs[j]->get_hp() == 0)
+					// Attack option
+					case 1:
 						{
-							foes_ptrs.erase(foes_ptrs.begin() + j);
+							utils::Print({"Please choose your target from the "
+										  "available options."});
+							int options_size = foes_ptrs.size();
+							std::vector<std::string> main_character_attack_options(options_size,
+								"");
+							for (size_t iter = 0; iter < foes_ptrs.size(); iter++)
+							{
+								main_character_attack_options[iter] = utils::UppercasedFirstChar(
+									foes_ptrs[iter]->get_display_name());
+							}
+							user_choice = utils::GetUserConstrainedChoice(
+								main_character_attack_options);
+
+							MainCharacterAttack(*main_character_ptr,
+								*(foes_ptrs[user_choice - 1]));
+
+							// Eliminate (erase) foes with 0 hp
+							if (foes_ptrs[user_choice - 1]->get_hp() == 0)
+							{
+								std::cout
+									<< utils::UppercasedFirstChar(
+										   foes_ptrs[user_choice - 1]->get_display_name())
+									<< " has been eliminated!\n";
+								for (int j = foes_ptrs.size() - 1; j >= 0; j--)
+								{
+									if (foes_ptrs[j]->get_hp() == 0)
+									{
+										foes_ptrs.erase(foes_ptrs.begin() + j);
+									}
+								}
+								for (int j = combatants.size() - 1; j >= 0; j--)
+								{
+									if (combatants[j].first->get_hp() == 0)
+									{
+										combatants.erase(combatants.begin() + j);
+									}
+								}
+							}
+							break;
 						}
-					}
-					for (int j = combatants.size() - 1; j >= 0; j--)
-					{
-						if (combatants[j].first->get_hp() == 0)
+						// Dodge option
+					case 2:
 						{
-							combatants.erase(combatants.begin() + j);
+							std::cout << "You have taken a Dodge action" << std::endl;
+							dodge_action = true;
+							break;
 						}
-					}
+						// Flee option
+					case 3:
+						{
+							int flee_roll = utils::RollDice(1, 20) +
+								(combatants[i].first->get_ability_score(1) - 10) / 2;
+							std::cout << "The main character rolled "
+									  << flee_roll << std::endl;
+							if (flee_roll >= 12)
+							{
+								flee = true;
+							}
+							else
+							{
+								std::cout << "Your attempt to flee has failed "
+										  << std::endl;
+							}
+							break;
+						}
 				}
 			}
 			else
@@ -134,13 +182,23 @@ void Battle(MainCharacter& main_character, std::vector<Creature>& foes)
 				std::cout << utils::UppercasedFirstChar(
 								 combatants[i].first->get_display_name())
 						  << " attacks!\n";
-
-				FoeAttack(*combatants[i].first, *main_character_ptr);
+				if (dodge_action == false)
+				{
+					FoeAttack(*combatants[i].first, *main_character_ptr);
+				}
+				else
+				{
+					FoeAttackWithDisadvantage(*combatants[i].first, *main_character_ptr);
+				}
 
 				if (main_character_ptr->get_hp() == 0)
 				{
 					break; // Exit the Battle loop
 				}
+			}
+			if (flee == true)
+			{
+				break; // Exit the Battle loop if dodge is successful
 			}
 		}
 
@@ -150,13 +208,19 @@ void Battle(MainCharacter& main_character, std::vector<Creature>& foes)
 	}
 
 	std::cout << "Battle ends!" << std::endl;
-
-	if (main_character_ptr->get_hp() > 0)
+	if (flee == true)
 	{
-		std::cout << "You won the battle!" << std::endl;
+		std::cout << "You have fled the battle" << std::endl;
 	}
 	else
 	{
-		std::cout << "You lost the battle!" << std::endl;
+		if (main_character_ptr->get_hp() > 0)
+		{
+			std::cout << "You won the battle!" << std::endl;
+		}
+		else
+		{
+			std::cout << "You lost the battle!" << std::endl;
+		}
 	}
 }
