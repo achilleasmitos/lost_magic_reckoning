@@ -5,7 +5,7 @@ cd "${parent_path}"
 build_folder="../build"
 application_name="Lost Magic Reckoning"
 release_folder="${build_folder}/${application_name}"
-release_executable="lost-magic_reckoning_Release.exe"
+release_executable="lost_magic_reckoning_Release.exe"
 
 echo "Installer initiated."
 echo "Make sure that you have run an updated version of the Release Build task."

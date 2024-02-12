@@ -12,7 +12,7 @@
 			"name": "(gdb) Launch",
 			"type": "cppdbg",
 			"request": "launch",
-			"program": "${workspaceFolder}\\build\\lost-magic_reckoning.exe",
+			"program": "${workspaceFolder}\\build\\lost_magic_reckoning.exe",
 			"args": [],
 			"stopAtEntry": false,
 			"cwd": "${workspaceFolder}\\build\\",
