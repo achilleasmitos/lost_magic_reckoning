@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <unordered_map>
+#include <wchar.h>
 #include <windows.h>
 
 int utils::g_text_size = 16;
@@ -37,6 +38,6 @@ void utils::CustomizeText()
 	cfi.dwFontSize.Y = g_text_size; //   The X member contains the width, while the Y member contains the height.
 	cfi.FontFamily = FF_DONTCARE; // The font pitch and family. See also TEXTMETRICA.
 	cfi.FontWeight = g_text_weight; // The font weight. The weight can range from 100 to 1000, in multiples of 100.
-	std::wcscpy(cfi.FaceName, to_wstring(g_text_face_name).c_str()); // Copies the desired typeface over to FaceName.
+	wcscpy_s(cfi.FaceName, to_wstring(g_text_face_name).c_str()); // Copies the desired typeface over to FaceName.
 	SetCurrentConsoleFontEx(GetStdHandle(STD_OUTPUT_HANDLE), FALSE, &cfi);
 }

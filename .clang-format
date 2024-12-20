@@ -6,7 +6,7 @@
 # Parameters are (except first block) in order of documentation.
 
 Language: Cpp
-Standard: c++17
+Standard: c++20
 UseTab: Always
 IndentWidth: 4
 TabWidth: 4

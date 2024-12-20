@@ -1,0 +1,5 @@
+// Cmake config file to grab the project's version
+
+// The first part of the below macros has to match the project's given name
+#define LostMagicReckoning_VERSION_MAJOR @LostMagicReckoning_VERSION_MAJOR@
+#define LostMagicReckoning_VERSION_MINOR @LostMagicReckoning_VERSION_MINOR@
